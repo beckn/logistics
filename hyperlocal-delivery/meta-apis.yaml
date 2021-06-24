@@ -1,0 +1,333 @@
+openapi: 3.0.0
+info:
+  title: Beckn Meta APIs
+  description: Meta APIs of a network. Generally contiaining static data
+  version: 0.9.1
+security:
+  - SubscriberAuth: []
+paths:
+  /get_cancellation_reasons:
+    post:
+      tags:
+        - BPP Meta APIs
+      description: Get cancellation reasons
+      parameters:
+        - in: header
+          name: Signature
+          description: This contains the digital signature of the request body signed using the signing private key of the Subscriber
+          schema:
+            type: string
+          required: true
+      requestBody:
+        description: TODO
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Context'
+      responses:
+        '200':
+          description: Acknowledgement
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ack'
+
+  /cancellation_reasons:
+    post:
+      tags:
+        - BAP Meta APIs
+      description: Send cancellation reasons
+      parameters:
+        - in: header
+          name: Signature
+          description: This contains the digital signature of the request body signed using the signing private key of the Subscriber
+          schema:
+            type: string
+          required: true
+      requestBody:
+        description: List of cancellation reasons
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                   $ref: '#/components/schemas/Option'
+      responses:
+        '200':
+          description: Acknowledgement
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ack'
+
+  /get_return_reasons:
+    post:
+      tags:
+        - BPP Meta APIs
+      description: Get return reasons
+      parameters:
+        - in: header
+          name: Signature
+          description: This contains the digital signature of the request body signed using the signing private key of the Subscriber
+          schema:
+            type: string
+          required: true
+      requestBody:
+        description: TODO
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Context'
+      responses:
+        '200':
+          description: Acknowledgement
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ack'
+
+  /return_reasons:
+    post:
+      tags:
+        - BAP Meta APIs
+      description: Send return reasons
+      parameters:
+        - in: header
+          name: Signature
+          description: This contains the digital signature of the request body signed using the signing private key of the Subscriber
+          schema:
+            type: string
+          required: true
+      requestBody:
+        description: TODO
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                  $ref: '#/components/schemas/Option'
+      responses:
+        '200':
+          description: Acknowledgement
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ack'
+
+  /get_rating_categories:
+    post:
+      tags:
+        - BPP Meta APIs
+      description: Get all rating categories supported by a BPP
+      parameters:
+        - in: header
+          name: Signature
+          description: This contains the digital signature of the request body signed using the signing private key of the Subscriber
+          schema:
+            type: string
+          required: true
+      requestBody:
+        description: TODO
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Context'
+      responses:
+        '200':
+          description: Acknowledgement of callback
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ack'
+
+  /rating_categories:
+    post:
+      tags:
+        - BAP Meta APIs
+      description: Send all rating categories supported by a BPP
+      parameters:
+        - in: header
+          name: Signature
+          description: This contains the digital signature of the request body signed using the signing private key of the Subscriber
+          schema:
+            type: string
+          required: true
+      requestBody:
+        description: TODO
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                allOf:
+                - $ref: '#/components/schemas/Category'
+                - type: object
+                  properties:
+                    question:
+                      type: string
+      responses:
+        '200':
+          description: Acknowledgement of callback
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ack'
+
+
+components:
+  securitySchemes:
+    SubscriberAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Signature of message body using BAP or BPP subscriber''s signing public key. <br/><br/>For example:<br/><br/><code>Authorization : Signature keyId=''bap-example.com'', signature=''Base64(EdDSA-SHA512(requestBody))''</code>'
+    GatewaySubscriberAuth:
+      type: apiKey
+      in: header
+      name: Proxy-Authorization
+      description: 'Signature of message body + BAP/BPP''s Authorization header using BG''s signing public key. For example:<br/><br/><code>Proxy-Authorization : Signature keyId=''bg-example.com'' headers=''Authorization'',signature=''Base64(EdDSA-SHA512(requestBody)''</code>'
+  schemas:
+    Ack:
+      description: Describes the ACK response
+      type: object
+      properties:
+        status:
+          type: string
+          description: 'Describe the status of the ACK response. If schema validation passes, status is ACK else it is NACK'
+          enum:
+            - ACK
+            - NACK
+        code:
+          type: string
+      required:
+        - status
+    CancellationReason:
+      description: Describes a reason for cancellation
+      type: string
+    
+    ReturnReason:
+      description: Describes a reason for return
+      type: string
+
+    RatingCategory:
+      description: Describes an entity that can be rated within a BPP
+      type: string
+
+    SupportCategory:
+      description: Describes a category that a BPP can offer support for
+      type: string
+
+    Context:
+      description: Describes a beckn message context
+      type: object
+      properties:
+        domain:
+          type: 'string'
+        country:
+          type: 'string'
+        city:
+          type: 'string'
+        action:
+          type: string
+        version:
+          type: string
+          description: Version of Beckn Meta API specification being used
+        bap_id:
+          type: string
+          format: uri
+          description: This is registered subscriber id of the BAP. By default it is the FQDN of the BAP
+        bap_uri:
+          type: string
+          format: uri
+          description: Callback URI of the BAP. Must have the same domain name as the bap_id. Must be SSL certified
+        bpp_id:
+          type: string
+          format: uri
+          description: This is registered domain name of the BPP. Must be an HTTPS domain in open networks
+        bpp_uri:
+          type: string
+          format: uri
+          description: URI of the BPP. Must have the same domain name as the bap_id
+        transaction_id:
+          type: string
+          description: 'This is a unique value which persists across all API calls from search through confirm. The format for transaction id is an ecrypted value of the following string. ''{bap_id}/{timestamp}/{ttl}/{random nonce}'' using a key known only to the BAP. The BAP will decrypt this value to compare the callback transaction_id with the request transaction_id'
+        message_id:
+          type: string
+          description: 'This is a unique value which persists during a request / callback cycle. The format for transaction id is an ecrypted value of the following string. ''{bap_id}/{action}/{timestamp}/{ttl}/{random nonce}'' using a key known only to the BAP. The BAP will decrypt this value to compare the callback message_id with the request message_id'
+        timestamp:
+          type: string
+          format: date-time
+          description: Time of request generation in RFC3339 format
+        key:
+          type: string
+          description: The encryption public key of the sender
+        ttl:
+          $ref: '#/components/schemas/Duration'
+      required:
+        - domain
+        - action
+        - country
+        - city
+        - core_version
+        - transaction_id
+        - message_id
+        - bap_id
+        - bap_uri
+        - timestamp
+    
+    Descriptor:
+      description: Describes the description of a real-world object. Maintained by Beckn Foundation
+      type: object
+      properties:
+        name:
+          type: string
+        code:
+          type: string
+        symbol:
+          type: string
+        short_desc:
+          type: string
+        long_desc:
+          type: string
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/Image'
+        audio:
+          type: string
+          format: uri
+        3d_render:
+          type: string
+          format: uri
+
+    Option:
+      description: Describes a selectable option
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          $ref: '#/components/schemas/Descriptor'
+          
+    Vehicle:
+      description: Describes the properties of a vehicle used in a mobility service
+      type: object
+      properties:
+        category:
+          type: string
+        capacity:
+          type: integer
+        make:
+          type: string
+        model:
+          type: string
+        size:
+          type: string
+        variant:
+          type: string
+        color:
+          type: string
+        energy_type:
+          type: string
+        registration:
+          type: string
