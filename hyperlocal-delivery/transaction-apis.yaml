@@ -42,8 +42,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -72,27 +70,9 @@ paths:
                 message:
                   type: object
                   properties:
-                    selected:
+                    order:
                       type: object
                       properties:
-                        provider:
-                          type: object
-                          properties:
-                            id:
-                              $ref: '#/components/schemas/Provider/properties/id'
-                            locations:
-                              type: array
-                              maxItems: 1
-                              items:
-                                type: object
-                                properties:
-                                  id:
-                                    $ref: '#/components/schemas/Location/properties/id'
-                                required:
-                                  - id
-                          required:
-                            - id
-                            - locations
                         items:
                           type: array
                           items:
@@ -124,10 +104,9 @@ paths:
                             required:
                               - id
                       required:
-                        - provider
                         - items
                   required:
-                    - selected
+                    - order
               required:
                 - context
                 - message
@@ -139,8 +118,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -172,24 +149,6 @@ paths:
                     order:
                       type: object
                       properties:
-                        provider:
-                          type: object
-                          properties:
-                            id:
-                              $ref: '#/components/schemas/Provider/properties/id'
-                            locations:
-                              type: array
-                              maxItems: 1
-                              items:
-                                type: object
-                                properties:
-                                  id:
-                                    $ref: '#/components/schemas/Location/properties/id'
-                                required:
-                                  - id
-                          required:
-                            - id
-                            - locations
                         items:
                           type: array
                           items:
@@ -225,7 +184,6 @@ paths:
                         fulfillment:
                           $ref: '#/components/schemas/Fulfillment'
                       required:
-                        - provider
                         - items
                         - add_ons
                         - offers
@@ -244,8 +202,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -289,8 +245,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -334,8 +288,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -382,8 +334,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -432,8 +382,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -481,8 +429,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -532,8 +478,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -584,8 +528,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -635,8 +577,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -647,7 +587,7 @@ paths:
                   error:
                     $ref: '#/components/schemas/Error'
                 required:
-                  - context
+                  - message
   /on_select:
     post:
       tags:
@@ -665,13 +605,9 @@ paths:
                 message:
                   type: object
                   properties:
-                    selected:
+                    order:
                       type: object
                       properties:
-                        provider:
-                          $ref: '#/components/schemas/Provider'
-                        provider_location:
-                          $ref: '#/components/schemas/Location'
                         items:
                           type: array
                           items:
@@ -691,7 +627,7 @@ paths:
                         quote:
                           $ref: '#/components/schemas/Quotation'
                   required:
-                    - selected
+                    - order
                 error:
                   $ref: '#/components/schemas/Error'
               required:
@@ -704,8 +640,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -716,7 +650,6 @@ paths:
                   error:
                     $ref: '#/components/schemas/Error'
                 required:
-                  - context
                   - message
   /on_init:
     post:
@@ -742,19 +675,9 @@ paths:
                 message:
                   type: object
                   properties:
-                    initialized:
+                    order:
                       type: object
                       properties:
-                        provider:
-                          type: object
-                          properties:
-                            id:
-                              $ref: '#/components/schemas/Provider/properties/id'
-                        provider_location:
-                          type: object
-                          properties:
-                            id:
-                              $ref: '#/components/schemas/Location/properties/id'
                         items:
                           type: array
                           items:
@@ -787,7 +710,7 @@ paths:
                         payment:
                           $ref: '#/components/schemas/Payment'
                   required:
-                    - initialized
+                    - order
                 error:
                   $ref: '#/components/schemas/Error'
               required:
@@ -800,8 +723,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -812,7 +733,6 @@ paths:
                   error:
                     $ref: '#/components/schemas/Error'
                 required:
-                  - context
                   - message
   /on_confirm:
     post:
@@ -847,8 +767,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -859,7 +777,6 @@ paths:
                   error:
                     $ref: '#/components/schemas/Error'
                 required:
-                  - context
                   - message
   /on_track:
     post:
@@ -894,8 +811,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -906,7 +821,6 @@ paths:
                   error:
                     $ref: '#/components/schemas/Error'
                 required:
-                  - context
                   - message
   /on_cancel:
     post:
@@ -941,8 +855,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -953,7 +865,6 @@ paths:
                   error:
                     $ref: '#/components/schemas/Error'
                 required:
-                  - context
                   - message
   /on_update:
     post:
@@ -988,8 +899,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -1000,7 +909,6 @@ paths:
                   error:
                     $ref: '#/components/schemas/Error'
                 required:
-                  - context
                   - message
   /on_status:
     post:
@@ -1035,8 +943,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -1047,7 +953,6 @@ paths:
                   error:
                     $ref: '#/components/schemas/Error'
                 required:
-                  - context
                   - message
   /on_rating:
     post:
@@ -1082,8 +987,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -1094,7 +997,6 @@ paths:
                   error:
                     $ref: '#/components/schemas/Error'
                 required:
-                  - context
                   - message
   /on_support:
     post:
@@ -1134,8 +1036,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -1146,7 +1046,6 @@ paths:
                   error:
                     $ref: '#/components/schemas/Error'
                 required:
-                  - context
                   - message
 
   /get_cancellation_reasons:
@@ -1462,7 +1361,7 @@ components:
             - status
             - track
             - cancel
-            - feedback
+            - rating
             - support
             - on_search
             - on_select
@@ -1472,34 +1371,33 @@ components:
             - on_status
             - on_track
             - on_cancel
-            - on_feedback
+            - on_rating
             - on_support
-            - ack
         core_version:
           type: string
           description: Version of Beckn core API specification being used
         bap_id:
           type: string
           format: uri
-          description: This is registered domain name of the BAP. Must be an HTTPS domain in open networks
+          description: Unique id of the BAP. By default it is the fully qualified domain name of the BAP
         bap_uri:
           type: string
           format: uri
-          description: URI of the BAP. Must have the same domain name as the bap_id
+          description: URI of the BAP for accepting callbacks. Must have the same domain name as the bap_id
         bpp_id:
           type: string
           format: uri
-          description: This is registered domain name of the BPP. Must be an HTTPS domain in open networks
+          description: Unique id of the BPP. By default it is the fully qualified domain name of the BPP
         bpp_uri:
           type: string
           format: uri
           description: URI of the BPP. Must have the same domain name as the bap_id
         transaction_id:
           type: string
-          description: 'This is a unique value which persists across all API calls from search through confirm. The format for transaction id is an ecrypted value of the following string. ''{bap_id}/{timestamp}/{ttl}/{random nonce}'' using a key known only to the BAP. The BAP will decrypt this value to compare the callback transaction_id with the request transaction_id'
+          description: This is a unique value which persists across all API calls from search through confirm
         message_id:
           type: string
-          description: 'This is a unique value which persists during a request / callback cycle. The format for transaction id is an ecrypted value of the following string. ''{bap_id}/{action}/{timestamp}/{ttl}/{random nonce}'' using a key known only to the BAP. The BAP will decrypt this value to compare the callback message_id with the request message_id'
+          description: This is a unique value which persists during a request / callback cycle
         timestamp:
           type: string
           format: date-time
@@ -1508,7 +1406,8 @@ components:
           type: string
           description: The encryption public key of the sender
         ttl:
-          $ref: '#/components/schemas/Duration'
+          type: string
+          description: The duration in ISO8601 format after timestamp for which this message holds valid
       required:
         - domain
         - action
@@ -1627,6 +1526,8 @@ components:
         type:
           type: string
           description: This describes the type of fulfillment
+        provider_id:
+          $ref: '#/components/schemas/Provider/properties/id'
         state:
           $ref: '#/components/schemas/State'
         tracking:
@@ -1664,8 +1565,6 @@ components:
               $ref: '#/components/schemas/Descriptor'
             contact:
               $ref: '#/components/schemas/Contact'
-        purpose:
-          type: string
         tags:
           $ref: '#/components/schemas/Tags'
     Gps:
@@ -1679,8 +1578,6 @@ components:
       description: Intent of a user. Used for searching for services
       type: object
       properties:
-        query_string:
-          type: string
         provider:
           type: object
           properties:
@@ -1688,6 +1585,8 @@ components:
               $ref: '#/components/schemas/Provider/properties/id'
             descriptor:
               $ref: '#/components/schemas/Descriptor'
+            category_id:
+              $ref: '#/components/schemas/Provider/properties/category_id'
             locations:
               type: array
               maxItems: 1
@@ -1728,8 +1627,6 @@ components:
           $ref: '#/components/schemas/Offer'
         item:
           $ref: '#/components/schemas/Item'
-        purpose:
-          type: string
         tags:
           $ref: '#/components/schemas/Tags'
             
@@ -1905,24 +1802,6 @@ components:
           description: Hash of order object without id
         state:
           type: string
-        provider:
-          type: object
-          properties:
-            id:
-              $ref: '#/components/schemas/Provider/properties/id'
-            locations:
-              type: array
-              maxItems: 1
-              items:
-                type: object
-                properties:
-                  id:
-                    $ref: '#/components/schemas/Location/properties/id'
-                required:
-                  - id
-          required:
-            - id
-            - locations
         items:
           type: array
           items:
@@ -1978,7 +1857,6 @@ components:
           type: string
           format: date-time
       required:
-        - provider
         - items
         - add_ons
         - offers
@@ -2025,10 +1903,16 @@ components:
             transaction_id:
               type: string
               description: This value will be placed in the the $transaction_id url param in case of http/get and in the requestBody http/post requests
+            transaction_status:
+              type: string
             amount:
               $ref: '#/components/schemas/MonetaryValue/properties/value'
+            currency:
+              $ref: '#/components/schemas/Price/properties/currency'
           additionalProperties:
             type: string
+          required:
+            - currency
         type:
           type: string
           enum:
@@ -2135,9 +2019,12 @@ components:
       properties:
         id:
           type: string
-          description: 'Id of the provider. The syntax of the ID is {unique provider identifier. If the provider name has an @, it has to be escaped}@{bpp_id}'
+          description: 'Id of the provider'
         descriptor:
           $ref: '#/components/schemas/Descriptor'
+        category_id:
+          type: string
+          description: 'Category Id of the provider'
         time:
           $ref: '#/components/schemas/Time'
         locations:
@@ -2158,15 +2045,6 @@ components:
           items:
             type: object
             properties:
-              type:
-                type: string
-                enum:
-                  - item
-                  - offer
-                  - add-on
-                  - fulfillment
-              ref_id:
-                type: string
               title:
                 type: string
               price:
@@ -2352,11 +2230,6 @@ components:
       description: Describes the tracking info of an object
       type: object
       properties:
-        tl_method:
-          type: string
-          enum:
-            - http/get
-            - ws
         url:
           type: string
           format: uri
