@@ -2040,7 +2040,7 @@ components:
           type: string
           enum:
             - PAID
-            - NOT-PATD
+            - NOT-PAID
         time:
           $ref: '#/components/schemas/Time'
 
