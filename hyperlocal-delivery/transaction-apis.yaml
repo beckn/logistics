@@ -1208,6 +1208,13 @@ components:
         area_code:
           type: string
           description: 'Area code. This can be Pincode, ZIP code or any equivalent'
+    Agent:
+      description: Describes an order executor
+      allOf:
+        - $ref: '#/components/schemas/Person'
+        - $ref: '#/components/schemas/Contact'
+      required:
+        - cred
     Billing:
       description: Describes a billing event
       type: object
@@ -1291,9 +1298,7 @@ components:
         bpp/providers:
           type: array
           items:
-            allOf:
-              - $ref: '#/components/schemas/Provider'
-              - $ref: '#/components/schemas/ProviderCatalog'
+            $ref: '#/components/schemas/Provider'
         exp:
           type: string
           description: Time after which catalog has to be refreshed
@@ -1315,11 +1320,15 @@ components:
           $ref: '#/components/schemas/Tags'
     Circle:
       description: Describes a circular area on the map
-      allOf:
-        - $ref: '#/components/schemas/Gps'
-        - properties:
-            radius:
-              $ref: '#/components/schemas/Scalar'
+      type: object
+      properties:
+        gps:
+          $ref: '#/components/schemas/Gps'
+        radius:
+          $ref: '#/components/schemas/Scalar'
+      required:
+        - gps
+        - radius
     City:
       description: Describes a city
       type: object
@@ -1433,7 +1442,6 @@ components:
       description: Describes a decimal value
       type: string
       pattern: '[+-]?([0-9]*[.])?[0-9]+'
-
     Descriptor:
       description: Describes the description of a real-world object. Maintained by Beckn Foundation
       type: object
@@ -1458,7 +1466,6 @@ components:
         3d_render:
           type: string
           format: uri
-
     Dimensions:
       description: Describes the dimensions of a real-world object
       type: object
@@ -1472,11 +1479,9 @@ components:
     Domain:
       description: Describes the domain of an object
       type: string
-
     Duration:
       description: Describes duration as per ISO8601 format
       type: string
-
     Error:
       description: Describes an error object
       type: object
@@ -1501,7 +1506,6 @@ components:
       required:
         - type
         - code
-
     Feedback:
       description: Feedback for a service
       type: object
@@ -1512,10 +1516,6 @@ components:
           type: string
         parent_id:
           type: string
-
-
-
-
     Fulfillment:
       description: Describes how a single product/service will be rendered/fulfilled to the end customer
       type: object
@@ -1534,11 +1534,15 @@ components:
           type: boolean
           description: Indicates whether the fulfillment allows tracking
           default: false
+        customer:
+          type: object
+          properties:
+            person:
+              $ref: '#/components/schemas/Person'
+            contact:
+              $ref: '#/components/schemas/Contact'
         agent:
-          description: The person who fulfills the order
-          allOf:
-            - $ref: '#/components/schemas/Person'
-            - $ref: '#/components/schemas/Contact'
+          $ref: '#/components/schemas/Agent'
         vehicle:
           $ref: '#/components/schemas/Vehicle'
         start:
@@ -1553,6 +1557,8 @@ components:
               $ref: '#/components/schemas/Descriptor'
             contact:
               $ref: '#/components/schemas/Contact'
+            person:
+              $ref: '#/components/schemas/Person'
         end:
           description: Details on the end of fulfillment
           type: object
@@ -1565,6 +1571,8 @@ components:
               $ref: '#/components/schemas/Descriptor'
             contact:
               $ref: '#/components/schemas/Contact'
+            person:
+              $ref: '#/components/schemas/Person'
         tags:
           $ref: '#/components/schemas/Tags'
     Gps:
@@ -1618,7 +1626,6 @@ components:
               $ref: '#/components/schemas/Tags'
             vehicle:
               $ref: '#/components/schemas/Vehicle'
-
         payment:
           $ref: '#/components/schemas/Payment'
         category:
@@ -1629,7 +1636,6 @@ components:
           $ref: '#/components/schemas/Item'
         tags:
           $ref: '#/components/schemas/Tags'
-            
     ItemQuantity:
       description: Describes count or amount of an item
       type: object
@@ -1732,21 +1738,12 @@ components:
           type: string
         3dspace:
           type: string
-
-    MonetaryValue:
-      description: Describes a monetary value used for exchange
-      type: object
-      properties:
-        currency:
-          type: string
-        value:
-          $ref: '#/components/schemas/DecimalValue'
-
+        time:
+          $ref: '#/components/schemas/Time'
     Name:
       type: string
       description: 'Describes the name of a person in format: ./{given_name}/{honorific_prefix}/{first_name}/{middle_name}/{last_name}/{honorific_suffix}'
       pattern: '^\./[^/]+/[^/]*/[^/]*/[^/]*/[^/]*/[^/]*$'
-
     Offer:
       description: Describes an offer
       type: object
@@ -1769,7 +1766,6 @@ components:
             $ref: '#/components/schemas/Item/properties/id'
         time:
           $ref: '#/components/schemas/Time'
-
     Operator:
       description: Describes the agent of a service
       allOf:
@@ -1784,7 +1780,6 @@ components:
                   type: string
                 unit:
                   type: string
-
     Option:
       description: Describes a selectable option
       type: object
@@ -1835,17 +1830,7 @@ components:
         billing:
           $ref: '#/components/schemas/Billing'
         fulfillment:
-          allOf:
-            - $ref: '#/components/schemas/Fulfillment'
-            - properties:
-                customer:
-                  allOf:
-                    - $ref: '#/components/schemas/Person'
-                    - $ref: '#/components/schemas/Contact'
-                    - required:
-                      - name
-              required:
-                - customer
+          $ref: '#/components/schemas/Fulfillment'
         quote:
           $ref: '#/components/schemas/Quotation'
         payment:
@@ -1864,7 +1849,6 @@ components:
         - fulfillment
         - quote
         - payment
-
     Organization:
       description: Describes an organization
       type: object
@@ -1873,7 +1857,6 @@ components:
           type: string
         cred:
           type: string
-
     Page:
       description: Describes a page in a search result
       type: object
@@ -1882,8 +1865,6 @@ components:
           type: string
         next_id:
           type: string
-
-
     Payment:
       description: Describes a payment
       type: object
@@ -1906,7 +1887,7 @@ components:
             transaction_status:
               type: string
             amount:
-              $ref: '#/components/schemas/MonetaryValue/properties/value'
+              $ref: '#/components/schemas/Price/properties/value'
             currency:
               $ref: '#/components/schemas/Price/properties/currency'
           additionalProperties:
@@ -1927,7 +1908,6 @@ components:
             - NOT-PAID
         time:
           $ref: '#/components/schemas/Time'
-
     Person:
       description: Describes a person. Extension not allowed
       type: object
@@ -1958,28 +1938,37 @@ components:
           $ref: '#/components/schemas/Policy/properties/id'
         time:
           $ref: '#/components/schemas/Time'
-
     Price:
       description: Describes the price of an item. Allows for domain extension.
-      allOf:
-        - $ref: '#/components/schemas/MonetaryValue'
-        - properties:
-            estimated_value:
-              $ref: '#/components/schemas/DecimalValue'
-            computed_value:
-              $ref: '#/components/schemas/DecimalValue'
-            listed_value:
-              $ref: '#/components/schemas/DecimalValue'
-            offered_value:
-              $ref: '#/components/schemas/DecimalValue'
-            minimum_value:
-              $ref: '#/components/schemas/DecimalValue'
-            maximum_value:
-              $ref: '#/components/schemas/DecimalValue'
-    ProviderCatalog:
-      description: Describes a provider catalog
       type: object
       properties:
+        currency:
+          type: string
+        value:
+          $ref: '#/components/schemas/DecimalValue'
+        estimated_value:
+          $ref: '#/components/schemas/DecimalValue'
+        computed_value:
+          $ref: '#/components/schemas/DecimalValue'
+        listed_value:
+          $ref: '#/components/schemas/DecimalValue'
+        offered_value:
+          $ref: '#/components/schemas/DecimalValue'
+        minimum_value:
+          $ref: '#/components/schemas/DecimalValue'
+        maximum_value:
+          $ref: '#/components/schemas/DecimalValue'
+    Provider:
+      description: 'Describes a service provider. This can be a restaurant, a hospital, a Store etc'
+      type: object
+      properties:
+        id:
+          type: string
+          description: 'Id of the provider. The syntax of the ID is {unique provider identifier. If the provider name has an @, it has to be escaped}@{bpp_id}'
+        descriptor:
+          $ref: '#/components/schemas/Descriptor'
+        time:
+          $ref: '#/components/schemas/Time'
         categories:
           type: array
           items:
@@ -1995,11 +1984,7 @@ components:
         locations:
           type: array
           items:
-            allOf:
-              - $ref: '#/components/schemas/Location'
-              - properties:
-                  time:
-                    $ref: '#/components/schemas/Time'
+            $ref: '#/components/schemas/Location'
         offers:
           type: array
           items:
@@ -2012,28 +1997,8 @@ components:
           type: string
           description: Time after which catalog has to be refreshed
           format: date-time
-
-    Provider:
-      description: 'Describes a service provider. This can be a restaurant, a hospital, a Store etc'
-      type: object
-      properties:
-        id:
-          type: string
-          description: 'Id of the provider'
-        descriptor:
-          $ref: '#/components/schemas/Descriptor'
-        category_id:
-          type: string
-          description: 'Category Id of the provider'
-        time:
-          $ref: '#/components/schemas/Time'
-        locations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Location'
         tags:
           $ref: '#/components/schemas/Tags'
-
     Quotation:
       description: Describes a quote
       type: object
@@ -2051,7 +2016,6 @@ components:
                 $ref: '#/components/schemas/Price'
         ttl:
           $ref: '#/components/schemas/Duration'
-
     Rating:
       description: Describes the rating of a person or an object. Extension not allowed
       type: object
@@ -2072,7 +2036,6 @@ components:
             - UP
             - DOWN
           default: UP
-
     Scalar:
       description: An object representing a scalar quantity. Extension allowed only to the limit of vector
       type: object
@@ -2100,7 +2063,6 @@ components:
       required:
         - value
         - unit
-
     Schedule:
       description: Describes a schedule
       type: object
@@ -2178,7 +2140,6 @@ components:
           type: string
           description: Expiry timestamp in UTC derived from the ```lease_time``` of the subscriber
           format: date-time
-
     Support:
       description: Customer support
       type: object
@@ -2193,7 +2154,6 @@ components:
           type: string
         channels:
           $ref: '#/components/schemas/Tags'
-    
     Tags:
       description: Describes a tag. This is a simple key-value store which is used to contain extended metadata
       additionalProperties:
@@ -2221,11 +2181,9 @@ components:
         days:
           type: string
           description: comma separated values representing days of the week
-
     TrackingData:
       description: Describes tracking data object during live tracking of an order
       $ref: '#/components/schemas/Location/properties/gps'
-
     Tracking:
       description: Describes the tracking info of an object
       type: object
@@ -2238,7 +2196,6 @@ components:
           enum:
             - active
             - inactive
-
     Vehicle:
       description: Describes the properties of a vehicle used in a mobility service
       type: object
