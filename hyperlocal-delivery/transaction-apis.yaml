@@ -1700,6 +1700,10 @@ components:
           $ref: '#/components/schemas/Location/properties/id'
         time:
           $ref: '#/components/schemas/Time'
+        pickup_eta:
+          $ref: '#/components/schemas/Time'
+        drop_eta:
+          $ref: '#/components/schemas/Time'
         matched:
           type: boolean
         related:
