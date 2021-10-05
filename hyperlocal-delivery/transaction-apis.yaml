@@ -1797,6 +1797,8 @@ components:
           $ref: '#/components/schemas/Quotation'
         payment:
           $ref: '#/components/schemas/Payment'
+        total_package_value:
+          $ref: '#/components/schemas/MonetaryValue'
         created_at:
           type: string
           format: date-time
