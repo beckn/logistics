@@ -1,0 +1,104 @@
+{
+    "context": {
+        "domain": "logistics",
+        "country": "IND",
+        "city": "std:0806",
+        "action": "on_confirm",
+        "core_version": "0.9.4",
+        "bap_id": "logistics_bap",
+        "bap_uri": "https://logistics_bap.com",
+        "bpp_id": "logistics_bpp",
+        "bpp_uri": "https://logistics_bpp.com",
+        "transaction_id": "aa77b78e-66b0-47a5-9560-527a36cf0d9f",
+        "message_id": "a6f81cf4-a402-45d5-9e43-836a060ac011",
+        "timestamp": "2024-01-15T16:01:00.000Z",
+        "ttl": "PT30S"
+    },
+    "message": { 
+        "order": {
+            "id": "oid/12",
+            "state": "Initiated",
+            "provider": {
+                "id":"P1",
+                "descriptor": { 
+                    "name":"Logistics",
+                    "short_desc":"Logistics Org",
+                    "long_desc":"Logistics Org"
+                },
+                "locations":[
+                    {
+                        "id": "L1",
+                        "gps": "13.786587,76.872309",
+                        "address": {
+                            "street": "Shubhash nagar, 3rd block",
+                            "city": "Bengaluru",
+                            "area_code": "560042",
+                            "state": "KA"
+                        }
+                    }
+                ]
+            },
+            "items": [
+                {
+                    "id": "I1",
+                    "quantity": {
+                        "count": "1",
+                        "measure": {
+                            "unit": "KG",
+                            "value": "1"
+                        }
+                    }
+                }
+            ],
+            "quote" :{
+                "price": {
+                    "currency": "INR",
+                    "value": "50"
+                },
+                "breakup": [
+                    {
+                        "ref_id": "I1",
+                        "type": "item",
+                        "price": {
+                            "currency": "INR",
+                            "value": "50"
+                        }
+                    }
+                ]
+            },
+            "fulfillment": {
+                "type": "Home-Delivery",
+                "start": {
+                    "location": {
+                        "gps": "13.2008459,77.708736"
+                    }
+                },
+                "end": {
+                    "location": {
+                        "gps": "14.3847563,77.1847563"
+                    }
+                },
+                "state": {
+                    "descriptor": {
+                        "code": "Pending-Fulfillment"
+                    }
+                }
+            },
+            "billing": {
+                "name": "Paul Sterling",
+                "phone": "+919876345623",
+                "email": "sample@gmail.com"
+            },
+            "payment": {
+                "status": "NOT-PAID",
+                "type": "PRE-FULFILLMENT",
+                "params": {
+                  "amount": "1500",
+                  "currency": "INR",
+                  "bank_code": "INB0004321",
+                  "bank_account_number": "1234002341"
+                }
+            }
+        }
+    }
+}

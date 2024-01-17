@@ -123,6 +123,14 @@ paths:
                                 $ref: '#/components/schemas/Offer/properties/id'
                             required:
                               - id
+                        fulfillments:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                $ref: '#/components/schemas/Fulfillment/properties/id'
+
                       required:
                         - provider
                         - items

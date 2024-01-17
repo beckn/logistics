@@ -1,0 +1,90 @@
+{
+    "context": {
+        "domain": "logistics",
+        "country": "IND",
+        "city": "std:0806",
+        "action": "on_search",
+        "core_version": "0.9.4",
+        "bap_id": "logistics_bap",
+        "bap_uri": "https://logistics_bap.com",
+        "bpp_id": "logistics_bpp",
+        "bpp_uri": "https://logistics_bpp.com",
+        "transaction_id": "aa77b78e-66b0-47a5-9560-527a36cf0d9f",
+        "message_id": "9d498536-4dba-4c69-a47e-bed245623ecc",
+        "timestamp": "2024-01-15T16:01:00.000Z",
+        "ttl": "PT30S"
+    },
+    "message": { 
+        "catalog": {
+            "bpp/descriptor": { 
+                "name":"XYZLogistics"
+            },
+            "bpp/providers": [ 
+                { 
+                    "id":"P1",
+                    "descriptor": { 
+                        "name":"Logistics",
+                        "short_desc":"Logistics Org",
+                        "long_desc":"Logistics Org"
+                    },
+                    "locations":[
+                        {
+                            "id": "L1",
+                            "gps": "13.786587,76.872309",
+                            "address": {
+                                "street": "Shubhash nagar, 3rd block",
+                                "city": "Bengaluru",
+                                "area_code": "560042",
+                                "state": "KA"
+                            }
+                        }
+                    ],
+                    "categories": [
+                        {
+                            "id": "category1",
+                            "descriptor": {
+                                "name": "Fast delivery"
+                            }
+                        }
+                    ],
+                    "fulfillments": [
+                        { 
+                            "id":"1",
+                            "type":"Home-Delivery"
+                        },
+                        {
+                            "id":"2",
+                            "type":"Store-Pickup"
+                        },
+                        {
+                            "id":"3",
+                            "type":"Store-Pickup-And-Home-Delivery"
+                        }
+                    ],
+                    "items": [
+                        {
+                            "id": "I1",
+                            "descriptor": {
+                                "Name": "Lightweight delivery",
+                                "short_desc": "Delivery in just 1 hours",
+                                "long_desc": "Delivery in just 1 hours"
+                            },
+                            "price": {
+                                "currency": "INR",
+                                "value": "50.0"
+                            },
+                            "category_id": "category1",
+                            "tags": {
+                                "fulfillment_id": "1"
+                            },
+                            "time":{
+                                "duration": "PT60M",
+                                "timestamp":"2024-01-14T16: 00: 00.000Z"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

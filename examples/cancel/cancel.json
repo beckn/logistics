@@ -1,0 +1,20 @@
+
+{
+    "context": {
+        "domain": "logistics",
+        "country": "IND",
+        "city": "std:0806",
+        "action": "cancel",
+        "core_version": "0.9.4",
+        "bap_id": "logistics_bap",
+        "bap_uri": "https://logistics_bap.com",
+        "transaction_id": "aa77b78e-66b0-47a5-9560-527a36cf0d9f",
+        "message_id": "8bc952d9-b448-4328-8519-9f61232ba554",
+        "timestamp": "2024-01-15T16:00:00.000Z",
+        "ttl": "PT30S"
+    },
+    "message": {
+        "order_id": "oid/12",
+        "cancellation_reason_id": "3"
+    }
+}

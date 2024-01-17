@@ -1,0 +1,19 @@
+
+{
+    "context": {
+        "domain": "logistics",
+        "country": "IND",
+        "city": "std:0806",
+        "action": "support",
+        "core_version": "0.9.4",
+        "bap_id": "logistics_bap",
+        "bap_uri": "https://logistics_bap.com",
+        "transaction_id": "aa77b78e-66b0-47a5-9560-527a36cf0d9f",
+        "message_id": "6cae6207-2f14-459a-84e0-1439c013be09",
+        "timestamp": "2024-01-15T16:00:00.000Z",
+        "ttl": "PT30S"
+    },
+    "message": {
+        "ref_id": "oid/12"
+    }
+}

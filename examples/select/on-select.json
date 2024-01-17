@@ -1,0 +1,91 @@
+{
+    "context": {
+        "domain": "logistics",
+        "country": "IND",
+        "city": "std:0806",
+        "action": "on_select",
+        "core_version": "0.9.4",
+        "bap_id": "logistics_bap",
+        "bap_uri": "https://logistics_bap.com",
+        "bpp_id": "logistics_bpp",
+        "bpp_uri": "https://logistics_bpp.com",
+        "transaction_id": "aa77b78e-66b0-47a5-9560-527a36cf0d9f",
+        "message_id": "313027c8-dc49-40da-8812-ef86a97f39c0",
+        "timestamp": "2024-01-15T16:01:00.000Z",
+        "ttl": "PT30S"
+    },
+    "message": { 
+        "selected": {
+            "provider": { 
+                "id":"P1",
+                "descriptor": { 
+                    "name":"Logistics",
+                    "short_desc":"Logistics Org",
+                    "long_desc":"Logistics Org"
+                },
+                "locations":[
+                    {
+                        "id": "L1",
+                        "gps": "13.786587,76.872309",
+                        "address": {
+                            "street": "Shubhash nagar, 3rd block",
+                            "city": "Bengaluru",
+                            "area_code": "560042",
+                            "state": "KA"
+                        }
+                    }
+                ]
+            },
+            "items": [
+                {
+                    "id": "I1",
+                    "descriptor": {
+                        "Name": "Lightweight delivery",
+                        "short_desc": "Delivery in just 1 hours",
+                        "long_desc": "Delivery in just 1 hours"
+                    },
+                    "price": {
+                        "currency": "INR",
+                        "value": "50.0"
+                    },
+                    "category_id": "category1",
+                    "time":{
+                        "duration": "PT60M",
+                        "timestamp":"2024-01-14T16: 00: 00.000Z"
+                    },
+                    "quantity": {
+                        "selected": {
+                            "count": "1",
+                            "measure": {
+                                "unit": "KG",
+                                "value": "1"
+                            }
+                        }
+                    }
+                }
+            ],
+            "fulfillments": [
+                { 
+                    "id":"1",
+                    "type":"Home-Delivery"
+                }
+            ],
+            "quote" :{
+                "price": {
+                    "currency": "INR",
+                    "value": "50"
+                },
+                "breakup": [
+                    {
+                        "ref_id": "I1",
+                        "type": "item",
+                        "price": {
+                            "currency": "INR",
+                            "value": "50"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
