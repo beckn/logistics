@@ -1635,7 +1635,7 @@ components:
             - Store-Pickup
             - Store-Pickup-And-Home-Delivery
         state:
-          $ref: '#/components/schemas/State'
+          $ref: '#/components/schemas/FulfillmentState'
         tracking:
           type: boolean
           description: Indicates whether the fulfillment allows tracking
@@ -1675,6 +1675,53 @@ components:
           type: string
         tags:
           $ref: '#/components/schemas/Tags'
+    FulfillmentState:
+      description: Describes a fulfillment state
+      type: object
+      properties:
+        descriptor:
+          $ref: '#/components/schemas/FulfillmentDescriptor'
+        updated_at:
+          type: string
+          format: date-time
+        updated_by:
+          type: string
+          description: ID of entity which changed the state
+    FulfillmentDescriptor:
+      description: Describes the description of a fulfillment object
+      type: object
+      properties:
+        name:
+          type: string
+        code:
+          type: string
+          enum:
+            - Pending-Fulfillment
+            - Packing
+            - Picking
+            - Shipped
+            - Out-for-Delivery
+            - Delivered
+            - Failed-Fulfillment
+            - Canceled
+            - Returned
+        symbol:
+          type: string
+        short_desc:
+          type: string
+        long_desc:
+          type: string
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/Image'
+        audio:
+          type: string
+          format: uri
+        3d_render:
+          type: string
+          format: uri
+
     Gps:
       description: Describes a gps coordinate
       type: string
@@ -1813,7 +1860,7 @@ components:
         tags:
           $ref: '#/components/schemas/Tags'
     Language:
-      description: indicates language code. Beckn supports country codes as per ISO 639.2 standard
+      description: indicates language code. Beckn supports language codes as per ISO 639.2 standard
       type: object
       properties:
         code:
@@ -2009,7 +2056,6 @@ components:
           type: string
         cred:
           type: string
-
     Page:
       description: Describes a page in a search result
       type: object
@@ -2018,8 +2064,6 @@ components:
           type: string
         next_id:
           type: string
-
-
     Payment:
       description: Describes a payment
       type: object

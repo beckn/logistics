@@ -1,0 +1,11 @@
+[
+    "Pending-Fulfillment",
+    "Packing",
+    "Picking",
+    "Shipped",
+    "Out-for-Delivery",
+    "Delivered",
+    "Failed-Fulfillment",
+    "Canceled",
+    "Returned"
+]
