@@ -1358,6 +1358,9 @@ components:
           format: date-time
         cancelled_by:
           type: string
+          enum:
+            - CONSUMER
+            - PROVIDER
         reasons:
           $ref: '#/components/schemas/Option'
         selected_reason:
@@ -1627,6 +1630,10 @@ components:
         type:
           type: string
           description: This describes the type of fulfillment
+          enum:
+            - Home-Delivery
+            - Store-Pickup
+            - Store-Pickup-And-Home-Delivery
         state:
           $ref: '#/components/schemas/State'
         tracking:
@@ -1905,6 +1912,13 @@ components:
           description: Hash of order object without id
         state:
           type: string
+          enum:
+           - Initiated
+           - Acknowledged
+           - Packed
+           - Shipped
+           - Delivered
+           - Cancelled
         provider:
           type: object
           properties:
