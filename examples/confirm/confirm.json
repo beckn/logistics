@@ -2,14 +2,22 @@
 {
     "context": {
         "domain": "logistics",
-        "country": "IND",
-        "city": "std:0806",
+        "location": {
+            "country": {
+                "code": "IND"
+            },
+            "city": {
+                "code": "std:0806"
+            }
+        },
         "action": "confirm",
-        "core_version": "0.9.4",
+        "version": "1.1.0",
         "bap_id": "logistics_bap",
         "bap_uri": "https://logistics_bap.com",
+        "bpp_id": "logistics_bpp",
+        "bpp_uri": "https://logistics_bpp.com",
         "transaction_id": "aa77b78e-66b0-47a5-9560-527a36cf0d9f",
-        "message_id": "a6f81cf4-a402-45d5-9e43-836a060ac011",
+        "message_id": "9d498536-4dba-4c69-a47e-bed245623ecc",
         "timestamp": "2024-01-15T16:00:00.000Z",
         "ttl": "PT30S"
     },
@@ -22,27 +30,39 @@
                 {
                     "id": "I1",
                     "quantity": {
-                        "count": "1",
-                        "measure": {
-                            "unit": "KG",
-                            "value": "1"
+                        "selected": {
+                            "count": "1",
+                            "measure": {
+                                "unit": "KG",
+                                "value": "1"
+                            }
                         }
                     }
                 }
             ],
-            "fulfillment": {
-                "type": "Home-Delivery",
-                "start": {
-                    "location": {
-                        "gps": "13.2008459,77.708736"
-                    }
-                },
-                "end": {
-                    "location": {
-                        "gps": "14.3847563,77.1847563"
-                    }
+            "fulfillments": [
+                {
+                    "type": "Home-Delivery",
+                    "stops": [
+                        {
+                            "location": {
+                                "gps": "14.785638,76.454553",
+                                "address": {
+                                    "area_code": "320042"
+                                }
+                            }
+                        },
+                        {
+                            "location": {
+                                "gps": "14.433424,77.928379",
+                                "address": {
+                                    "area_code": "320042"
+                                }
+                            }
+                        }
+                    ]
                 }
-            },
+            ],
             "billing": {
                 "name": "Paul Sterling",
                 "phone": "+919876345623",

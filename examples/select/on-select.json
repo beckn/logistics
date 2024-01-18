@@ -1,21 +1,27 @@
 {
     "context": {
         "domain": "logistics",
-        "country": "IND",
-        "city": "std:0806",
+        "location": {
+            "country": {
+                "code": "IND"
+            },
+            "city": {
+                "code": "std:0806"
+            }
+        },
         "action": "on_select",
-        "core_version": "0.9.4",
+        "version": "1.1.0",
         "bap_id": "logistics_bap",
         "bap_uri": "https://logistics_bap.com",
         "bpp_id": "logistics_bpp",
         "bpp_uri": "https://logistics_bpp.com",
         "transaction_id": "aa77b78e-66b0-47a5-9560-527a36cf0d9f",
-        "message_id": "313027c8-dc49-40da-8812-ef86a97f39c0",
-        "timestamp": "2024-01-15T16:01:00.000Z",
+        "message_id": "9d498536-4dba-4c69-a47e-bed245623ecc",
+        "timestamp": "2024-01-15T16:00:00.000Z",
         "ttl": "PT30S"
     },
     "message": { 
-        "selected": {
+        "order": {
             "provider": { 
                 "id":"P1",
                 "descriptor": { 
@@ -48,7 +54,9 @@
                         "currency": "INR",
                         "value": "50.0"
                     },
-                    "category_id": "category1",
+                    "category_ids": [
+                        "category1"
+                    ],
                     "time":{
                         "duration": "PT60M",
                         "timestamp":"2024-01-14T16: 00: 00.000Z"
@@ -77,8 +85,10 @@
                 },
                 "breakup": [
                     {
-                        "ref_id": "I1",
                         "type": "item",
+                        "item": {
+                            "id": "I1"
+                        },
                         "price": {
                             "currency": "INR",
                             "value": "50"
