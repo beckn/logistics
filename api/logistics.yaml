@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
-  title: Beckn Protocol Core
-  description: Beckn Core Transaction API specification
+  title: Beckn Hyperlocal Delivery API specification
+  description: Beckn Hyperlocal Delivery API specification
   version: 1.1.0
 security:
   - SubscriberAuth: []
@@ -11,7 +11,7 @@ paths:
       tags:
         - Beckn Provider Platform (BPP)
         - Beckn Gateway (BG)
-      description: BAP declares the customer's intent to buy/avail products or services
+      description: BAP declares the customer's intent
       requestBody:
         content:
           application/json:
@@ -1073,6 +1073,14 @@ components:
       description: 'Describes an error object that is returned by a BAP, BPP or BG as a response or callback to an action by another network participant. This object is sent when any request received by a network participant is unacceptable. This object can be sent either during Ack or with the callback.'
       type: object
       properties:
+        type:
+          type: string
+          enum:
+            - CONTEXT-ERROR
+            - CORE-ERROR
+            - DOMAIN-ERROR
+            - POLICY-ERROR
+            - JSON_SCHEMA-ERROR
         code:
           type: string
           description: 'Standard error code. For full list of error codes, refer to docs/protocol-drafts/BECKN-005-ERROR-CODES-DRAFT-01.md of this repo"'
@@ -1126,6 +1134,10 @@ components:
         type:
           description: 'A code that describes the mode of fulfillment. This is typically set when there are multiple ways an order can be fulfilled. For example, a retail order can be fulfilled either via store pickup or a home delivery. Similarly, a medical consultation can be provided either in-person or via tele-consultation. The network policy must publish standard fulfillment type codes for the different modes of fulfillment.'
           type: string
+          enum:
+            - Home-Delivery
+            - Store-Pickup
+            - Store-Pickup-And-Home-Delivery
         rateable:
           description: Whether the fulfillment can be rated or not
           type: boolean
@@ -1170,13 +1182,46 @@ components:
       type: object
       properties:
         descriptor:
-          $ref: '#/components/schemas/Descriptor'
+          $ref: '#/components/schemas/FulfillmentDescriptor'
         updated_at:
           type: string
           format: date-time
         updated_by:
           type: string
           description: ID of entity which changed the state
+    FulfillmentDescriptor:
+      description: Description of fulfillment .
+      type: object
+      properties:
+        name:
+          type: string
+        code:
+          type: string
+          enum:
+            - Pending-Fulfillment
+            - Packing
+            - Picking
+            - Shipped
+            - Out-for-Delivery
+            - Delivered
+            - Failed-Fulfillment
+            - Canceled
+            - Returned
+        short_desc:
+          type: string
+        long_desc:
+          type: string
+        additional_desc:
+          type: object
+          properties:
+            url:
+              type: string
+            content_type:
+              type: string
+              enum:
+                - text/plain
+                - text/html
+                - application/json
     Gps:
       description: Describes a GPS coordinate
       type: string
@@ -1542,9 +1587,12 @@ components:
           description: Status of the order. Allowed values can be defined by the network policy
           type: string
           enum:
-            - ACTIVE
-            - COMPLETE
-            - CANCELLED
+            - Initiated
+            - Acknowledged
+            - Packed
+            - Shipped
+            - Delivered
+            - Cancelled
         type:
           description: 'This is used to indicate the type of order being created to BPPs. Sometimes orders can be linked to previous orders, like a replacement order in a retail domain. A follow-up consultation in healthcare domain. A single order part of a subscription order. The list of order types can be standardized at the network level.'
           type: string
@@ -1658,6 +1706,10 @@ components:
           type: string
         collected_by:
           description: 'This field indicates who is the collector of payment. The BAP can set this value to ''bap'' if it wants to collect the payment first and  settle it to the BPP. If the BPP agrees to those terms, the BPP should not send the payment url. Alternatively, the BPP can set this field with the value ''bpp'' if it wants the payment to be made directly.'
+          type: string
+          enum:
+            - BAP
+            - BPP
         url:
           type: string
           description: 'A payment url to be called by the BAP. If empty, then the payment is to be done offline. The details of payment should be present in the params object. If tl_method = http/get, then the payment details will be sent as url params. Two url param values, ```$transaction_id``` and ```$amount``` are mandatory.'
@@ -1850,6 +1902,13 @@ components:
           items:
             type: object
             properties:
+              type:
+                type: string
+                enum:
+                  - Item
+                  - Offer
+                  - Add-on
+                  - Fulfillment
               item:
                 $ref: '#/components/schemas/Item'
               title:
@@ -1937,12 +1996,6 @@ components:
           description: The location where the item or order must / will be returned to
           allOf:
             - $ref: '#/components/schemas/Location'
-        fulfillment_managed_by:
-          description: The entity that will perform the return
-          type: string
-          enum:
-            - CONSUMER
-            - PROVIDER
     Scalar:
       description: Describes a scalar
       type: object
@@ -2030,6 +2083,12 @@ components:
       description: Details of customer support
       type: object
       properties:
+        type:
+          type: string
+          enum:
+            - order
+            - billing
+            - fulfillment
         ref_id:
           type: string
         callback_phone:
