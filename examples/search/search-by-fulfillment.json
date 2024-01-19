@@ -28,6 +28,7 @@
             "fulfillment": {
                 "stops": [
                     {
+                        "type": "Pickup",
                         "location": {
                             "gps": "14.785638,76.454553",
                             "address": {
@@ -36,6 +37,7 @@
                         }
                     },
                     {
+                        "type": "Drop",
                         "location": {
                             "gps": "14.433424,77.928379",
                             "address": {
