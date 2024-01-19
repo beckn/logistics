@@ -74,10 +74,9 @@
                     ],
                     "quantity": {
                         "selected": {
-                            "count": "1",
+                            "count": "5",
                             "measure": {
-                                "unit": "KG",
-                                "value": "1"
+                                "unit": "KG"
                             }
                         }
                     }
