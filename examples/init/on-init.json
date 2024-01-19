@@ -52,15 +52,26 @@
                     },
                     "price": {
                         "currency": "INR",
-                        "value": "50.0"
+                        "value": "starting from 50.0"
                     },
                     "category_ids": [
                         "category1"
                     ],
-                    "time":{
-                        "duration": "PT60M",
-                        "timestamp":"2024-01-14T16: 00: 00.000Z"
-                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "name": "charges"
+                            },
+                            "List": [
+                                {
+                                    "descriptor": {
+                                        "code": "Min-Chargable-Weight-in-KG"
+                                    },
+                                    "value": "10"
+                                }
+                            ]
+                        }
+                    ],
                     "quantity": {
                         "selected": {
                             "count": "1",
@@ -92,7 +103,7 @@
             },
             "fulfillments": [
                 {
-                    "type": "Home-Delivery",
+                    "type": "Road-Shipping",
                     "stops": [
                         {
                             "location": {

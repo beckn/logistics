@@ -25,13 +25,6 @@
                     "name": "Fast delivery"
                 }
             },
-            "provider": {
-                "locations": [
-                    {
-                        "id": "loc/1"
-                    }
-                ]
-            },
             "fulfillment": {
                 "stops": [
                     {
@@ -46,7 +39,7 @@
                         "location": {
                             "gps": "14.433424,77.928379",
                             "address": {
-                                "area_code": "320042"
+                                "area_code": "540045"
                             }
                         }
                     }

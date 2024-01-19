@@ -41,7 +41,25 @@
             ],
             "fulfillments": [
                 {
-                    "id": "1"
+                    "id": "1",
+                    "stops": [
+                        {
+                            "location": {
+                                "gps": "14.785638,76.454553",
+                                "address": {
+                                    "area_code": "320042"
+                                }
+                            }
+                        },
+                        {
+                            "location": {
+                                "gps": "14.433424,77.928379",
+                                "address": {
+                                    "area_code": "320042"
+                                }
+                            }
+                        }
+                    ]
                 }
             ]
         }

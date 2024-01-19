@@ -24,13 +24,6 @@
                 "descriptor": {
                     "name": "Fast delivery"
                 }
-            },
-            "provider": {
-                "locations": [
-                    {
-                        "id": "loc/1"
-                    }
-                ]
             }
         }
     }

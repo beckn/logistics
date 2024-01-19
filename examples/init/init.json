@@ -41,7 +41,7 @@
             ],
             "fulfillments": [
                 {
-                    "type": "Home-Delivery",
+                    "type": "Road-Shipping",
                     "stops": [
                         {
                             "location": {
