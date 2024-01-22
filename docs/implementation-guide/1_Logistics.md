@@ -32,12 +32,169 @@ The following recommendations need to be considered when implementing discovery 
 ### Example
 A search request for a logistics service provider may look like this
 ```
-
+{
+    "context": {
+        "domain": "logistics",
+        "location": {
+            "country": {
+                "code": "IND"
+            },
+            "city": {
+                "code": "std:0806"
+            }
+        },
+        "action": "search",
+        "version": "1.1.0",
+        "bap_id": "logistics_bap",
+        "bap_uri": "https://logistics_bap.com",
+        "transaction_id": "aa77b78e-66b0-47a5-9560-527a36cf0d9f",
+        "message_id": "7a47a08d-69e0-4a14-9216-a95bfde08965",
+        "timestamp": "2024-01-15T16:00:00.000Z",
+        "ttl": "PT30S"
+    },
+    "message": {
+        "intent": {
+            "category": {
+                "descriptor": {
+                    "name": "Fast delivery"
+                }
+            },
+            "fulfillment": {
+                "stops": [
+                    {
+                        "type": "Pickup",
+                        "location": {
+                            "gps": "14.785638,76.454553",
+                            "address": {
+                                "area_code": "320042"
+                            }
+                        }
+                    },
+                    {
+                        "type": "Drop",
+                        "location": {
+                            "gps": "14.433424,77.928379",
+                            "address": {
+                                "area_code": "540045"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
 ```
 
 An example catalog of a logistics service provider may look like this
 ```
-
+{
+    "context": {
+        "domain": "logistics",
+        "location": {
+            "country": {
+                "code": "IND"
+            },
+            "city": {
+                "code": "std:0806"
+            }
+        },
+        "action": "on_search",
+        "version": "1.1.0",
+        "bap_id": "logistics_bap",
+        "bap_uri": "https://logistics_bap.com",
+        "bpp_id": "logistics_bpp",
+        "bpp_uri": "https://logistics_bpp.com",
+        "transaction_id": "aa77b78e-66b0-47a5-9560-527a36cf0d9f",
+        "message_id": "9d498536-4dba-4c69-a47e-bed245623ecc",
+        "timestamp": "2024-01-15T16:00:00.000Z",
+        "ttl": "PT30S"
+    },
+    "message": { 
+        "catalog": {
+            "descriptor": { 
+                "name":"XYZLogistics"
+            },
+            "providers": [ 
+                { 
+                    "id":"P1",
+                    "descriptor": { 
+                        "name":"Logistics",
+                        "short_desc":"Logistics Org",
+                        "long_desc":"Logistics Org"
+                    },
+                    "locations":[
+                        {
+                            "id": "L1",
+                            "gps": "13.786587,76.872309",
+                            "address": "Shubhash nagar, 3rd block",
+                            "city": "Bengaluru",
+                            "area_code": "560042",
+                            "state": "KA"
+                        }
+                    ],
+                    "categories": [
+                        {
+                            "id": "category1",
+                            "descriptor": {
+                                "name": "Fast delivery"
+                            }
+                        }
+                    ],
+                    "fulfillments": [
+                        { 
+                            "id":"1",
+                            "type":"Road-Shipping"
+                        },
+                        {
+                            "id":"2",
+                            "type":"Rail-Shipping"
+                        },
+                        {
+                            "id":"3",
+                            "type":"Air-Shipping"
+                        }
+                    ],
+                    "items": [
+                        {
+                            "id": "I1",
+                            "descriptor": {
+                                "Name": "Lightweight delivery",
+                                "short_desc": "Delivery in just 1 hours",
+                                "long_desc": "Delivery in just 1 hours"
+                            },
+                            "price": {
+                                "currency": "INR",
+                                "value": "starting from 50.0"
+                            },
+                            "category_ids": [
+                                "category1"
+                            ],
+                            "fulfillment_ids": [
+                                "1"
+                            ],
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "name": "charges"
+                                    },
+                                    "List": [
+                                        {
+                                            "descriptor": {
+                                                "code": "Min-Chargable-Weight-in-KG"
+                                            },
+                                            "value": "10"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
 ```
 
 ## 1.2 Initiating an order for a logistics service
@@ -77,32 +234,694 @@ This section provides recommendations for implementing the APIs related to a log
 
 Below is an example of a `select` request
 ```
-
+{
+    "context": {
+        "domain": "logistics",
+        "location": {
+            "country": {
+                "code": "IND"
+            },
+            "city": {
+                "code": "std:0806"
+            }
+        },
+        "action": "select",
+        "version": "1.1.0",
+        "bap_id": "logistics_bap",
+        "bap_uri": "https://logistics_bap.com",
+        "bpp_id": "logistics_bpp",
+        "bpp_uri": "https://logistics_bpp.com",
+        "transaction_id": "aa77b78e-66b0-47a5-9560-527a36cf0d9f",
+        "message_id": "9d498536-4dba-4c69-a47e-bed245623ecc",
+        "timestamp": "2024-01-15T16:00:00.000Z",
+        "ttl": "PT30S"
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "P1"
+            },
+            "items":[
+                {
+                    "id": "I1",
+                    "quantity": {
+                        "selected": {
+                            "count": "5",
+                            "measure": {
+                                "unit": "KG"
+                            }
+                        }
+                    }
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "1",
+                    "stops": [
+                        {
+                            "type": "Pickup",
+                            "location": {
+                                "gps": "14.785638,76.454553",
+                                "address": {
+                                    "area_code": "320042"
+                                }
+                            }
+                        },
+                        {
+                            "type": "Drop",
+                            "location": {
+                                "gps": "14.433424,77.928379",
+                                "address": {
+                                    "area_code": "320042"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
 ```
 
 Below is an example of an `on_select` callback
 ```
-
+{
+    "context": {
+        "domain": "logistics",
+        "location": {
+            "country": {
+                "code": "IND"
+            },
+            "city": {
+                "code": "std:0806"
+            }
+        },
+        "action": "on_select",
+        "version": "1.1.0",
+        "bap_id": "logistics_bap",
+        "bap_uri": "https://logistics_bap.com",
+        "bpp_id": "logistics_bpp",
+        "bpp_uri": "https://logistics_bpp.com",
+        "transaction_id": "aa77b78e-66b0-47a5-9560-527a36cf0d9f",
+        "message_id": "9d498536-4dba-4c69-a47e-bed245623ecc",
+        "timestamp": "2024-01-15T16:00:00.000Z",
+        "ttl": "PT30S"
+    },
+    "message": { 
+        "order": {
+            "provider": { 
+                "id":"P1",
+                "descriptor": { 
+                    "name":"Logistics",
+                    "short_desc":"Logistics Org",
+                    "long_desc":"Logistics Org"
+                },
+                "locations":[
+                    {
+                        "id": "L1",
+                        "gps": "13.786587,76.872309",
+                        "address": {
+                            "street": "Shubhash nagar, 3rd block",
+                            "city": "Bengaluru",
+                            "area_code": "560042",
+                            "state": "KA"
+                        }
+                    }
+                ]
+            },
+            "items": [
+                {
+                    "id": "I1",
+                    "descriptor": {
+                        "Name": "Lightweight delivery",
+                        "short_desc": "Delivery in just 1 hours",
+                        "long_desc": "Delivery in just 1 hours"
+                    },
+                    "price": {
+                        "currency": "INR",
+                        "value": "starting from 50.0"
+                    },
+                    "category_ids": [
+                        "category1"
+                    ],
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "name": "charges"
+                            },
+                            "List": [
+                                {
+                                    "descriptor": {
+                                        "code": "Min-Chargable-Weight-in-KG"
+                                    },
+                                    "value": "10"
+                                }
+                            ]
+                        }
+                    ],
+                    "quantity": {
+                        "selected": {
+                            "count": "5",
+                            "measure": {
+                                "unit": "KG"
+                            }
+                        }
+                    }
+                }
+            ],
+            "fulfillments": [
+                { 
+                    "id":"1",
+                    "stops": [
+                        {
+                            "type": "Pickup",
+                            "location": {
+                                "gps": "14.785638,76.454553",
+                                "address": {
+                                    "area_code": "320042"
+                                }
+                            }
+                        },
+                        {
+                            "type": "Drop",
+                            "location": {
+                                "gps": "14.433424,77.928379",
+                                "address": {
+                                    "area_code": "320042"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ],
+            "quote" :{
+                "price": {
+                    "currency": "INR",
+                    "value": "50"
+                },
+                "breakup": [
+                    {
+                        "type": "item",
+                        "item": {
+                            "id": "I1"
+                        },
+                        "price": {
+                            "currency": "INR",
+                            "value": "50"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
 ```
 
 
 Below is an example of a `init` request
 ```
-
+{
+    "context": {
+        "domain": "logistics",
+        "location": {
+            "country": {
+                "code": "IND"
+            },
+            "city": {
+                "code": "std:0806"
+            }
+        },
+        "action": "init",
+        "version": "1.1.0",
+        "bap_id": "logistics_bap",
+        "bap_uri": "https://logistics_bap.com",
+        "bpp_id": "logistics_bpp",
+        "bpp_uri": "https://logistics_bpp.com",
+        "transaction_id": "aa77b78e-66b0-47a5-9560-527a36cf0d9f",
+        "message_id": "9d498536-4dba-4c69-a47e-bed245623ecc",
+        "timestamp": "2024-01-15T16:00:00.000Z",
+        "ttl": "PT30S"
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "P1"
+            },
+            "items":[
+                {
+                    "id": "I1",
+                    "quantity": {
+                        "selected": {
+                            "count": "5",
+                            "measure": {
+                                "unit": "KG"
+                            }
+                        }
+                    }
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "1",
+                    "type": "Road-Shipping",
+                    "stops": [
+                        {
+                            "type": "Pickup",
+                            "location": {
+                                "gps": "14.785638,76.454553",
+                                "address": {
+                                    "area_code": "320042"
+                                }
+                            },
+                            "time": {
+                                "timestamp": "2024-01-15T16:00:00.000Z"
+                            }
+                        },
+                        {
+                            "type": "Drop",
+                            "location": {
+                                "gps": "14.433424,77.928379",
+                                "address": {
+                                    "area_code": "320042"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ],
+            "billing": {
+                "name": "Paul Sterling",
+                "phone": "+919876345623",
+                "email": "sample@gmail.com"
+            }
+        }
+    }
+}
 ```
 
 Below is an example of an `on_init` callback
 ```
-
+{
+    "context": {
+        "domain": "logistics",
+        "location": {
+            "country": {
+                "code": "IND"
+            },
+            "city": {
+                "code": "std:0806"
+            }
+        },
+        "action": "on_init",
+        "version": "1.1.0",
+        "bap_id": "logistics_bap",
+        "bap_uri": "https://logistics_bap.com",
+        "bpp_id": "logistics_bpp",
+        "bpp_uri": "https://logistics_bpp.com",
+        "transaction_id": "aa77b78e-66b0-47a5-9560-527a36cf0d9f",
+        "message_id": "9d498536-4dba-4c69-a47e-bed245623ecc",
+        "timestamp": "2024-01-15T16:00:00.000Z",
+        "ttl": "PT30S"
+    },
+    "message": { 
+        "order": {
+            "provider": { 
+                "id":"P1",
+                "descriptor": { 
+                    "name":"Logistics",
+                    "short_desc":"Logistics Org",
+                    "long_desc":"Logistics Org"
+                },
+                "locations":[
+                    {
+                        "id": "L1",
+                        "gps": "13.786587,76.872309",
+                        "address": {
+                            "street": "Shubhash nagar, 3rd block",
+                            "city": "Bengaluru",
+                            "area_code": "560042",
+                            "state": "KA"
+                        }
+                    }
+                ]
+            },
+            "items": [
+                {
+                    "id": "I1",
+                    "descriptor": {
+                        "Name": "Lightweight delivery",
+                        "short_desc": "Delivery in just 1 hours",
+                        "long_desc": "Delivery in just 1 hours"
+                    },
+                    "price": {
+                        "currency": "INR",
+                        "value": "starting from 50.0"
+                    },
+                    "category_ids": [
+                        "category1"
+                    ],
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "name": "charges"
+                            },
+                            "List": [
+                                {
+                                    "descriptor": {
+                                        "code": "Min-Chargable-Weight-in-KG"
+                                    },
+                                    "value": "10"
+                                }
+                            ]
+                        }
+                    ],
+                    "quantity": {
+                        "selected": {
+                            "count": "5",
+                            "measure": {
+                                "unit": "KG"
+                            }
+                        }
+                    }
+                }
+            ],
+            "quote" :{
+                "price": {
+                    "currency": "INR",
+                    "value": "50"
+                },
+                "breakup": [
+                    {
+                        "type": "item",
+                        "item": {
+                            "id": "I1"
+                        },
+                        "price": {
+                            "currency": "INR",
+                            "value": "50"
+                        }
+                    }
+                ]
+            },
+            "fulfillments": [
+                {
+                    "id": "1",
+                    "type": "Road-Shipping",
+                    "stops": [
+                        {
+                            "type": "Pickup",
+                            "location": {
+                                "gps": "14.785638,76.454553",
+                                "address": {
+                                    "area_code": "320042"
+                                }
+                            },
+                            "time": {
+                                "timestamp": "2024-01-15T16:00:00.000Z"
+                            }
+                        },
+                        {
+                            "type": "Drop",
+                            "location": {
+                                "gps": "14.433424,77.928379",
+                                "address": {
+                                    "area_code": "320042"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ],
+            "billing": {
+                "name": "Paul Sterling",
+                "phone": "+919876345623",
+                "email": "sample@gmail.com"
+            },
+            "payment": {
+                "status": "NOT-PAID",
+                "type": "PRE-FULFILLMENT",
+                "params": {
+                  "amount": "1500",
+                  "currency": "INR",
+                  "bank_code": "INB0004321",
+                  "bank_account_number": "1234002341"
+                }
+            }
+        }
+    }
+}
 ```
 
 Below is an example of a `confirm` request
 ```
-
+{
+    "context": {
+        "domain": "logistics",
+        "location": {
+            "country": {
+                "code": "IND"
+            },
+            "city": {
+                "code": "std:0806"
+            }
+        },
+        "action": "confirm",
+        "version": "1.1.0",
+        "bap_id": "logistics_bap",
+        "bap_uri": "https://logistics_bap.com",
+        "bpp_id": "logistics_bpp",
+        "bpp_uri": "https://logistics_bpp.com",
+        "transaction_id": "aa77b78e-66b0-47a5-9560-527a36cf0d9f",
+        "message_id": "9d498536-4dba-4c69-a47e-bed245623ecc",
+        "timestamp": "2024-01-15T16:00:00.000Z",
+        "ttl": "PT30S"
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "P1"
+            },
+            "items": [
+                {
+                    "id": "I1",
+                    "quantity": {
+                        "selected": {
+                            "count": "5",
+                            "measure": {
+                                "unit": "KG"
+                            }
+                        }
+                    }
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "1",
+                    "type": "Road-Shipping",
+                    "stops": [
+                        {
+                            "type": "Pickup",
+                            "location": {
+                                "gps": "14.785638,76.454553",
+                                "address": {
+                                    "area_code": "320042"
+                                }
+                            },
+                            "time": {
+                                "timestamp": "2024-01-15T16:00:00.000Z"
+                            }
+                        },
+                        {
+                            "type": "Drop",
+                            "location": {
+                                "gps": "14.433424,77.928379",
+                                "address": {
+                                    "area_code": "320042"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ],
+            "billing": {
+                "name": "Paul Sterling",
+                "phone": "+919876345623",
+                "email": "sample@gmail.com"
+            },
+            "payment": {
+                "status": "PAID",
+                "type": "PRE-FULFILLMENT",
+                "params": {
+                    "transaction_id": "tid/6737457",
+                    "amount": "1500",
+                    "currency": "INR",
+                    "bank_code": "INB0004321",
+                    "bank_account_number": "1234002341"
+                }
+            }
+        }
+    }
+}
 ```
 Below is an example of an `on_confirm` callback
 ```
-
+{
+    "context": {
+        "domain": "logistics",
+        "location": {
+            "country": {
+                "code": "IND"
+            },
+            "city": {
+                "code": "std:0806"
+            }
+        },
+        "action": "on_confirm",
+        "version": "1.1.0",
+        "bap_id": "logistics_bap",
+        "bap_uri": "https://logistics_bap.com",
+        "bpp_id": "logistics_bpp",
+        "bpp_uri": "https://logistics_bpp.com",
+        "transaction_id": "aa77b78e-66b0-47a5-9560-527a36cf0d9f",
+        "message_id": "9d498536-4dba-4c69-a47e-bed245623ecc",
+        "timestamp": "2024-01-15T16:00:00.000Z",
+        "ttl": "PT30S"
+    },
+    "message": {
+        "order": {
+            "id": "oid/12",
+            "provider": {
+                "id": "P1",
+                "descriptor": {
+                    "name": "Logistics",
+                    "short_desc": "Logistics Org",
+                    "long_desc": "Logistics Org"
+                },
+                "locations": [
+                    {
+                        "id": "L1",
+                        "gps": "13.786587,76.872309",
+                        "address": {
+                            "street": "Shubhash nagar, 3rd block",
+                            "city": "Bengaluru",
+                            "area_code": "560042",
+                            "state": "KA"
+                        }
+                    }
+                ]
+            },
+            "items": [
+                {
+                    "id": "I1",
+                    "descriptor": {
+                        "Name": "Lightweight delivery",
+                        "short_desc": "Delivery in just 1 hours",
+                        "long_desc": "Delivery in just 1 hours"
+                    },
+                    "price": {
+                        "currency": "INR",
+                        "value": "50.0"
+                    },
+                    "category_ids": [
+                        "category1"
+                    ],
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "name": "charges"
+                            },
+                            "List": [
+                                {
+                                    "descriptor": {
+                                        "code": "Min-Chargable-Weight-in-KG"
+                                    },
+                                    "value": "10"
+                                }
+                            ]
+                        }
+                    ],
+                    "quantity": {
+                        "selected": {
+                            "count": "5",
+                            "measure": {
+                                "unit": "KG"
+                            }
+                        }
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "50"
+                },
+                "breakup": [
+                    {
+                        "type": "item",
+                        "item": {
+                            "id": "I1"
+                        },
+                        "price": {
+                            "currency": "INR",
+                            "value": "starting from 50.0"
+                        }
+                    }
+                ]
+            },
+            "fulfillments": [
+                {
+                    "id": "1",
+                    "type": "Road-Shipping",
+                    "stops": [
+                        {
+                            "type": "Pickup",
+                            "location": {
+                                "gps": "14.785638,76.454553",
+                                "address": {
+                                    "area_code": "320042"
+                                }
+                            },
+                            "time": {
+                                "timestamp": "2024-01-15T16:00:00.000Z"
+                            }
+                        },
+                        {
+                            "type": "Drop",
+                            "location": {
+                                "gps": "14.433424,77.928379",
+                                "address": {
+                                    "area_code": "320042"
+                                }
+                            }
+                        }
+                    ],
+                    "state": {
+                        "descriptor": {
+                            "code": "Pending-Fulfillment"
+                        }
+                    }
+                }
+            ],
+            "billing": {
+                "name": "Paul Sterling",
+                "phone": "+919876345623",
+                "email": "sample@gmail.com"
+            },
+            "payment": {
+                "status": "PAID",
+                "type": "PRE-FULFILLMENT",
+                "params": {
+                    "transaction_id": "tid/6737457",
+                    "amount": "1500",
+                    "currency": "INR",
+                    "bank_code": "INB0004321",
+                    "bank_account_number": "1234002341"
+                }
+            }
+        }
+    }
+}
 ```
 
 ## 1.3 Fulfillment of a logistics order
@@ -145,11 +964,192 @@ This section contains recommendations for implementing the APIs related to fulfi
 Below is an example of a `status` request
 ```
 
+{
+    "context": {
+        "domain": "logistics",
+        "location": {
+            "country": {
+                "code": "IND"
+            },
+            "city": {
+                "code": "std:0806"
+            }
+        },
+        "action": "status",
+        "version": "1.1.0",
+        "bap_id": "logistics_bap",
+        "bap_uri": "https://logistics_bap.com",
+        "bpp_id": "logistics_bpp",
+        "bpp_uri": "https://logistics_bpp.com",
+        "transaction_id": "aa77b78e-66b0-47a5-9560-527a36cf0d9f",
+        "message_id": "9d498536-4dba-4c69-a47e-bed245623ecc",
+        "timestamp": "2024-01-15T16:00:00.000Z",
+        "ttl": "PT30S"
+    },
+    "message": {
+        "order_id": "oid/12"
+    }
+}
 ```
 
 Below is an example of an `on_status` callback
 ```
-
+{
+    "context": {
+        "domain": "logistics",
+        "location": {
+            "country": {
+                "code": "IND"
+            },
+            "city": {
+                "code": "std:0806"
+            }
+        },
+        "action": "on_status",
+        "version": "1.1.0",
+        "bap_id": "logistics_bap",
+        "bap_uri": "https://logistics_bap.com",
+        "bpp_id": "logistics_bpp",
+        "bpp_uri": "https://logistics_bpp.com",
+        "transaction_id": "aa77b78e-66b0-47a5-9560-527a36cf0d9f",
+        "message_id": "9d498536-4dba-4c69-a47e-bed245623ecc",
+        "timestamp": "2024-01-15T16:00:00.000Z",
+        "ttl": "PT30S"
+    },
+    "message": {
+        "order": {
+            "id": "oid/12",
+            "provider": {
+                "id": "P1",
+                "descriptor": {
+                    "name": "Logistics",
+                    "short_desc": "Logistics Org",
+                    "long_desc": "Logistics Org"
+                },
+                "locations": [
+                    {
+                        "id": "L1",
+                        "gps": "13.786587,76.872309",
+                        "address": {
+                            "street": "Shubhash nagar, 3rd block",
+                            "city": "Bengaluru",
+                            "area_code": "560042",
+                            "state": "KA"
+                        }
+                    }
+                ]
+            },
+            "items": [
+                {
+                    "id": "I1",
+                    "descriptor": {
+                        "Name": "Lightweight delivery",
+                        "short_desc": "Delivery in just 1 hours",
+                        "long_desc": "Delivery in just 1 hours"
+                    },
+                    "price": {
+                        "currency": "INR",
+                        "value": "starting from 50.0"
+                    },
+                    "category_ids": [
+                        "category1"
+                    ],
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "name": "charges"
+                            },
+                            "List": [
+                                {
+                                    "descriptor": {
+                                        "code": "Min-Chargable-Weight-in-KG"
+                                    },
+                                    "value": "10"
+                                }
+                            ]
+                        }
+                    ],
+                    "quantity": {
+                        "selected": {
+                            "count": "5",
+                            "measure": {
+                                "unit": "KG"
+                            }
+                        }
+                    }
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "50"
+                },
+                "breakup": [
+                    {
+                        "type": "item",
+                        "item": {
+                            "id": "I1"
+                        },
+                        "price": {
+                            "currency": "INR",
+                            "value": "50"
+                        }
+                    }
+                ]
+            },
+            "fulfillments": [
+                {
+                    "id": "1",
+                    "type": "Road-Shipping",
+                    "stops": [
+                        {
+                            "type": "Pickup",
+                            "location": {
+                                "gps": "14.785638,76.454553",
+                                "address": {
+                                    "area_code": "320042"
+                                }
+                            },
+                            "time": {
+                                "timestamp": "2024-01-15T16:00:00.000Z"
+                            }
+                        },
+                        {
+                            "type": "Drop",
+                            "location": {
+                                "gps": "14.433424,77.928379",
+                                "address": {
+                                    "area_code": "320042"
+                                }
+                            }
+                        }
+                    ],
+                    "state": {
+                        "descriptor": {
+                            "code": "Shipped"
+                        }
+                    }
+                }
+            ],
+            "billing": {
+                "name": "Paul Sterling",
+                "phone": "+919876345623",
+                "email": "sample@gmail.com"
+            },
+            "payment": {
+                "status": "PAID",
+                "type": "PRE-FULFILLMENT",
+                "params": {
+                    "transaction_id": "tid/6737457",
+                    "amount": "1500",
+                    "currency": "INR",
+                    "bank_code": "INB0004321",
+                    "bank_account_number": "1234002341"
+                }
+            }
+        }
+    }
+}
 ```
 
 ## 1.4 Post-fulfillment of logistics order
@@ -191,18 +1191,139 @@ Below is an example of a `rating` request
 
 ```
 
+{
+    "context": {
+        "domain": "logistics",
+        "location": {
+            "country": {
+                "code": "IND"
+            },
+            "city": {
+                "code": "std:0806"
+            }
+        },
+        "action": "rating",
+        "version": "1.1.0",
+        "bap_id": "logistics_bap",
+        "bap_uri": "https://logistics_bap.com",
+        "bpp_id": "logistics_bpp",
+        "bpp_uri": "https://logistics_bpp.com",
+        "transaction_id": "aa77b78e-66b0-47a5-9560-527a36cf0d9f",
+        "message_id": "9d498536-4dba-4c69-a47e-bed245623ecc",
+        "timestamp": "2024-01-15T16:00:00.000Z",
+        "ttl": "PT30S"
+    },
+    "message": {
+        "ratings": [
+            {
+                "rating_category": "Order",
+                "id": "oid/12",
+                "value": "4"
+            }
+        ]
+    }
+}
 ```
 Below is an example of an `on_rating` callback
 ```
 
+{
+    "context": {
+        "domain": "logistics",
+        "location": {
+            "country": {
+                "code": "IND"
+            },
+            "city": {
+                "code": "std:0806"
+            }
+        },
+        "action": "on_rating",
+        "version": "1.1.0",
+        "bap_id": "logistics_bap",
+        "bap_uri": "https://logistics_bap.com",
+        "bpp_id": "logistics_bpp",
+        "bpp_uri": "https://logistics_bpp.com",
+        "transaction_id": "aa77b78e-66b0-47a5-9560-527a36cf0d9f",
+        "message_id": "9d498536-4dba-4c69-a47e-bed245623ecc",
+        "timestamp": "2024-01-15T16:00:00.000Z",
+        "ttl": "PT30S"
+    },
+    "message": {
+        "feedback_form": {
+            "form": {
+                "url": "https://form/url"
+            }
+        }
+    }
+}
 ```
 
 Below is an example of a `support` request
 ```
 
+{
+    "context": {
+        "domain": "logistics",
+        "location": {
+            "country": {
+                "code": "IND"
+            },
+            "city": {
+                "code": "std:0806"
+            }
+        },
+        "action": "support",
+        "version": "1.1.0",
+        "bap_id": "logistics_bap",
+        "bap_uri": "https://logistics_bap.com",
+        "bpp_id": "logistics_bpp",
+        "bpp_uri": "https://logistics_bpp.com",
+        "transaction_id": "aa77b78e-66b0-47a5-9560-527a36cf0d9f",
+        "message_id": "9d498536-4dba-4c69-a47e-bed245623ecc",
+        "timestamp": "2024-01-15T16:00:00.000Z",
+        "ttl": "PT30S"
+    },
+    "message": {
+        "support": {
+            "type": "Order",
+            "ref_id": "oid/12",
+            "callback_phone": "+919876564534"
+        }
+    }
+}
 ```
 
 Below is an example of an `on_support` callback
 ```
 
+{
+    "context": {
+        "domain": "logistics",
+        "location": {
+            "country": {
+                "code": "IND"
+            },
+            "city": {
+                "code": "std:0806"
+            }
+        },
+        "action": "on_support",
+        "version": "1.1.0",
+        "bap_id": "logistics_bap",
+        "bap_uri": "https://logistics_bap.com",
+        "bpp_id": "logistics_bpp",
+        "bpp_uri": "https://logistics_bpp.com",
+        "transaction_id": "aa77b78e-66b0-47a5-9560-527a36cf0d9f",
+        "message_id": "9d498536-4dba-4c69-a47e-bed245623ecc",
+        "timestamp": "2024-01-15T16:00:00.000Z",
+        "ttl": "PT30S"
+    },
+    "message": {
+        "support": {
+            "phone": "+918675453298",
+            "email": "helpline@logistics.com"
+        }
+    }
+}
 ```
