@@ -1179,12 +1179,66 @@ This section contains recommendations for implementing the APIs after fulfilling
 
 Below is an example of a `get_rating_categories` request
 ```
-
+{
+    "context": {
+        "domain": "logistics",
+        "location": {
+            "country": {
+                "code": "IND"
+            },
+            "city": {
+                "code": "std:0806"
+            }
+        },
+        "action": "get_rating_categories",
+        "version": "1.1.0",
+        "bap_id": "logistics_bap",
+        "bap_uri": "https://logistics_bap.com",
+        "bpp_id": "logistics_bpp",
+        "bpp_uri": "https://logistics_bpp.com",
+        "transaction_id": "aa77b78e-66b0-47a5-9560-527a36cf0d9f",
+        "message_id": "9d498536-4dba-4c69-a47e-bed245623ecc",
+        "timestamp": "2024-01-15T16:00:00.000Z",
+        "ttl": "PT30S"
+    }
+}
 ```
 
 Below is an example of an `rating_categories` callback
 ```
-
+{
+    "context": {
+        "domain": "logistics",
+        "location": {
+            "country": {
+                "code": "IND"
+            },
+            "city": {
+                "code": "std:0806"
+            }
+        },
+        "action": "rating_categories",
+        "version": "1.1.0",
+        "bap_id": "logistics_bap",
+        "bap_uri": "https://logistics_bap.com",
+        "bpp_id": "logistics_bpp",
+        "bpp_uri": "https://logistics_bpp.com",
+        "transaction_id": "aa77b78e-66b0-47a5-9560-527a36cf0d9f",
+        "message_id": "9d498536-4dba-4c69-a47e-bed245623ecc",
+        "timestamp": "2024-01-15T16:00:00.000Z",
+        "ttl": "PT30S"
+    },
+    "message": {
+        "rating_categories" : [
+            "Item",
+            "Order",
+            "Fulfillment",
+            "provider",
+            "Agent",
+            "SUpport"
+        ]
+    }
+}
 ```
 
 Below is an example of a `rating` request
