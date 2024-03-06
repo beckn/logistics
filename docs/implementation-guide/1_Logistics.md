@@ -1,33 +1,44 @@
 # 1. Implementation Guide
 
-This document contains the REQUIRED and RECOMMENDED standard functionality that must be implemented by any logistics service provider Platform a.k.a BPPs and logistics Consumer Platform a.k.a BAPs.
+This document contains the REQUIRED and RECOMMENDED standard functionality that must be implemented by any logistics service provider platform a.k.a BPPs and logistics Consumer platform a.k.a BAPs.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119 [RFC2119].
 
-## 1.1 Discovery of logistics service providers
+Note: The term "BPP" will used to refer to the "logistics service provider platform" and the term "BAP" will be used to refer to the "logistics service consumer platform" from hereon.
+A logistics service provider platform can have multiple logistics service providers.
 
-### 1.1.1 Recommendations for BPPs
-The following recommendations need to be considered when implementing discovery functionality for a logistics BPP
+## 1.1 Discovery of logistics services
+
+### 1.1.1 Recommendations for Logistics BPPs
+The following recommendations need to be considered when implementing discovery functionality for a BPP
 
 - REQUIRED. The BPP MUST implement the `search` endpoint to receive an `Intent` object sent by BAPs
 - REQUIRED. The BPP MUST return a catalog of logistics services on the `on_search` callback endpoint specified in the `context.bap_uri` field of the `search` request body.
 - REQUIRED. The BPP MUST map its logistics services to the `Item` schema.
 - REQUIRED. Any logistics service provider related information like name, logo, short description must be mapped to the `Provider.descriptor` schema
-- REQUIRED. Any form that must be filled before receiving a quotation must be mapped to the `XInput` schema
-- REQUIRED. If the platform wants to group its services under a specific category, it must map each category to the `Category` schema
-- REQUIRED. Any order fulfillment-related information MUST be mapped to the `Fulfillment` schema.
+- REQUIRED. Any form that must be filled before receiving a quotation on a logistics service must be mapped to the `XInput` schema
+- REQUIRED. If the logistics service provider wants to group its services under a specific category, it must map each category to the `Category` schema
+- REQUIRED. Any order delivery information MUST be mapped to the `Fulfillment` schema.
 - REQUIRED. If the BPP does not want to respond to a search request, it MUST return a `ack.status` value equal to `NACK`
 - RECOMMENDED. Upon receiving a `search` request, the BPP SHOULD return a catalog that best matches the intent. This can be done by indexing the catalog against the various probable paths in the `Intent` schema relevant to typical logistics use cases
 
 ### 1.1.2 Recommendations for BAPs
-- REQUIRED. The BAP MUST call the `search` endpoint of the BG to discover multiple BPPs on a network
-- REQUIRED. The BAP MUST implement the `on_search` endpoint to consume the `Catalog` objects containing logistics services sent by BPPs.
-- REQUIRED. The BAP MUST expect multiple catalogs sent by the respective logistics service providers on the network
+- REQUIRED. The BAP MUST call the `search` endpoint of the Beckn Gateway(BG) to discover all the BPPs registered on a network
+- REQUIRED. The BAP MUST implement the `on_search` endpoint to consume the `Catalog` objects containing logistics services sent by multiple BPPs.
+- REQUIRED. The BAP MUST expect multiple catalogs sent by each logistics service providers of a Logistics BPP.
 - REQUIRED. The logistics services can be found in the `Catalog.providers[].items[]` array in the `on_search` request
 - REQUIRED. If the `catalog.providers[].items[].xinput` object is present, then the BAP MUST redirect the user to, or natively render the form present on the link specified on the `items[].xinput.form.url` field.
 - REQUIRED. If the `catalog.providers[].items[].xinput.required` field is set to `"true"` , then the BAP MUST NOT fire a `select`, `init` or `confirm` call until the form is submitted and a successful response is received
 - RECOMMENDED. If the `catalog.providers[].items[].xinput.required` field is set to `"false"` , then the BAP SHOULD allow the user to skip filling the form
 
+### Discovery Flow of a Logistics service. 
+Note: This is just one of the many ways to implement the Beckn Logistics specification. The implementors may want to implememt the Beckn Logistics specification as per their need.
+
+1. A customer looking for logistics services logs in to a logistics app, or a website, and makes a search request by providing the details of the services required, for example, the start and end location of the shipment, the type and weight of the object to be shipped etc.
+2. The logistics app forms a search request as per the Beckn logistics specification and sends the request to the Gateway Gateway. A Beckn Gateway is a component in a network where all the BAPs and BPPs register themselves.
+3. The Beckn Gateway(BG) broadcast the search request to all the BPPs registered on the Gateway. BG calls the search/ API endpoint implemented by the BPPs to broadcast the messages.
+4. The BPPs create a filtered catalogue based on the search request.
+5. Each of the BPPs calls the /on_search API endpoint implemented by the BAP to send a the filtered catalogue.
 
 ### Example
 A search request for a logistics service provider may look like this
@@ -196,7 +207,7 @@ An example catalog of a logistics service provider may look like this
     }
 }
 ```
-
+//TODO
 ## 1.2 Initiating an order for a logistics service
 This section provides recommendations for implementing the APIs related to a logistics service.
 
