@@ -90,10 +90,9 @@
                     ],
                     "quantity": {
                         "selected": {
-                            "count": "1",
                             "measure": {
                                 "unit": "KG",
-                                "value": "1"
+                                "value": "5"
                             }
                         }
                     }
