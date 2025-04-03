@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
-  title: Beckn Hyperlocal Delivery API specification
-  description: Beckn Hyperlocal Delivery API specification
+  title: Beckn Logistics API specification
+  description: The Beckn Logistics API Specification outlines the technical standards and protocols for integrating logistics services into the Beckn network.
   version: 1.1.0
 security:
   - SubscriberAuth: []
@@ -56,6 +56,9 @@ paths:
                             - select
                       required:
                         - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -87,8 +90,9 @@ paths:
                         action:
                           enum:
                             - init
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -142,8 +146,9 @@ paths:
                         action:
                           enum:
                             - confirm
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -175,8 +180,9 @@ paths:
                         action:
                           enum:
                             - status
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -208,8 +214,9 @@ paths:
                         action:
                           enum:
                             - track
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -244,8 +251,9 @@ paths:
                         action:
                           enum:
                             - cancel
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -281,8 +289,9 @@ paths:
                         action:
                           enum:
                             - update
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -320,8 +329,9 @@ paths:
                         action:
                           enum:
                             - rating
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -353,8 +363,9 @@ paths:
                         action:
                           enum:
                             - support
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -385,8 +396,9 @@ paths:
                         action:
                           enum:
                             - on_search
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -419,8 +431,9 @@ paths:
                         action:
                           enum:
                             - on_select
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -451,8 +464,9 @@ paths:
                         action:
                           enum:
                             - on_init
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -485,8 +499,9 @@ paths:
                         action:
                           enum:
                             - on_confirm
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -519,8 +534,9 @@ paths:
                         action:
                           enum:
                             - on_track
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -553,8 +569,9 @@ paths:
                         action:
                           enum:
                             - on_cancel
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -587,8 +604,9 @@ paths:
                         action:
                           enum:
                             - on_update
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -621,8 +639,9 @@ paths:
                         action:
                           enum:
                             - on_status
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -655,8 +674,9 @@ paths:
                         action:
                           enum:
                             - on_rating
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -690,8 +710,9 @@ paths:
                         action:
                           enum:
                             - on_support
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -987,6 +1008,14 @@ components:
         ttl:
           description: The duration in ISO8601 format after timestamp for which this message holds valid
           type: string
+      required:
+          - action
+          - domain
+          - version
+          - bap_id
+          - bap_uri
+          - transaction_id
+          - message_id
     Country:
       description: Describes a country
       type: object
@@ -1062,6 +1091,9 @@ components:
           type: string
         code:
           description: 'Standard code representing the domain. The standard is usually published as part of the network policy. Furthermore, the network facilitator should also provide a mechanism to provide the supported domains of a network.'
+          type: string
+          enum:
+            - logistics:delivery
         additional_info:
           description: A url that contains addtional information about that domain.
           allOf:
@@ -1132,12 +1164,12 @@ components:
           description: Unique reference ID to the fulfillment of an order
           type: string
         type:
-          description: 'A code that describes the mode of fulfillment. This is typically set when there are multiple ways an order can be fulfilled. For example, a retail order can be fulfilled either via store pickup or a home delivery. Similarly, a medical consultation can be provided either in-person or via tele-consultation. The network policy must publish standard fulfillment type codes for the different modes of fulfillment.'
+          description: 'A code that describes the mode of fulfillment. This is typically set when there are multiple ways an order can be fulfilled.'
           type: string
           enum:
             - Air-Shipping
             - Ocean-Shipping
-            - road-Shipping
+            - Road-Shipping
             - Rail-Shipping
         rateable:
           description: Whether the fulfillment can be rated or not
@@ -1347,7 +1379,7 @@ components:
             measure:
               $ref: '#/components/schemas/Scalar'
     Item:
-      description: 'Describes a product or a service offered to the end consumer by the provider. In the mobility sector, it can represent a fare product like one way journey. In the logistics sector, it can represent the delivery service offering. In the retail domain it can represent a product like a grocery item.'
+      description: 'Describes a product or a service offered to the end consumer by the provider.'
       type: object
       properties:
         id:
@@ -1595,7 +1627,7 @@ components:
             - Delivered
             - Cancelled
         type:
-          description: 'This is used to indicate the type of order being created to BPPs. Sometimes orders can be linked to previous orders, like a replacement order in a retail domain. A follow-up consultation in healthcare domain. A single order part of a subscription order. The list of order types can be standardized at the network level.'
+          description: 'This is used to indicate the type of order being created to BPPs.'
           type: string
           default: DEFAULT
           enum:
@@ -2090,6 +2122,7 @@ components:
             - order
             - billing
             - fulfillment
+            - payment
         ref_id:
           type: string
         callback_phone:
