@@ -76,9 +76,73 @@
                             "List": [
                                 {
                                     "descriptor": {
-                                        "code": "Min-Chargable-Weight-in-KG"
+                                        "code": "Min-Chargeable-Weight-in-KG"
                                     },
                                     "value": "10"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "package-details",
+                                "name": "package details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "package-count",
+                                        "name": "package count"
+                                    },
+                                    "value": "2"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "package-1-dimension",
+                                        "name": "package 1 dimension",
+                                        "short_desc": "L|W|H in cm"
+                                    },
+                                    "value": "30|20|10"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "package-2-dimension",
+                                        "name": "package 2 dimension",
+                                        "short_desc": "L|W|H in cm"
+                                    },
+                                    "value": "20|15|10"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "handling",
+                                "name": "handling"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "fragile"
+                                    },
+                                    "value": "yes"
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "hazardous"
+                                    },
+                                    "value": "yes"
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "special-instructions"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "delivery-instruction"
+                                    },
+                                    "value": "please deliver after 5PM"
                                 }
                             ]
                         }
