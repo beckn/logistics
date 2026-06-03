@@ -1,0 +1,223 @@
+{
+  "@context": {
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "schema": "https://schema.org/",
+    "beckn": "https://schema.beckn.org/core/",
+    "log": "https://schema.beckn.org/logistics/"
+  },
+  "@graph": [
+    {
+      "@id": "log:",
+      "@type": "owl:Ontology",
+      "rdfs:label": "Beckn Logistics Ontology",
+      "rdfs:comment": "A semantic vocabulary for logistics domain entities including hyperlocal delivery, courier, interstate, long haul, and express delivery use cases.",
+      "owl:versionInfo": "2.0.0"
+    },
+
+    {
+      "@id": "log:Shipment",
+      "@type": "owl:Class",
+      "rdfs:label": "Shipment",
+      "rdfs:comment": "A shipment represents the movement of one or more packages from an origin to a destination. It is the top-level fulfillment entity in the logistics domain.",
+      "rdfs:subClassOf": { "@id": "beckn:Fulfillment" },
+      "skos:exactMatch": { "@id": "schema:ParcelDelivery" },
+      "skos:broadMatch": { "@id": "beckn:Order" }
+    },
+    {
+      "@id": "log:Package",
+      "@type": "owl:Class",
+      "rdfs:label": "Package",
+      "rdfs:comment": "A physical unit of goods packaged for transport. Each package has defined dimensions, weight, and handling requirements.",
+      "rdfs:subClassOf": { "@id": "beckn:Item" },
+      "skos:closeMatch": { "@id": "schema:Product" }
+    },
+    {
+      "@id": "log:Consignment",
+      "@type": "owl:Class",
+      "rdfs:label": "Consignment",
+      "rdfs:comment": "A consignment is a collection of packages or shipments grouped together for a single commercial transaction between a shipper and consignee.",
+      "rdfs:subClassOf": { "@id": "beckn:Order" },
+      "skos:closeMatch": { "@id": "schema:Order" }
+    },
+    {
+      "@id": "log:Courier",
+      "@type": "owl:Class",
+      "rdfs:label": "Courier",
+      "rdfs:comment": "A courier is an individual or service responsible for picking up and delivering packages, typically in last-mile or hyperlocal delivery contexts.",
+      "rdfs:subClassOf": { "@id": "beckn:Agent" },
+      "skos:closeMatch": { "@id": "schema:Person" }
+    },
+    {
+      "@id": "log:Carrier",
+      "@type": "owl:Class",
+      "rdfs:label": "Carrier",
+      "rdfs:comment": "A carrier is a transport service provider responsible for moving goods across distances, including long haul, interstate, and air freight.",
+      "rdfs:subClassOf": { "@id": "beckn:Provider" },
+      "skos:closeMatch": { "@id": "schema:Organization" }
+    },
+    {
+      "@id": "log:Driver",
+      "@type": "owl:Class",
+      "rdfs:label": "Driver",
+      "rdfs:comment": "An individual who operates a vehicle for logistics delivery. Drivers are assigned to shipments and responsible for physical transport.",
+      "rdfs:subClassOf": { "@id": "beckn:Agent" },
+      "skos:closeMatch": { "@id": "schema:Person" }
+    },
+    {
+      "@id": "log:Vehicle",
+      "@type": "owl:Class",
+      "rdfs:label": "Vehicle",
+      "rdfs:comment": "A transport vehicle used for logistics operations. Vehicle types range from bicycles for hyperlocal to trucks for long haul delivery.",
+      "rdfs:subClassOf": { "@id": "beckn:Asset" },
+      "skos:closeMatch": { "@id": "schema:Vehicle" }
+    },
+    {
+      "@id": "log:Route",
+      "@type": "owl:Class",
+      "rdfs:label": "Route",
+      "rdfs:comment": "A planned path from origin to destination for a shipment, potentially passing through multiple hubs and waypoints.",
+      "rdfs:subClassOf": { "@id": "beckn:Journey" },
+      "skos:closeMatch": { "@id": "schema:Trip" }
+    },
+    {
+      "@id": "log:Waypoint",
+      "@type": "owl:Class",
+      "rdfs:label": "Waypoint",
+      "rdfs:comment": "An intermediate stop or checkpoint on a logistics route, such as a sorting hub or relay station.",
+      "rdfs:subClassOf": { "@id": "beckn:Stop" },
+      "skos:closeMatch": { "@id": "schema:Place" }
+    },
+    {
+      "@id": "log:Hub",
+      "@type": "owl:Class",
+      "rdfs:label": "Hub",
+      "rdfs:comment": "A logistics hub or fulfillment center where goods are consolidated, sorted, and dispatched for onward delivery.",
+      "rdfs:subClassOf": { "@id": "beckn:Location" },
+      "skos:closeMatch": { "@id": "schema:Place" }
+    },
+    {
+      "@id": "log:TrackingUpdate",
+      "@type": "owl:Class",
+      "rdfs:label": "TrackingUpdate",
+      "rdfs:comment": "A real-time or periodic update on the status and location of a shipment during transit.",
+      "rdfs:subClassOf": { "@id": "beckn:Event" },
+      "skos:closeMatch": { "@id": "schema:DeliveryEvent" }
+    },
+    {
+      "@id": "log:DeliverySlot",
+      "@type": "owl:Class",
+      "rdfs:label": "DeliverySlot",
+      "rdfs:comment": "A time window offered or agreed upon for the delivery of a shipment to the consignee.",
+      "rdfs:subClassOf": { "@id": "beckn:TimeSlot" },
+      "skos:broadMatch": { "@id": "schema:OpeningHoursSpecification" }
+    },
+    {
+      "@id": "log:Proof",
+      "@type": "owl:Class",
+      "rdfs:label": "Proof",
+      "rdfs:comment": "Evidence of delivery or pickup, such as a photo, signature, OTP confirmation, or digital receipt.",
+      "rdfs:subClassOf": { "@id": "beckn:Document" },
+      "skos:broadMatch": { "@id": "schema:ImageObject" }
+    },
+    {
+      "@id": "log:Place",
+      "@type": "owl:Class",
+      "rdfs:label": "Place",
+      "rdfs:comment": "A geographic location relevant to logistics — origin, destination, hub, or waypoint — including structured address and GPS coordinates.",
+      "rdfs:subClassOf": { "@id": "beckn:Location" },
+      "skos:exactMatch": { "@id": "schema:Place" }
+    },
+    {
+      "@id": "log:Alert",
+      "@type": "owl:Class",
+      "rdfs:label": "Alert",
+      "rdfs:comment": "A notification or warning related to a shipment, such as delays, exceptions, damage reports, or SLA breaches.",
+      "rdfs:subClassOf": { "@id": "beckn:Event" },
+      "skos:closeMatch": { "@id": "schema:AlertAction" }
+    },
+    {
+      "@id": "log:CancellationPolicy",
+      "@type": "owl:Class",
+      "rdfs:label": "CancellationPolicy",
+      "rdfs:comment": "Defines the terms under which a shipment booking can be cancelled, including timeframes and applicable charges.",
+      "rdfs:subClassOf": { "@id": "beckn:Policy" },
+      "skos:closeMatch": { "@id": "schema:MerchantReturnPolicy" }
+    },
+    {
+      "@id": "log:ReturnPolicy",
+      "@type": "owl:Class",
+      "rdfs:label": "ReturnPolicy",
+      "rdfs:comment": "Defines the conditions under which goods can be returned to the sender, including reverse logistics workflows.",
+      "rdfs:subClassOf": { "@id": "beckn:Policy" },
+      "skos:closeMatch": { "@id": "schema:MerchantReturnPolicy" }
+    },
+    {
+      "@id": "log:Fare",
+      "@type": "owl:Class",
+      "rdfs:label": "Fare",
+      "rdfs:comment": "The total cost charged for a logistics service, including base freight, surcharges, taxes, and add-on service fees.",
+      "rdfs:subClassOf": { "@id": "beckn:Price" },
+      "skos:closeMatch": { "@id": "schema:PriceSpecification" }
+    },
+    {
+      "@id": "log:FareBreakup",
+      "@type": "owl:Class",
+      "rdfs:label": "FareBreakup",
+      "rdfs:comment": "A detailed itemization of the components that make up the total fare for a logistics service.",
+      "rdfs:subClassOf": { "@id": "beckn:Price" },
+      "skos:closeMatch": { "@id": "schema:UnitPriceSpecification" }
+    },
+    {
+      "@id": "log:Rating",
+      "@type": "owl:Class",
+      "rdfs:label": "Rating",
+      "rdfs:comment": "A numeric score given by a user for a logistics service, driver, or carrier based on their experience.",
+      "rdfs:subClassOf": { "@id": "beckn:Rating" },
+      "skos:exactMatch": { "@id": "schema:Rating" }
+    },
+    {
+      "@id": "log:Feedback",
+      "@type": "owl:Class",
+      "rdfs:label": "Feedback",
+      "rdfs:comment": "Qualitative or quantitative feedback provided by a sender or receiver about a logistics experience.",
+      "rdfs:subClassOf": { "@id": "beckn:Feedback" },
+      "skos:closeMatch": { "@id": "schema:Review" }
+    },
+    {
+      "@id": "log:SupportCase",
+      "@type": "owl:Class",
+      "rdfs:label": "SupportCase",
+      "rdfs:comment": "A customer support ticket raised for issues related to a shipment, such as loss, damage, delay, or billing disputes.",
+      "rdfs:subClassOf": { "@id": "beckn:Issue" },
+      "skos:broadMatch": { "@id": "schema:Action" }
+    },
+    {
+      "@id": "log:Operator",
+      "@type": "owl:Class",
+      "rdfs:label": "Operator",
+      "rdfs:comment": "The entity operating a logistics network or fleet, responsible for end-to-end delivery service quality.",
+      "rdfs:subClassOf": { "@id": "beckn:Provider" },
+      "skos:closeMatch": { "@id": "schema:Organization" }
+    },
+    {
+      "@id": "log:Contact",
+      "@type": "owl:Class",
+      "rdfs:label": "Contact",
+      "rdfs:comment": "Contact information for a sender, receiver, driver, or operator involved in a logistics transaction.",
+      "rdfs:subClassOf": { "@id": "beckn:Contact" },
+      "skos:exactMatch": { "@id": "schema:ContactPoint" }
+    },
+    {
+      "@id": "log:Receipt",
+      "@type": "owl:Class",
+      "rdfs:label": "Receipt",
+      "rdfs:comment": "A digital or physical acknowledgment of payment and delivery for a logistics service, summarizing the transaction.",
+      "rdfs:subClassOf": { "@id": "beckn:Document" },
+      "skos:closeMatch": { "@id": "schema:Invoice" }
+    }
+  ]
+}
