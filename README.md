@@ -15,7 +15,6 @@ express delivery.
 
 | Path | Contents |
 |------|----------|
-| [api/](./api/) | OpenAPI specification ([logistics.yaml](./api/logistics.yaml)) |
 | [docs/](./docs/) | Domain documentation — overview, concepts, ontology, API flows, and example implementations |
 | [schema/](./schema/) | Entity schema definitions (attributes, JSON Schema, and JSON-LD context/vocab) |
 
@@ -33,7 +32,7 @@ Start with the [documentation index](./docs/README.md):
 
 | Use Case | Description |
 |----------|-------------|
-| [Hyperlocal Delivery](./docs/example_implementations/hyperlocal_delivery/) | Same-day sub-2-hour delivery |
+| [Hyperlocal Delivery](./docs/example_implementations/hyperlocal_delivery/) | Same-day sub-2-hour delivery — includes a full [RFC-format implementation guide](./docs/example_implementations/hyperlocal_delivery/Logistics_Implementation_Guide.md) |
 | [Courier](./docs/example_implementations/courier/) | B2C/B2B parcel delivery |
 | [Interstate](./docs/example_implementations/interstate/) | Multi-state freight and cargo |
 | [Long Haul](./docs/example_implementations/long_haul/) | Cross-country heavy freight |
