@@ -1,14 +1,9 @@
 # Route
 
-## Overview
-A **Route** defines the planned path from origin to destination for a logistics shipment, including intermediate waypoints, hubs, distance, and transport mode.
+The physical or logical path followed by a transport service, defined as an ordered sequence of stops or waypoints.
 
-## IRI
-`https://schema.beckn.org/logistics/Route`
+## Versions
 
-## Use Cases
-- Interstate/Long Haul: Multi-state routes with hub stops
-- Hyperlocal: Optimized last-mile delivery paths
-
-## Version
-Current version: **v2.0** — [v2.0/attributes.yaml](./v2.0/attributes.yaml)
+| Version | attributes.yaml | attributes.jsonschema.yaml | context.jsonld | vocab.jsonld | README |
+|---|---|---|---|---|---|
+| **v2.0** | [https://schema.beckn.io/Route/v2.0/attributes.yaml](https://schema.beckn.io/Route/v2.0/attributes.yaml) | [https://schema.beckn.io/Route/v2.0/attributes.jsonschema.yaml](https://schema.beckn.io/Route/v2.0/attributes.jsonschema.yaml) | [https://schema.beckn.io/Route/v2.0/context.jsonld](https://schema.beckn.io/Route/v2.0/context.jsonld) | [https://schema.beckn.io/Route/v2.0/vocab.jsonld](https://schema.beckn.io/Route/v2.0/vocab.jsonld) | [https://schema.beckn.io/Route/v2.0/README.md](https://schema.beckn.io/Route/v2.0/README.md) |

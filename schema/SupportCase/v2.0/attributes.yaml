@@ -1,89 +1,105 @@
-openapi: 3.1.0
+openapi: 3.1.1
 info:
   title: SupportCase
   version: 2.0.0
-  description: Schema for SupportCase in Beckn Logistics domain.
-  contact:
-    name: Beckn Foundation
-    url: https://beckn.org
+  description: Schema definition for SupportCase in the Beckn Protocol v2.0.1
   license:
-    name: MIT
-    url: https://opensource.org/licenses/MIT
-paths: {}
+    name: CC-BY-NC-SA 4.0 International
+  contact:
+    name: Beckn Labs
+    url: https://beckn.io
 components:
   schemas:
     SupportCase:
-      type: object
+      x-iri: https://schema.beckn.io/SupportCase/v2.0
+      description: A domain-agnostic customer support ticket used to record an issue
+        raised between parties — its category, priority, lifecycle status, supporting
+        attachments, and support interaction sessions. It is independent of any
+        particular domain; domain-specific values are carried via the category
+        descriptor and the extensible attribute bags.
       title: SupportCase
-      description: Customer support ticket for shipment issues — loss, damage, delay, or billing.
-      required:
-        - id
-        - issueType
-        - shipmentId
+      type: object
       properties:
         id:
+          description: Stable support case identifier.
           type: string
-          example: "SUP-2024-00789"
-        shipmentId:
-          type: string
-        issueType:
-          type: string
-          enum:
-            - SHIPMENT_LOST
-            - SHIPMENT_DAMAGED
-            - DELIVERY_DELAYED
-            - WRONG_ITEM_DELIVERED
-            - BILLING_DISPUTE
-            - DRIVER_MISCONDUCT
-            - OTHER
-          example: "DELIVERY_DELAYED"
+          example: SUP-2024-00789
+        category:
+          description: The category of the issue, expressed as a Descriptor whose code
+            is defined by the domain (e.g. SHIPMENT_LOST, BILLING_DISPUTE,
+            SERVICE_QUALITY).
+          $ref: https://schema.beckn.io/Descriptor/v2.1/attributes.yaml#/components/schemas/Descriptor
         description:
+          description: Human-readable description of the issue.
           type: string
-          example: "My package was supposed to be delivered yesterday but has not arrived."
         priority:
-          type: string
-          enum:
-            - LOW
-            - MEDIUM
-            - HIGH
-            - URGENT
-          example: "MEDIUM"
+          description: Priority of the support case. Suggested values are P1, P2, P3;
+            custom string values are also allowed.
+          anyOf:
+          - type: string
+            enum:
+            - P1
+            - P2
+            - P3
+          - type: string
         status:
-          type: string
-          enum:
-            - OPEN
-            - IN_PROGRESS
-            - AWAITING_CUSTOMER
-            - RESOLVED
-            - CLOSED
-          example: "OPEN"
+          description: The lifecycle state of the support case expressed as a Descriptor
+            whose code MUST be one of the standard values.
+          allOf:
+          - $ref: https://schema.beckn.io/Descriptor/v2.1/attributes.yaml#/components/schemas/Descriptor
+          - type: object
+            properties:
+              code:
+                enum:
+                - UNRESOLVED
+                - RESOLVED
+                default: UNRESOLVED
         raisedBy:
+          description: Identifier of the party who raised the support case.
           type: string
-          description: User ID who raised the ticket
         assignedAgent:
+          description: Identifier of the support agent the case is assigned to.
           type: string
-          description: Support agent ID
         attachments:
+          description: Supporting attachments / evidence for the case — documents,
+            images, or other artifacts, distinguished by mimeType.
           type: array
-          description: Photo/document evidence
+          items:
+            $ref: https://schema.beckn.io/Document/v2.0/attributes.yaml#/components/schemas/Document
+        sessions:
+          description: Support interaction sessions associated with this case. Each
+            session records the channel used and any media exchanged.
+          type: array
           items:
             type: object
             properties:
-              url:
+              id:
+                description: Identifier of this session.
                 type: string
-                format: uri
-              type:
-                type: string
-                enum: [PHOTO, DOCUMENT]
+              supportChannel:
+                description: The channel over which this session took place.
+                $ref: https://schema.beckn.io/CommunicationChannel/v2.0/attributes.yaml#/components/schemas/CommunicationChannel
+              data:
+                description: Media captured or exchanged during the session.
+                $ref: https://schema.beckn.io/MediaFile/v2.0/attributes.yaml#/components/schemas/MediaFile
+            additionalProperties: false
         claimAmount:
+          description: Amount claimed in relation to this case, if any.
           type: number
-          description: Amount claimed for loss/damage
         resolution:
+          description: Resolution details, once the case is resolved.
           type: string
-          description: Resolution details
         createdAt:
+          description: Timestamp at which the case was created.
           type: string
           format: date-time
         resolvedAt:
+          description: Timestamp at which the case was resolved.
           type: string
           format: date-time
+      required:
+      - id
+      - category
+      additionalProperties: false
+      x-tags:
+      - common

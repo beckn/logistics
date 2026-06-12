@@ -1,24 +1,20 @@
-openapi: 3.1.0
+openapi: 3.1.1
 info:
-  title: LogisticsDriver
+  title: Driver
   version: 2.0.0
-  description: Schema definition for the LogisticsDriver entity in the Beckn Logistics
-    domain.
-  contact:
-    name: Beckn Foundation
-    url: https://beckn.org
+  description: Schema definition for the Driver entity in the Beckn Logistics domain.
   license:
-    name: MIT
-    url: https://opensource.org/licenses/MIT
-paths: {}
+    name: CC-BY-NC-SA 4.0 International
+  contact:
+    name: Beckn Labs
+    url: https://beckn.io
 components:
   schemas:
     LogisticsDriver:
+      x-iri: https://schema.beckn.io/LogisticsDriver/v2.0
       type: object
-      title: LogisticsDriver
-      description: 'A Driver is an individual who operates a vehicle for logistics
-        delivery. Drivers are assigned to shipments and responsible for physical transport.
-        Maps to beckn:Agent.
+      title: Driver
+      description: 'A Driver is an individual who operates a vehicle for logistics delivery. Drivers are assigned to shipments and responsible for physical transport. Maps to beckn:Agent.
 
         '
       required:
@@ -78,7 +74,7 @@ components:
           - OFFLINE
           example: ON_ROUTE
         vehicle:
-          $ref: https://schema.beckn.io/LogisticsVehicle/v2.0/attributes.yaml#/components/schemas/LogisticsVehicle
+          $ref: https://schema.beckn.io/Vehicle/v2.0/attributes.yaml#/components/schemas/Vehicle
         experienceYears:
           type: integer
           description: Years of driving experience

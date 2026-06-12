@@ -1,16 +1,9 @@
 # Operator
 
-## Overview
-An **Operator** is the entity that manages a logistics network or fleet, setting standards for service quality and coordinating carriers and drivers.
+An organization that provides and operates public transport or shared mobility services under a defined service agreement.
 
-## IRI
-`https://schema.beckn.org/logistics/Operator`
+## Versions
 
-## Operator Types
-- 3PL: Third-party logistics provider (Delhivery, XpressBees)
-- CAPTIVE: Own fleet operator (Amazon Logistics)
-- AGGREGATOR: Multi-carrier platform
-- POSTAL: Government postal services (India Post)
-
-## Version
-Current version: **v2.0** — [v2.0/attributes.yaml](./v2.0/attributes.yaml)
+| Version | attributes.yaml | attributes.jsonschema.yaml | context.jsonld | vocab.jsonld | README |
+|---|---|---|---|---|---|
+| **v2.0** | [https://schema.beckn.io/Operator/v2.0/attributes.yaml](https://schema.beckn.io/Operator/v2.0/attributes.yaml) | [https://schema.beckn.io/Operator/v2.0/attributes.jsonschema.yaml](https://schema.beckn.io/Operator/v2.0/attributes.jsonschema.yaml) | [https://schema.beckn.io/Operator/v2.0/context.jsonld](https://schema.beckn.io/Operator/v2.0/context.jsonld) | [https://schema.beckn.io/Operator/v2.0/vocab.jsonld](https://schema.beckn.io/Operator/v2.0/vocab.jsonld) | [https://schema.beckn.io/Operator/v2.0/README.md](https://schema.beckn.io/Operator/v2.0/README.md) |

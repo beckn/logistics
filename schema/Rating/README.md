@@ -1,10 +1,10 @@
 # Rating
 
-## Overview
-**Rating** captures a user's numeric score for a logistics service, driver, carrier, or packaging quality.
+Aggregated rating information for an entity. Aligns with schema.org/AggregateRating semantics.
 
-## IRI
-`https://schema.beckn.org/logistics/Rating`
+## Versions
 
-## Version
-Current version: **v2.0** — [v2.0/attributes.yaml](./v2.0/attributes.yaml)
+| Version | attributes.yaml | attributes.jsonschema.yaml | context.jsonld | vocab.jsonld | README |
+|---|---|---|---|---|---|
+| **v2.0** | [https://schema.beckn.io/Rating/v2.0/attributes.yaml](https://schema.beckn.io/Rating/v2.0/attributes.yaml) | [https://schema.beckn.io/Rating/v2.0/attributes.jsonschema.yaml](https://schema.beckn.io/Rating/v2.0/attributes.jsonschema.yaml) | [https://schema.beckn.io/Rating/v2.0/context.jsonld](https://schema.beckn.io/Rating/v2.0/context.jsonld) | [https://schema.beckn.io/Rating/v2.0/vocab.jsonld](https://schema.beckn.io/Rating/v2.0/vocab.jsonld) | [https://schema.beckn.io/Rating/v2.0/README.md](https://schema.beckn.io/Rating/v2.0/README.md) |
+| **v2.1** | [https://schema.beckn.io/Rating/v2.1/attributes.yaml](https://schema.beckn.io/Rating/v2.1/attributes.yaml) | [https://schema.beckn.io/Rating/v2.1/attributes.jsonschema.yaml](https://schema.beckn.io/Rating/v2.1/attributes.jsonschema.yaml) | [https://schema.beckn.io/Rating/v2.1/context.jsonld](https://schema.beckn.io/Rating/v2.1/context.jsonld) | [https://schema.beckn.io/Rating/v2.1/vocab.jsonld](https://schema.beckn.io/Rating/v2.1/vocab.jsonld) | [https://schema.beckn.io/Rating/v2.1/README.md](https://schema.beckn.io/Rating/v2.1/README.md) |

@@ -1,24 +1,20 @@
-openapi: 3.1.0
+openapi: 3.1.1
 info:
-  title: LogisticsVehicle
+  title: Vehicle
   version: 2.0.0
-  description: Schema definition for the LogisticsVehicle entity in the Beckn Logistics
-    domain.
-  contact:
-    name: Beckn Foundation
-    url: https://beckn.org
+  description: Schema definition for the Vehicle entity in the Beckn Logistics domain.
   license:
-    name: MIT
-    url: https://opensource.org/licenses/MIT
-paths: {}
+    name: CC-BY-NC-SA 4.0 International
+  contact:
+    name: Beckn Labs
+    url: https://beckn.io
 components:
   schemas:
     LogisticsVehicle:
+      x-iri: https://schema.beckn.io/LogisticsVehicle/v2.0
       type: object
-      title: LogisticsVehicle
-      description: 'A Vehicle is a transport asset used for logistics operations.
-        Vehicle types range from bicycles for hyperlocal delivery to heavy trucks
-        for long haul freight. Maps to beckn:Asset.
+      title: Vehicle
+      description: 'A Vehicle is a transport asset used for logistics operations. Vehicle types range from bicycles for hyperlocal delivery to heavy trucks for long haul freight. Maps to beckn:Asset.
 
         '
       required:

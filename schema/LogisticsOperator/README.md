@@ -1,13 +1,9 @@
 # LogisticsOperator
 
-A schema.beckn.io Type
+Entity operating a logistics network or fleet, responsible for end-to-end delivery service.
 
-Network manager. Operators coordinate carriers, drivers, and platform policies.
+## Versions
 
-**Canonical IRI :** `log:LogisticsOperator`
-
-**Canonical URL:** https://schema.beckn.io/logistics/LogisticsOperator
-
-## Open Issues
-
-[Open issues](https://github.com/beckn/logistics/issues)
+| Version | attributes.yaml | attributes.jsonschema.yaml | context.jsonld | vocab.jsonld | README |
+|---|---|---|---|---|---|
+| **v2.0** | [https://schema.beckn.io/LogisticsOperator/v2.0/attributes.yaml](https://schema.beckn.io/LogisticsOperator/v2.0/attributes.yaml) | [https://schema.beckn.io/LogisticsOperator/v2.0/attributes.jsonschema.yaml](https://schema.beckn.io/LogisticsOperator/v2.0/attributes.jsonschema.yaml) | [https://schema.beckn.io/LogisticsOperator/v2.0/context.jsonld](https://schema.beckn.io/LogisticsOperator/v2.0/context.jsonld) | [https://schema.beckn.io/LogisticsOperator/v2.0/vocab.jsonld](https://schema.beckn.io/LogisticsOperator/v2.0/vocab.jsonld) | [https://schema.beckn.io/LogisticsOperator/v2.0/README.md](https://schema.beckn.io/LogisticsOperator/v2.0/README.md) |

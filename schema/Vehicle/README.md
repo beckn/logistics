@@ -1,25 +1,9 @@
 # Vehicle
 
-## Overview
-A **Vehicle** is a transport asset used across all logistics use cases, from bicycles for last-mile delivery to heavy trucks for long haul freight.
+A motorized or human-powered mobility asset used to carry passengers or goods between locations.
 
-## IRI
-`https://schema.beckn.org/logistics/Vehicle`
+## Versions
 
-## Use Cases
-- Hyperlocal: Bicycle, e-scooter, motorcycle
-- Courier: Van, mini-truck
-- Interstate/Long Haul: HCV trucks, container trucks, trailers
-- Express: Motorcycles, cars, vans
-
-## Key Attributes
-| Attribute | Type | Description |
-|---|---|---|
-| type | enum | Vehicle category |
-| payloadCapacity | object | Max cargo weight |
-| hasRefrigeration | boolean | Cold chain capability |
-| gpsEnabled | boolean | Real-time tracking |
-| currentLocation | object | Live GPS with speed |
-
-## Version
-Current version: **v2.0** — [v2.0/attributes.yaml](./v2.0/attributes.yaml)
+| Version | attributes.yaml | attributes.jsonschema.yaml | context.jsonld | vocab.jsonld | README |
+|---|---|---|---|---|---|
+| **v2.0** | [https://schema.beckn.io/Vehicle/v2.0/attributes.yaml](https://schema.beckn.io/Vehicle/v2.0/attributes.yaml) | [https://schema.beckn.io/Vehicle/v2.0/attributes.jsonschema.yaml](https://schema.beckn.io/Vehicle/v2.0/attributes.jsonschema.yaml) | [https://schema.beckn.io/Vehicle/v2.0/context.jsonld](https://schema.beckn.io/Vehicle/v2.0/context.jsonld) | [https://schema.beckn.io/Vehicle/v2.0/vocab.jsonld](https://schema.beckn.io/Vehicle/v2.0/vocab.jsonld) | [https://schema.beckn.io/Vehicle/v2.0/README.md](https://schema.beckn.io/Vehicle/v2.0/README.md) |

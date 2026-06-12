@@ -1,13 +1,9 @@
 # LogisticsCancellationPolicy
 
-A schema.beckn.io Type
+Defines terms under which a shipment booking can be cancelled.
 
-Cancellable until: `BEFORE_PICKUP`, `BEFORE_DISPATCH`, `ANYTIME`, `NON_CANCELLABLE`
+## Versions
 
-**Canonical IRI :** `log:LogisticsCancellationPolicy`
-
-**Canonical URL:** https://schema.beckn.io/logistics/LogisticsCancellationPolicy
-
-## Open Issues
-
-[Open issues](https://github.com/beckn/logistics/issues)
+| Version | attributes.yaml | attributes.jsonschema.yaml | context.jsonld | vocab.jsonld | README |
+|---|---|---|---|---|---|
+| **v2.0** | [https://schema.beckn.io/LogisticsCancellationPolicy/v2.0/attributes.yaml](https://schema.beckn.io/LogisticsCancellationPolicy/v2.0/attributes.yaml) | [https://schema.beckn.io/LogisticsCancellationPolicy/v2.0/attributes.jsonschema.yaml](https://schema.beckn.io/LogisticsCancellationPolicy/v2.0/attributes.jsonschema.yaml) | [https://schema.beckn.io/LogisticsCancellationPolicy/v2.0/context.jsonld](https://schema.beckn.io/LogisticsCancellationPolicy/v2.0/context.jsonld) | [https://schema.beckn.io/LogisticsCancellationPolicy/v2.0/vocab.jsonld](https://schema.beckn.io/LogisticsCancellationPolicy/v2.0/vocab.jsonld) | [https://schema.beckn.io/LogisticsCancellationPolicy/v2.0/README.md](https://schema.beckn.io/LogisticsCancellationPolicy/v2.0/README.md) |

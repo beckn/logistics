@@ -1,10 +1,9 @@
 # CancellationPolicy
 
-## Overview
-**CancellationPolicy** defines the terms and charges for cancelling a shipment booking at various stages of the fulfillment lifecycle.
+Schema definition for CancellationPolicy in the Beckn Protocol v2.0.1
 
-## IRI
-`https://schema.beckn.org/logistics/CancellationPolicy`
+## Versions
 
-## Version
-Current version: **v2.0** — [v2.0/attributes.yaml](./v2.0/attributes.yaml)
+| Version | attributes.yaml | attributes.jsonschema.yaml | context.jsonld | vocab.jsonld | README |
+|---|---|---|---|---|---|
+| **v2.0** | [https://schema.beckn.io/CancellationPolicy/v2.0/attributes.yaml](https://schema.beckn.io/CancellationPolicy/v2.0/attributes.yaml) | [https://schema.beckn.io/CancellationPolicy/v2.0/attributes.jsonschema.yaml](https://schema.beckn.io/CancellationPolicy/v2.0/attributes.jsonschema.yaml) | [https://schema.beckn.io/CancellationPolicy/v2.0/context.jsonld](https://schema.beckn.io/CancellationPolicy/v2.0/context.jsonld) | [https://schema.beckn.io/CancellationPolicy/v2.0/vocab.jsonld](https://schema.beckn.io/CancellationPolicy/v2.0/vocab.jsonld) | [https://schema.beckn.io/CancellationPolicy/v2.0/README.md](https://schema.beckn.io/CancellationPolicy/v2.0/README.md) |
