@@ -1,23 +1,20 @@
-openapi: 3.1.0
+openapi: 3.1.1
 info:
   title: Hub
   version: 2.0.0
   description: Schema definition for the Hub entity in the Beckn Logistics domain.
-  contact:
-    name: Beckn Foundation
-    url: https://beckn.org
   license:
-    name: MIT
-    url: https://opensource.org/licenses/MIT
-paths: {}
+    name: CC-BY-NC-SA 4.0 International
+  contact:
+    name: Beckn Labs
+    url: https://beckn.io
 components:
   schemas:
     Hub:
+      x-iri: https://schema.beckn.io/Hub/v2.0
       type: object
       title: Hub
-      description: 'A Hub is a logistics fulfillment center, sorting facility, or
-        distribution point where goods are consolidated, sorted, and dispatched for
-        onward delivery. Maps to beckn:Location.
+      description: 'A Hub is a logistics fulfillment center, sorting facility, or distribution point where goods are consolidated, sorted, and dispatched for onward delivery. Maps to beckn:Location.
 
         '
       required:
@@ -48,7 +45,7 @@ components:
           - CUSTOMS_WAREHOUSE
           example: SORTING_HUB
         operator:
-          $ref: https://schema.beckn.io/LogisticsOperator/v2.0/attributes.yaml#/components/schemas/LogisticsOperator
+          $ref: https://schema.beckn.io/Operator/v2.0/attributes.yaml#/components/schemas/Operator
         operatingHours:
           type: object
           properties:

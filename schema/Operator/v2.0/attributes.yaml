@@ -2,72 +2,61 @@ openapi: 3.1.0
 info:
   title: Operator
   version: 2.0.0
-  description: Schema for Operator in Beckn Logistics domain.
-  contact:
-    name: Beckn Foundation
-    url: https://beckn.org
+  description: Schema definition for the Operator entity in the Beckn Mobility domain.
   license:
-    name: MIT
-    url: https://opensource.org/licenses/MIT
-paths: {}
+    name: CC-BY-NC-SA 4.0 International
+    url: https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+  contact:
+    name: Beckn Labs
+    url: https://beckn.io
 components:
   schemas:
     Operator:
+      x-iri: https://schema.beckn.io/Operator/v2.0
       type: object
       title: Operator
-      description: Entity operating a logistics network or fleet, responsible for end-to-end delivery service.
-      required:
-        - id
-        - name
+      description: An organization that provides and operates public transport or
+        shared mobility services under a defined service agreement.
+      x-tags:
+        - mobility
+        - schema-org
+        - transmodel-netex
+        - ride-hailing
       properties:
+        operatorId:
+          description: Unique identifier for the operator
+          type: string
+        operatingRegions:
+          description: Geographic regions where the operator provides services
+          type: string
+        licenseNumber:
+          description: Regulatory license or accreditation number
+          type: string
+        contactInfo:
+          description: Public contact information for the operator
+          type: string
         id:
+          description: Unique identifier for the provider
           type: string
-          example: "OPR-DELHIVERY-001"
-        name:
-          type: string
-          example: "Delhivery"
-        type:
-          type: string
-          enum:
-            - 3PL
-            - CAPTIVE
-            - AGGREGATOR
-            - POSTAL
-          example: "3PL"
-        contact:
-          $ref: '#/components/schemas/Contact'
-        website:
-          type: string
-          format: uri
-        supportEmail:
-          type: string
-          format: email
-        supportPhone:
-          type: string
-        rating:
+        descriptor:
+          description: Human-readable description of the provider
+          $ref: https://schema.beckn.io/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
+        categories:
+          description: Service categories offered by the provider
+          $ref: https://schema.beckn.io/CategoryCode/v2.1/attributes.yaml#/components/schemas/CategoryCode
+        locations:
+          description: Locations where the provider offers services
+          $ref: https://schema.beckn.io/Location/v2.0/attributes.yaml#/components/schemas/Location
+        items:
+          description: Items available for discovery from this provider
+          $ref: https://schema.beckn.io/Item/v2.1/attributes.yaml#/components/schemas/Item
+        fulfillments:
+          description: Fulfillment options offered by this provider
+          $ref: https://schema.beckn.io/Fulfillment/v2.1/attributes.yaml#/components/schemas/Fulfillment
+        ratingsTotal:
+          description: Total number of ratings received
           type: number
-          minimum: 1
-          maximum: 5
-        activeCarriers:
-          type: integer
-          description: Number of carriers on the operator's network
-        activeDrivers:
-          type: integer
-        deliveriesPerDay:
-          type: integer
-        serviceCoverage:
-          type: object
-          properties:
-            countries:
-              type: array
-              items:
-                type: string
-            cities:
-              type: array
-              items:
-                type: string
-        certifications:
-          type: array
-          items:
-            type: string
-          example: ["ISO9001", "GDPR_COMPLIANT"]
+        rating:
+          description: Aggregate rating of the provider
+          $ref: https://schema.beckn.io/Rating/v2.0/attributes.yaml#/components/schemas/Rating
+      additionalProperties: false

@@ -1,13 +1,9 @@
 # LogisticsFeedback
 
-A schema.beckn.io Type
+Qualitative feedback from sender or receiver about a logistics experience.
 
-Free text + structured tags: `ON_TIME`, `PROFESSIONAL_DRIVER`, `GOOD_PACKAGING`
+## Versions
 
-**Canonical IRI :** `log:LogisticsFeedback`
-
-**Canonical URL:** https://schema.beckn.io/logistics/LogisticsFeedback
-
-## Open Issues
-
-[Open issues](https://github.com/beckn/logistics/issues)
+| Version | attributes.yaml | attributes.jsonschema.yaml | context.jsonld | vocab.jsonld | README |
+|---|---|---|---|---|---|
+| **v2.0** | [https://schema.beckn.io/LogisticsFeedback/v2.0/attributes.yaml](https://schema.beckn.io/LogisticsFeedback/v2.0/attributes.yaml) | [https://schema.beckn.io/LogisticsFeedback/v2.0/attributes.jsonschema.yaml](https://schema.beckn.io/LogisticsFeedback/v2.0/attributes.jsonschema.yaml) | [https://schema.beckn.io/LogisticsFeedback/v2.0/context.jsonld](https://schema.beckn.io/LogisticsFeedback/v2.0/context.jsonld) | [https://schema.beckn.io/LogisticsFeedback/v2.0/vocab.jsonld](https://schema.beckn.io/LogisticsFeedback/v2.0/vocab.jsonld) | [https://schema.beckn.io/LogisticsFeedback/v2.0/README.md](https://schema.beckn.io/LogisticsFeedback/v2.0/README.md) |

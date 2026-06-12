@@ -1,13 +1,9 @@
 # Shipment
 
-A schema.beckn.io Type
+A Shipment represents the movement of one or more packages from an origin to a destination. It is the top-level fulfillment entity in a logistics transaction and maps to beckn:Fulfillment.
 
-The root fulfillment entity. A Shipment tracks the complete lifecycle of goods movement.
+## Versions
 
-**Canonical IRI :** `log:Shipment`
-
-**Canonical URL:** https://schema.beckn.io/logistics/Shipment
-
-## Open Issues
-
-[Open issues](https://github.com/beckn/logistics/issues)
+| Version | attributes.yaml | attributes.jsonschema.yaml | context.jsonld | vocab.jsonld | README |
+|---|---|---|---|---|---|
+| **v2.0** | [https://schema.beckn.io/Shipment/v2.0/attributes.yaml](https://schema.beckn.io/Shipment/v2.0/attributes.yaml) | [https://schema.beckn.io/Shipment/v2.0/attributes.jsonschema.yaml](https://schema.beckn.io/Shipment/v2.0/attributes.jsonschema.yaml) | [https://schema.beckn.io/Shipment/v2.0/context.jsonld](https://schema.beckn.io/Shipment/v2.0/context.jsonld) | [https://schema.beckn.io/Shipment/v2.0/vocab.jsonld](https://schema.beckn.io/Shipment/v2.0/vocab.jsonld) | [https://schema.beckn.io/Shipment/v2.0/README.md](https://schema.beckn.io/Shipment/v2.0/README.md) |

@@ -1,24 +1,9 @@
 # Driver
 
-## Overview
-A **Driver** is an individual who operates a vehicle for logistics delivery. Drivers are assigned shipments and are responsible for pickup, transit, and delivery.
+A person who operates a transport vehicle and is responsible for the safe delivery of passengers during a mobility service trip.
 
-## IRI
-`https://schema.beckn.org/logistics/Driver`
+## Versions
 
-## Use Cases
-- All logistics use cases: Hyperlocal, Courier, Interstate, Long Haul, Express
-
-## Key Attributes
-| Attribute | Type | Description |
-|---|---|---|
-| id | string | Unique driver ID |
-| name | string | Driver full name |
-| licenseNumber | string | Driving license |
-| rating | number | Average driver rating |
-| currentLocation | object | Real-time GPS coordinates |
-| status | enum | AVAILABLE / ON_ROUTE etc. |
-| backgroundVerified | boolean | Verification status |
-
-## Version
-Current version: **v2.0** — [v2.0/attributes.yaml](./v2.0/attributes.yaml)
+| Version | attributes.yaml | attributes.jsonschema.yaml | context.jsonld | vocab.jsonld | README |
+|---|---|---|---|---|---|
+| **v2.0** | [https://schema.beckn.io/Driver/v2.0/attributes.yaml](https://schema.beckn.io/Driver/v2.0/attributes.yaml) | [https://schema.beckn.io/Driver/v2.0/attributes.jsonschema.yaml](https://schema.beckn.io/Driver/v2.0/attributes.jsonschema.yaml) | [https://schema.beckn.io/Driver/v2.0/context.jsonld](https://schema.beckn.io/Driver/v2.0/context.jsonld) | [https://schema.beckn.io/Driver/v2.0/vocab.jsonld](https://schema.beckn.io/Driver/v2.0/vocab.jsonld) | [https://schema.beckn.io/Driver/v2.0/README.md](https://schema.beckn.io/Driver/v2.0/README.md) |

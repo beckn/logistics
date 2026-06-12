@@ -1,24 +1,20 @@
-openapi: 3.1.0
+openapi: 3.1.1
 info:
-  title: LogisticsPlace
+  title: Place
   version: 2.0.0
-  description: Schema definition for the LogisticsPlace entity in the Beckn Logistics
-    domain.
-  contact:
-    name: Beckn Foundation
-    url: https://beckn.org
+  description: Schema definition for the Place entity in the Beckn Logistics domain.
   license:
-    name: MIT
-    url: https://opensource.org/licenses/MIT
-paths: {}
+    name: CC-BY-NC-SA 4.0 International
+  contact:
+    name: Beckn Labs
+    url: https://beckn.io
 components:
   schemas:
     LogisticsPlace:
+      x-iri: https://schema.beckn.io/LogisticsPlace/v2.0
       type: object
-      title: LogisticsPlace
-      description: 'A geographic location relevant to logistics such as origin, destination,
-        hub, or waypoint. Includes structured address and GPS coordinates. Maps to
-        beckn:Location and schema:Place.
+      title: Place
+      description: 'A geographic location relevant to logistics such as origin, destination, hub, or waypoint. Includes structured address and GPS coordinates. Maps to beckn:Location and schema:Place.
 
         '
       required:

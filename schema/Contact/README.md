@@ -1,13 +1,9 @@
 # Contact
 
-A schema.beckn.io Type
+Contact information for sender, receiver, driver, or operator.
 
-Logistics schema for Contact.
+## Versions
 
-**Canonical IRI :** `log:Contact`
-
-**Canonical URL:** https://schema.beckn.io/logistics/Contact
-
-## Open Issues
-
-[Open issues](https://github.com/beckn/logistics/issues)
+| Version | attributes.yaml | attributes.jsonschema.yaml | context.jsonld | vocab.jsonld | README |
+|---|---|---|---|---|---|
+| **v2.0** | [https://schema.beckn.io/Contact/v2.0/attributes.yaml](https://schema.beckn.io/Contact/v2.0/attributes.yaml) | [https://schema.beckn.io/Contact/v2.0/attributes.jsonschema.yaml](https://schema.beckn.io/Contact/v2.0/attributes.jsonschema.yaml) | [https://schema.beckn.io/Contact/v2.0/context.jsonld](https://schema.beckn.io/Contact/v2.0/context.jsonld) | [https://schema.beckn.io/Contact/v2.0/vocab.jsonld](https://schema.beckn.io/Contact/v2.0/vocab.jsonld) | [https://schema.beckn.io/Contact/v2.0/README.md](https://schema.beckn.io/Contact/v2.0/README.md) |

@@ -2,102 +2,61 @@ openapi: 3.1.0
 info:
   title: Route
   version: 2.0.0
-  description: Schema definition for the Route entity in the Beckn Logistics domain.
-  contact:
-    name: Beckn Foundation
-    url: https://beckn.org
+  description: Schema definition for the Route entity in the Beckn Mobility domain.
   license:
-    name: MIT
-    url: https://opensource.org/licenses/MIT
-paths: {}
+    name: CC-BY-NC-SA 4.0 International
+    url: https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+  contact:
+    name: Beckn Labs
+    url: https://beckn.io
 components:
   schemas:
     Route:
+      x-iri: https://schema.beckn.io/Route/v2.0
       type: object
       title: Route
-      description: >
-        A Route is the planned path for a shipment from origin to destination, potentially
-        passing through multiple hubs and waypoints. Maps to beckn:Journey.
-      required:
-        - id
-        - origin
-        - destination
+      description: The physical or logical path followed by a transport service, defined
+        as an ordered sequence of stops or waypoints.
+      x-tags:
+        - mobility
+        - schema-org
+        - transmodel-netex
+        - ride-hailing
       properties:
-        id:
+        routeId:
+          description: Unique identifier for the route
           type: string
-          description: Unique route identifier
-          example: "RTE-BLR-DEL-001"
-        name:
+        shortName:
+          description: Short public-facing name (e.g. 42A)
           type: string
-          description: Human-readable route name
-          example: "Bangalore to Delhi via Hyderabad"
-        origin:
-          $ref: '#/components/schemas/Place'
-        destination:
-          $ref: '#/components/schemas/Place'
-        waypoints:
-          type: array
-          description: Intermediate waypoints/hubs on the route
-          items:
-            $ref: '#/components/schemas/Waypoint'
-        totalDistance:
-          type: object
-          properties:
-            value:
-              type: number
-              example: 2150
-            unit:
-              type: string
-              enum: [km, miles]
-              example: "km"
-        estimatedDuration:
-          type: object
-          properties:
-            value:
-              type: number
-              example: 36
-            unit:
-              type: string
-              enum: [hours, days]
-              example: "hours"
-        transportMode:
+        longName:
+          description: Full descriptive name of the route
           type: string
-          enum:
-            - ROAD
-            - AIR
-            - RAIL
-            - MULTIMODAL
-          example: "ROAD"
         routeType:
+          description: Mode of transport (e.g. BUS, RAIL, TRAM, FERRY)
           type: string
-          description: Classification of route
-          enum:
-            - HYPERLOCAL
-            - LAST_MILE
-            - FIRST_MILE
-            - LINE_HAUL
-            - CROSS_DOCKING
-          example: "LINE_HAUL"
-        geometry:
-          type: object
-          description: GeoJSON LineString of route geometry
-          properties:
-            type:
-              type: string
-              example: "LineString"
-            coordinates:
-              type: array
-              items:
-                type: array
-                items:
-                  type: number
-        tollCost:
-          type: number
-          description: Estimated toll charges in INR
-          example: 1250
-        restrictions:
-          type: array
-          description: Route restrictions (e.g. night driving ban)
-          items:
-            type: string
-          example: ["No night driving in MP", "Heavy vehicle ban in city center"]
+        operatorRef:
+          description: Operator providing this route
+          $ref: https://schema.beckn.io/Operator/v2.0/attributes.yaml#/components/schemas/Operator
+        networkRef:
+          description: Network this route belongs to
+          $ref: https://schema.beckn.io/Network/v2.0/attributes.yaml#/components/schemas/Network
+        id:
+          description: Unique identifier for the item
+          type: string
+        descriptor:
+          description: Human-readable description of the item
+          $ref: https://schema.beckn.io/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
+        categoryId:
+          description: Category code classifying the item
+          $ref: https://schema.beckn.io/CategoryCode/v2.1/attributes.yaml#/components/schemas/CategoryCode
+        price:
+          description: Price specification for this item
+          $ref: https://schema.beckn.io/PriceSpecification/v2.1/attributes.yaml#/components/schemas/PriceSpecification
+        quantity:
+          description: Available quantity of the item
+          $ref: https://schema.beckn.io/Quantity/v2.0/attributes.yaml#/components/schemas/Quantity
+        tags:
+          description: Tags associated with the item
+          type: string
+      additionalProperties: false

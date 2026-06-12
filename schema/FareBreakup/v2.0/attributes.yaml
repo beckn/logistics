@@ -2,59 +2,47 @@ openapi: 3.1.0
 info:
   title: FareBreakup
   version: 2.0.0
-  description: Schema for FareBreakup in Beckn Logistics domain.
-  contact:
-    name: Beckn Foundation
-    url: https://beckn.org
+  description: Schema definition for the FareBreakup entity in the Beckn Mobility
   license:
-    name: MIT
-    url: https://opensource.org/licenses/MIT
-paths: {}
+    name: CC-BY-NC-SA 4.0 International
+    url: https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+  contact:
+    name: Beckn Labs
+    url: https://beckn.io
 components:
   schemas:
     FareBreakup:
+      x-iri: https://schema.beckn.io/FareBreakup/v2.0
       type: object
       title: FareBreakup
-      description: A single line item in the fare breakup for a logistics service.
-      required:
-        - title
-        - amount
+      description: A detailed breakdown of the total fare into its constituent components,
+        including base fare, taxes, surcharges, and discounts.
+      x-tags:
+        - mobility
+        - ride-hailing
       properties:
-        title:
+        componentTitle:
+          description: Human-readable title for this fare component
           type: string
-          description: Name of the fare component
-          example: "Base Freight"
         amount:
+          description: Monetary amount for this fare component
           type: number
-          example: 450
         currency:
+          description: ISO 4217 currency code for this component
           type: string
-          example: "INR"
-        type:
+        taxAmount:
+          description: Tax amount included in this component
+          type: number
+        taxRate:
+          description: Tax rate percentage applied
+          type: number
+        title:
+          description: Title or label of this price component
           type: string
-          enum:
-            - ITEM
-            - SURCHARGE
-            - TAX
-            - DISCOUNT
-            - FEE
-          example: "ITEM"
-        taxBreakup:
-          type: array
-          description: Tax sub-components if applicable
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-                example: "CGST @ 9%"
-              percent:
-                type: number
-                example: 9
-              amount:
-                type: number
-                example: 40.5
-        waived:
-          type: boolean
-          description: Whether this component was waived
-          example: false
+        price:
+          description: Monetary value of this component
+          $ref: https://schema.beckn.io/PriceSpecification/v2.1/attributes.yaml#/components/schemas/PriceSpecification
+        tags:
+          description: Tags associated with this price component
+          type: string
+      additionalProperties: false

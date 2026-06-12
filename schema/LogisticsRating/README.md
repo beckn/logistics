@@ -1,13 +1,9 @@
 # LogisticsRating
 
-A schema.beckn.io Type
+A numeric score given by a user for a logistics service, driver, or carrier.
 
-Categories: `DRIVER`, `CARRIER`, `SERVICE`, `PACKAGING`
+## Versions
 
-**Canonical IRI :** `log:LogisticsRating`
-
-**Canonical URL:** https://schema.beckn.io/logistics/LogisticsRating
-
-## Open Issues
-
-[Open issues](https://github.com/beckn/logistics/issues)
+| Version | attributes.yaml | attributes.jsonschema.yaml | context.jsonld | vocab.jsonld | README |
+|---|---|---|---|---|---|
+| **v2.0** | [https://schema.beckn.io/LogisticsRating/v2.0/attributes.yaml](https://schema.beckn.io/LogisticsRating/v2.0/attributes.yaml) | [https://schema.beckn.io/LogisticsRating/v2.0/attributes.jsonschema.yaml](https://schema.beckn.io/LogisticsRating/v2.0/attributes.jsonschema.yaml) | [https://schema.beckn.io/LogisticsRating/v2.0/context.jsonld](https://schema.beckn.io/LogisticsRating/v2.0/context.jsonld) | [https://schema.beckn.io/LogisticsRating/v2.0/vocab.jsonld](https://schema.beckn.io/LogisticsRating/v2.0/vocab.jsonld) | [https://schema.beckn.io/LogisticsRating/v2.0/README.md](https://schema.beckn.io/LogisticsRating/v2.0/README.md) |

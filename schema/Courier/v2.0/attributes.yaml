@@ -1,23 +1,20 @@
-openapi: 3.1.0
+openapi: 3.1.1
 info:
   title: Courier
   version: 2.0.0
   description: Schema definition for the Courier entity in the Beckn Logistics domain.
-  contact:
-    name: Beckn Foundation
-    url: https://beckn.org
   license:
-    name: MIT
-    url: https://opensource.org/licenses/MIT
-paths: {}
+    name: CC-BY-NC-SA 4.0 International
+  contact:
+    name: Beckn Labs
+    url: https://beckn.io
 components:
   schemas:
     Courier:
+      x-iri: https://schema.beckn.io/Courier/v2.0
       type: object
       title: Courier
-      description: 'A Courier is an individual delivery agent responsible for last-mile
-        pickup and delivery of packages, typically in hyperlocal or urban delivery
-        contexts. Maps to beckn:Agent.
+      description: 'A Courier is an individual delivery agent responsible for last-mile pickup and delivery of packages, typically in hyperlocal or urban delivery contexts. Maps to beckn:Agent.
 
         '
       required:

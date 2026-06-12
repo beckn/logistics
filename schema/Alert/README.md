@@ -1,18 +1,9 @@
 # Alert
 
-## Overview
-An **Alert** is a notification or exception raised during shipment transit — delays, damage, customs holds, SLA breaches, or failed deliveries.
+Schema definition for Alert in the Beckn Protocol v2.0.1
 
-## IRI
-`https://schema.beckn.org/logistics/Alert`
+## Versions
 
-## Alert Types
-- DELAY: Shipment running late
-- DAMAGE: Package damaged in transit
-- LOSS: Package lost
-- FAILED_DELIVERY: Delivery attempt failed
-- SLA_BREACH: Service level agreement breached
-- CUSTOMS_HOLD: Interstate/international customs hold
-
-## Version
-Current version: **v2.0** — [v2.0/attributes.yaml](./v2.0/attributes.yaml)
+| Version | attributes.yaml | attributes.jsonschema.yaml | context.jsonld | vocab.jsonld | README |
+|---|---|---|---|---|---|
+| **v2.0** | [https://schema.beckn.io/Alert/v2.0/attributes.yaml](https://schema.beckn.io/Alert/v2.0/attributes.yaml) | [https://schema.beckn.io/Alert/v2.0/attributes.jsonschema.yaml](https://schema.beckn.io/Alert/v2.0/attributes.jsonschema.yaml) | [https://schema.beckn.io/Alert/v2.0/context.jsonld](https://schema.beckn.io/Alert/v2.0/context.jsonld) | [https://schema.beckn.io/Alert/v2.0/vocab.jsonld](https://schema.beckn.io/Alert/v2.0/vocab.jsonld) | [https://schema.beckn.io/Alert/v2.0/README.md](https://schema.beckn.io/Alert/v2.0/README.md) |

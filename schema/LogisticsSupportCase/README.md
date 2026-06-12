@@ -1,13 +1,9 @@
 # LogisticsSupportCase
 
-A schema.beckn.io Type
+Customer support ticket for shipment issues — loss, damage, delay, or billing.
 
-Issue types: `SHIPMENT_LOST`, `SHIPMENT_DAMAGED`, `DELIVERY_DELAYED`, `BILLING_DISPUTE`, `DRIVER_MISCONDUCT`
+## Versions
 
-**Canonical IRI :** `log:LogisticsSupportCase`
-
-**Canonical URL:** https://schema.beckn.io/logistics/LogisticsSupportCase
-
-## Open Issues
-
-[Open issues](https://github.com/beckn/logistics/issues)
+| Version | attributes.yaml | attributes.jsonschema.yaml | context.jsonld | vocab.jsonld | README |
+|---|---|---|---|---|---|
+| **v2.0** | [https://schema.beckn.io/LogisticsSupportCase/v2.0/attributes.yaml](https://schema.beckn.io/LogisticsSupportCase/v2.0/attributes.yaml) | [https://schema.beckn.io/LogisticsSupportCase/v2.0/attributes.jsonschema.yaml](https://schema.beckn.io/LogisticsSupportCase/v2.0/attributes.jsonschema.yaml) | [https://schema.beckn.io/LogisticsSupportCase/v2.0/context.jsonld](https://schema.beckn.io/LogisticsSupportCase/v2.0/context.jsonld) | [https://schema.beckn.io/LogisticsSupportCase/v2.0/vocab.jsonld](https://schema.beckn.io/LogisticsSupportCase/v2.0/vocab.jsonld) | [https://schema.beckn.io/LogisticsSupportCase/v2.0/README.md](https://schema.beckn.io/LogisticsSupportCase/v2.0/README.md) |

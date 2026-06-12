@@ -1,0 +1,37 @@
+{
+  "$id": "https://schema.beckn.io/Alert/v2.0",
+  "x-iri": "https://schema.beckn.io/Alert/v2.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Schema definition for Alert in the Beckn Protocol v2.0.1",
+  "title": "Alert",
+  "type": "object",
+  "properties": {
+    "affectedEntities": {
+      "description": "IDs of entities affected (route/order/fulfillment/etc.)",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "descriptor": {
+      "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+    },
+    "id": {
+      "type": "string"
+    },
+    "severity": {
+      "type": "string"
+    },
+    "validity": {
+      "$ref": "https://schema.beckn.io/TimePeriod/v2.1/schema.json"
+    }
+  },
+  "required": [
+    "id",
+    "descriptor"
+  ],
+  "additionalProperties": false,
+  "x-tags": [
+    "common"
+  ]
+}

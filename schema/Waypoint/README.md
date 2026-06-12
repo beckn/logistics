@@ -1,13 +1,9 @@
 # Waypoint
 
-A schema.beckn.io Type
+A Waypoint is an intermediate stop or checkpoint on a logistics route, such as a sorting hub, relay station, or customs checkpoint. Maps to beckn:Stop.
 
-Intermediate stop: `HUB`, `RELAY_POINT`, `CUSTOMS`, `PICKUP`, `DELIVERY`
+## Versions
 
-**Canonical IRI :** `log:Waypoint`
-
-**Canonical URL:** https://schema.beckn.io/logistics/Waypoint
-
-## Open Issues
-
-[Open issues](https://github.com/beckn/logistics/issues)
+| Version | attributes.yaml | attributes.jsonschema.yaml | context.jsonld | vocab.jsonld | README |
+|---|---|---|---|---|---|
+| **v2.0** | [https://schema.beckn.io/Waypoint/v2.0/attributes.yaml](https://schema.beckn.io/Waypoint/v2.0/attributes.yaml) | [https://schema.beckn.io/Waypoint/v2.0/attributes.jsonschema.yaml](https://schema.beckn.io/Waypoint/v2.0/attributes.jsonschema.yaml) | [https://schema.beckn.io/Waypoint/v2.0/context.jsonld](https://schema.beckn.io/Waypoint/v2.0/context.jsonld) | [https://schema.beckn.io/Waypoint/v2.0/vocab.jsonld](https://schema.beckn.io/Waypoint/v2.0/vocab.jsonld) | [https://schema.beckn.io/Waypoint/v2.0/README.md](https://schema.beckn.io/Waypoint/v2.0/README.md) |

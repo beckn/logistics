@@ -1,13 +1,9 @@
 # Proof
 
-A schema.beckn.io Type
+Proof of delivery or pickup evidence, including photos, signatures, OTP confirmations, or digital receipts. Maps to beckn:Document.
 
-Delivery evidence types: `PHOTO`, `SIGNATURE`, `OTP`, `BIOMETRIC`, `DIGITAL_RECEIPT`
+## Versions
 
-**Canonical IRI :** `log:Proof`
-
-**Canonical URL:** https://schema.beckn.io/logistics/Proof
-
-## Open Issues
-
-[Open issues](https://github.com/beckn/logistics/issues)
+| Version | attributes.yaml | attributes.jsonschema.yaml | context.jsonld | vocab.jsonld | README |
+|---|---|---|---|---|---|
+| **v2.0** | [https://schema.beckn.io/Proof/v2.0/attributes.yaml](https://schema.beckn.io/Proof/v2.0/attributes.yaml) | [https://schema.beckn.io/Proof/v2.0/attributes.jsonschema.yaml](https://schema.beckn.io/Proof/v2.0/attributes.jsonschema.yaml) | [https://schema.beckn.io/Proof/v2.0/context.jsonld](https://schema.beckn.io/Proof/v2.0/context.jsonld) | [https://schema.beckn.io/Proof/v2.0/vocab.jsonld](https://schema.beckn.io/Proof/v2.0/vocab.jsonld) | [https://schema.beckn.io/Proof/v2.0/README.md](https://schema.beckn.io/Proof/v2.0/README.md) |
