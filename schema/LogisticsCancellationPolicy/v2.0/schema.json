@@ -1,6 +1,6 @@
 {
   "type": "object",
-  "title": "CancellationPolicy",
+  "title": "LogisticsCancellationPolicy",
   "description": "Defines terms under which a shipment booking can be cancelled.",
   "properties": {
     "id": {

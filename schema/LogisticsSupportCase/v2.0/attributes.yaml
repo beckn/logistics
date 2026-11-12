@@ -1,6 +1,6 @@
 openapi: 3.1.1
 info:
-  title: SupportCase
+  title: LogisticsSupportCase
   version: 2.0.0
   description: Schema for SupportCase in Beckn Logistics domain.
   license:
@@ -13,7 +13,7 @@ components:
     LogisticsSupportCase:
       x-iri: https://schema.nfh.global/LogisticsSupportCase/v2.0
       type: object
-      title: SupportCase
+      title: LogisticsSupportCase
       description: Customer support ticket for shipment issues — loss, damage, delay, or billing.
       required:
       - id

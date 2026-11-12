@@ -1,6 +1,6 @@
 openapi: 3.1.1
 info:
-  title: Operator
+  title: LogisticsOperator
   version: 2.0.0
   description: Schema for Operator in Beckn Logistics domain.
   license:
@@ -13,7 +13,7 @@ components:
     LogisticsOperator:
       x-iri: https://schema.nfh.global/LogisticsOperator/v2.0
       type: object
-      title: Operator
+      title: LogisticsOperator
       description: Entity operating a logistics network or fleet, responsible for end-to-end delivery service.
       required:
       - id

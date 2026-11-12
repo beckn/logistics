@@ -1,6 +1,6 @@
 openapi: 3.1.1
 info:
-  title: Place
+  title: LogisticsPlace
   version: 2.0.0
   description: Schema definition for the Place entity in the Beckn Logistics domain.
   license:
@@ -13,7 +13,7 @@ components:
     LogisticsPlace:
       x-iri: https://schema.nfh.global/LogisticsPlace/v2.0
       type: object
-      title: Place
+      title: LogisticsPlace
       description: 'A geographic location relevant to logistics such as origin, destination, hub, or waypoint. Includes structured address and GPS coordinates. Maps to beckn:Location and schema:Place.
 
         '

@@ -1,6 +1,6 @@
 {
   "type": "object",
-  "title": "SupportCase",
+  "title": "LogisticsSupportCase",
   "description": "Customer support ticket for shipment issues — loss, damage, delay, or billing.",
   "required": [
     "id",

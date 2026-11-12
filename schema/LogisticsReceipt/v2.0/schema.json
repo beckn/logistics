@@ -1,6 +1,6 @@
 {
   "type": "object",
-  "title": "Receipt",
+  "title": "LogisticsReceipt",
   "description": "Digital acknowledgment of payment and delivery for a logistics service.",
   "required": [
     "id",

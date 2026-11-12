@@ -1,6 +1,6 @@
 {
   "type": "object",
-  "title": "Feedback",
+  "title": "LogisticsFeedback",
   "description": "Qualitative feedback from sender or receiver about a logistics experience.",
   "properties": {
     "id": {

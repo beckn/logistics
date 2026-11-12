@@ -17,8 +17,8 @@ A Route is the planned path for a shipment from origin to destination, potential
 |---|---|---|---|
 | `id` | yes | string | Unique route identifier |
 | `name` | no | string | Human-readable route name |
-| `origin` | yes | $ref: https://schema.nfh.global/Place/v2.0/attributes.yaml#/components/schemas/Place | - |
-| `destination` | yes | $ref: https://schema.nfh.global/Place/v2.0/attributes.yaml#/components/schemas/Place | - |
+| `origin` | yes | $ref: https://schema.nfh.global/LogisticsPlace/v2.0/attributes.yaml#/components/schemas/LogisticsPlace | - |
+| `destination` | yes | $ref: https://schema.nfh.global/LogisticsPlace/v2.0/attributes.yaml#/components/schemas/LogisticsPlace | - |
 | `waypoints` | no | array | Intermediate waypoints/hubs on the route |
 | `totalDistance` | no | object | - |
 | `estimatedDuration` | no | object | - |

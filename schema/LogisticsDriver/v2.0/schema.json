@@ -1,6 +1,6 @@
 {
   "type": "object",
-  "title": "Driver",
+  "title": "LogisticsDriver",
   "description": "A Driver is an individual who operates a vehicle for logistics delivery. Drivers are assigned to shipments and responsible for physical transport. Maps to beckn:Agent. ",
   "required": [
     "id",

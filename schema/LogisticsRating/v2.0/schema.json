@@ -1,6 +1,6 @@
 {
   "type": "object",
-  "title": "Rating",
+  "title": "LogisticsRating",
   "description": "A numeric score given by a user for a logistics service, driver, or carrier.",
   "required": [
     "value",

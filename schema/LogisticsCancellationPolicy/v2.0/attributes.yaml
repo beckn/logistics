@@ -1,6 +1,6 @@
 openapi: 3.1.1
 info:
-  title: CancellationPolicy
+  title: LogisticsCancellationPolicy
   version: 2.0.0
   description: Schema for CancellationPolicy in Beckn Logistics domain.
   license:
@@ -13,7 +13,7 @@ components:
     LogisticsCancellationPolicy:
       x-iri: https://schema.nfh.global/LogisticsCancellationPolicy/v2.0
       type: object
-      title: CancellationPolicy
+      title: LogisticsCancellationPolicy
       description: Defines terms under which a shipment booking can be cancelled.
       properties:
         id:

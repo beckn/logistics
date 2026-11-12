@@ -1,6 +1,6 @@
 openapi: 3.1.1
 info:
-  title: Receipt
+  title: LogisticsReceipt
   version: 2.0.0
   description: Schema for Receipt in Beckn Logistics domain.
   license:
@@ -13,7 +13,7 @@ components:
     LogisticsReceipt:
       x-iri: https://schema.nfh.global/LogisticsReceipt/v2.0
       type: object
-      title: Receipt
+      title: LogisticsReceipt
       description: Digital acknowledgment of payment and delivery for a logistics service.
       required:
       - id

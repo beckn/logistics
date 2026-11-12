@@ -1,6 +1,6 @@
 openapi: 3.1.1
 info:
-  title: Rating
+  title: LogisticsRating
   version: 2.0.0
   description: Schema for Rating in Beckn Logistics domain.
   license:
@@ -13,7 +13,7 @@ components:
     LogisticsRating:
       x-iri: https://schema.nfh.global/LogisticsRating/v2.0
       type: object
-      title: Rating
+      title: LogisticsRating
       description: A numeric score given by a user for a logistics service, driver, or carrier.
       required:
       - value

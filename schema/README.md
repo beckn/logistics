@@ -45,6 +45,7 @@ This folder contains the canonical logistics domain schemas for the Beckn protoc
 
 | Schema | Description | Use Cases |
 |--------|-------------|-----------|
+| [Logistics](./Logistics/) | Bundle of all logistics types in one document | All |
 | [Shipment](./Shipment/) | Core delivery fulfillment entity | All |
 | [Package](./Package/) | Physical goods unit for transport | All |
 | [Consignment](./Consignment/) | Grouped shipment for one commercial transaction | Courier, Interstate, Long Haul |

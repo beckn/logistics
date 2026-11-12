@@ -1,6 +1,6 @@
 {
   "type": "object",
-  "title": "Route",
+  "title": "LogisticsRoute",
   "description": "A Route is the planned path for a shipment from origin to destination, potentially passing through multiple hubs and waypoints. Maps to beckn:Journey. ",
   "required": [
     "id",

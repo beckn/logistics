@@ -1,6 +1,6 @@
 {
   "type": "object",
-  "title": "Vehicle",
+  "title": "LogisticsVehicle",
   "description": "A Vehicle is a transport asset used for logistics operations. Vehicle types range from bicycles for hyperlocal delivery to heavy trucks for long haul freight. Maps to beckn:Asset. ",
   "required": [
     "id",
