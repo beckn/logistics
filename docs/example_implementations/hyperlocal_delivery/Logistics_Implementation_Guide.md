@@ -306,7 +306,7 @@ A logistics `Contract` composes the registered logistics domain schemas into the
 | 7 | `contractAttributes` | `LogisticsReceipt` | ✓ |
 | 8 | `settlements[]` | *(stub — deferred)* | ✗ |
 
-All eight domain schemas referenced above are registered on https://schema.beckn.io (`Logistics` module, v2.0), except the `Settlement` mapping, which is deliberately left empty in this revision.
+All eight domain schemas referenced above are registered on https://schema.nfh.global (`Logistics` module, v2.0), except the `Settlement` mapping, which is deliberately left empty in this revision.
 
 These are spec-grounded observations on the mapping above; they do not change the canonical mapping but are flagged for review:
 
@@ -346,6 +346,8 @@ No migration required. This guide documents an implementation pattern over the e
 
 #### Worked example — cascaded hyperlocal grocery delivery
 
+The payloads below are checked in CI (`tools/validate.py examples`): each message against the core `beckn.yaml` action schema, and each typed logistics object against its schema pack.
+
 This worked example uses the [cascaded topology](#cascaded-topology). Lisa (retail Consumer Node) shops on FreshCart, operated by Adam (retail Provider Node), which acts as the Logistics Consumer Node behind the scenes; SwiftDrop is the chosen Logistics Provider Node and Bob is the Courier.
 
 **Retail Provider (Adam) receives a potential retail order from Retail Consumer (Lisa).** Adam receives a notification on his FreshCart app — a quick-commerce store-manager app — asking him to estimate inventory availability for a potential order in Lisa's cart. The order contains a cart (products with `id`, `name`, `SKU`, `quantity`, thumbnail, add-ons, customizations, item-level discounts, item metadata, offers, and a price breakup excluding taxes, shipping, and convenience), billing details (customer name Lisa Headey, masked phone, email, invoice URL), and a fulfillment method of **Home Delivery**. Adam then (1) checks his inventory and confirms the items are available; (2) confirms availability on his app; (3) has his Provider Node (FreshCart) proceed to calculate delivery charges by acting as a logistics Consumer Node.
@@ -373,25 +375,48 @@ The spatial `/discover` request expresses the coverage geometry as a `SpatialCon
     "action": "discover",
     "bapId": "freshcart.example.net",
     "bapUri": "https://freshcart.example.net/beckn",
-    "transactionId": "5f9d…-txn-001",
-    "messageId": "5f9d…-msg-001",
+    "transactionId": "5f9d-txn-001",
+    "messageId": "5f9d-txn-001-msg-001",
     "timestamp": "2026-06-03T16:30:00.000Z"
   },
   "message": {
     "intent": {
-      "spatial": {
-        "targets": ["$['serviceableArea'][*]['geo']"],
-        "op": "S_CONTAINS",
-        "geometry": {
-          "type": "Polygon",
-          "coordinates": [[
-            [77.5921, 12.9719], [77.6005, 12.9719],
-            [77.6005, 12.9655], [77.5921, 12.9655],
-            [77.5921, 12.9719]
-          ]]
-        },
-        "quantifier": "ANY"
-      },
+      "spatial": [
+        {
+          "targets": [
+            "$['serviceableArea'][*]['geo']"
+          ],
+          "op": "S_CONTAINS",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  77.5921,
+                  12.9719
+                ],
+                [
+                  77.6005,
+                  12.9719
+                ],
+                [
+                  77.6005,
+                  12.9655
+                ],
+                [
+                  77.5921,
+                  12.9655
+                ],
+                [
+                  77.5921,
+                  12.9719
+                ]
+              ]
+            ]
+          },
+          "quantifier": "ANY"
+        }
+      ],
       "filters": {
         "type": "jsonpath",
         "expression": "$[?(@.package.category=='GROCERY' && @.package.handlingCodes anyof ['FRAGILE','FROZEN'])]"
@@ -403,31 +428,87 @@ The spatial `/discover` request expresses the coverage geometry as a `SpatialCon
 
 > `filters.type` is shown as defined in the current draft `beckn.yaml` (`enum: [jsonpath]`). The NFH-005 normalization renaming this to `filters.expressionType` has not yet landed in the draft; this is tracked as a cross-artifact-drift item (see [Open Questions](#open-questions)).
 
-The callback returns a `Catalog` listing the matching Provider Nodes:
+The callback returns one `Catalog` per matching Provider Node:
 
 ```json
 {
   "context": {
     "version": "2.0.0",
     "action": "on_discover",
-    "transactionId": "5f9d…-txn-001",
-    "messageId": "5f9d…-msg-001",
+    "bapId": "freshcart.example.net",
+    "bapUri": "https://freshcart.example.net/beckn",
+    "transactionId": "5f9d-txn-001",
+    "messageId": "5f9d-txn-001-msg-001",
     "timestamp": "2026-06-03T16:30:00.420Z"
   },
   "message": {
-    "catalog": {
-      "descriptor": { "name": "Serviceable delivery providers" },
-      "providers": [
-        { "id": "swiftdrop.example.net", "descriptor": { "name": "SwiftDrop" } },
-        { "id": "dashcart.example.net",  "descriptor": { "name": "DashCart" } },
-        { "id": "delivax.example.net",   "descriptor": { "name": "Delivax" } }
-      ]
-    }
+    "catalogs": [
+      {
+        "id": "catalog-swiftdrop",
+        "descriptor": {
+          "name": "SwiftDrop delivery services"
+        },
+        "provider": {
+          "id": "swiftdrop.example.net",
+          "descriptor": {
+            "name": "SwiftDrop"
+          }
+        },
+        "offers": [
+          {
+            "id": "offer-swiftdrop-001",
+            "descriptor": {
+              "name": "Hyperlocal delivery"
+            }
+          }
+        ]
+      },
+      {
+        "id": "catalog-dashcart",
+        "descriptor": {
+          "name": "DashCart delivery services"
+        },
+        "provider": {
+          "id": "dashcart.example.net",
+          "descriptor": {
+            "name": "DashCart"
+          }
+        },
+        "offers": [
+          {
+            "id": "offer-dashcart-001",
+            "descriptor": {
+              "name": "Hyperlocal delivery"
+            }
+          }
+        ]
+      },
+      {
+        "id": "catalog-delivax",
+        "descriptor": {
+          "name": "Delivax delivery services"
+        },
+        "provider": {
+          "id": "delivax.example.net",
+          "descriptor": {
+            "name": "Delivax"
+          }
+        },
+        "offers": [
+          {
+            "id": "offer-delivax-001",
+            "descriptor": {
+              "name": "Hyperlocal delivery"
+            }
+          }
+        ]
+      }
+    ]
   }
 }
 ```
 
-**Delivery services requested for all providers.** FreshCart now fires an individual `/discover` at each Provider Node returned by the Discovery Node, this time carrying the concrete package and slot so each can return a priced `Offer`.
+**Delivery services requested for all providers.** FreshCart now fires an individual `/discover` at each Provider Node returned by the Discovery Node, this time narrowing the criteria to the concrete package and slot so each can return a priced `Offer`.
 
 ```mermaid
 sequenceDiagram
@@ -452,7 +533,7 @@ sequenceDiagram
     P3->>LC: /on_discover (Offer — LogisticsFare, ETA, rating)
 ```
 
-The per-provider `/discover` carries the package details in `resourceAttributes` (a `Package`) and the coverage in `Intent.spatial`:
+The per-provider `/discover` expresses the package criteria in `Intent.filters` and the coverage in `Intent.spatial`. A discovery message carries an `Intent` only; the `Package` itself is declared in `resourceAttributes` at `/select`:
 
 ```json
 {
@@ -460,67 +541,88 @@ The per-provider `/discover` carries the package details in `resourceAttributes`
     "version": "2.0.0",
     "action": "discover",
     "bapId": "freshcart.example.net",
+    "bapUri": "https://freshcart.example.net/beckn",
     "bppId": "swiftdrop.example.net",
-    "transactionId": "5f9d…-txn-001",
-    "messageId": "5f9d…-msg-002",
+    "bppUri": "https://swiftdrop.example.net/beckn",
+    "transactionId": "5f9d-txn-001",
+    "messageId": "5f9d-txn-001-msg-002",
     "timestamp": "2026-06-03T16:30:01.000Z"
   },
   "message": {
     "intent": {
-      "spatial": {
-        "targets": ["$['serviceableArea'][*]['geo']"],
-        "op": "S_CONTAINS",
-        "geometry": { "type": "Point", "coordinates": [77.5946, 12.9716] },
-        "distanceMeters": 4200
-      },
+      "spatial": [
+        {
+          "targets": [
+            "$['serviceableArea'][*]['geo']"
+          ],
+          "op": "S_CONTAINS",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              77.5946,
+              12.9716
+            ]
+          },
+          "distanceMeters": 4200
+        }
+      ],
       "filters": {
         "type": "jsonpath",
-        "expression": "$[?(@.deliveryWindowMinutes <= 15)]"
-      }
-    },
-    "resource": {
-      "descriptor": { "name": "Grocery order — 14 items" },
-      "resourceAttributes": {
-        "@context": "https://schema.beckn.io/Package/v2.0/context.jsonld",
-        "@type": "Package",
-        "category": "GROCERY",
-        "handlingCodes": ["FRAGILE", "FROZEN"],
-        "weight": { "value": 7, "unit": "kg" },
-        "itemCount": 14,
-        "instructions": ["Keep frozen items below 0 °C in transit"]
+        "expression": "$[?(@.deliveryWindowMinutes <= 15 && @.package.handlingCodes anyof ['FRAGILE','FROZEN'])]"
       }
     }
   }
 }
 ```
 
-The callback from each provider returns an `Offer` carrying a `LogisticsFare` in `offerAttributes`:
+The callback from each provider returns a `Catalog` whose `Offer` carries a `LogisticsFare` in `offerAttributes`:
 
 ```json
 {
   "context": {
     "version": "2.0.0",
     "action": "on_discover",
+    "bapId": "freshcart.example.net",
+    "bapUri": "https://freshcart.example.net/beckn",
     "bppId": "swiftdrop.example.net",
-    "transactionId": "5f9d…-txn-001",
-    "messageId": "5f9d…-msg-002",
+    "bppUri": "https://swiftdrop.example.net/beckn",
+    "transactionId": "5f9d-txn-001",
+    "messageId": "5f9d-txn-001-msg-002",
     "timestamp": "2026-06-03T16:30:01.480Z"
   },
   "message": {
-    "catalog": {
-      "offers": [{
-        "id": "offer-swiftdrop-001",
-        "descriptor": { "name": "Express grocery delivery" },
-        "offerAttributes": {
-          "@context": "https://schema.beckn.io/LogisticsFare/v2.0/context.jsonld",
-          "@type": "LogisticsFare",
-          "currency": "USD",
-          "value": "3.40",
-          "etaMinutes": 14,
-          "rating": 4.7
-        }
-      }]
-    }
+    "catalogs": [
+      {
+        "id": "catalog-swiftdrop",
+        "descriptor": {
+          "name": "SwiftDrop delivery services"
+        },
+        "provider": {
+          "id": "swiftdrop.example.net",
+          "descriptor": {
+            "name": "SwiftDrop"
+          }
+        },
+        "offers": [
+          {
+            "id": "offer-swiftdrop-001",
+            "descriptor": {
+              "name": "Express grocery delivery",
+              "shortDesc": "Delivered in about 14 minutes"
+            },
+            "offerAttributes": {
+              "@context": "https://schema.nfh.global/LogisticsFare/v2.0/context.jsonld",
+              "@type": "LogisticsFare",
+              "currency": "USD",
+              "baseFreight": 2.8,
+              "otherCharges": 0.6,
+              "totalAmount": 3.4,
+              "estimatedFare": true
+            }
+          }
+        ]
+      }
+    ]
   }
 }
 ```
@@ -535,28 +637,59 @@ The callback from each provider returns an `Offer` carrying a `LogisticsFare` in
     "version": "2.0.0",
     "action": "select",
     "bapId": "freshcart.example.net",
+    "bapUri": "https://freshcart.example.net/beckn",
     "bppId": "swiftdrop.example.net",
-    "transactionId": "5f9d…-txn-001",
-    "messageId": "5f9d…-msg-003",
+    "bppUri": "https://swiftdrop.example.net/beckn",
+    "transactionId": "5f9d-txn-001",
+    "messageId": "5f9d-txn-001-msg-003",
     "timestamp": "2026-06-03T16:31:00.000Z"
   },
   "message": {
     "contract": {
-      "descriptor": { "name": "Hyperlocal grocery delivery" },
-      "commitments": [{
-        "offer": { "id": "offer-swiftdrop-001", "resourceIds": ["pkg-001"] },
-        "resources": [{
-          "id": "pkg-001",
-          "resourceAttributes": {
-            "@context": "https://schema.beckn.io/Package/v2.0/context.jsonld",
-            "@type": "Package",
-            "category": "GROCERY",
-            "handlingCodes": ["FRAGILE", "FROZEN"],
-            "weight": { "value": 7, "unit": "kg" },
-            "itemCount": 14
+      "descriptor": {
+        "name": "Hyperlocal grocery delivery"
+      },
+      "commitments": [
+        {
+          "id": "commitment-001",
+          "status": {
+            "descriptor": {
+              "code": "DRAFT"
+            }
+          },
+          "resources": [
+            {
+              "id": "pkg-001",
+              "quantity": {
+                "count": 1
+              },
+              "resourceAttributes": {
+                "@context": "https://schema.nfh.global/Package/v2.0/context.jsonld",
+                "@type": "Package",
+                "id": "pkg-001",
+                "description": "Groceries, 14 items, some frozen",
+                "weight": {
+                  "value": 7,
+                  "unit": "kg"
+                },
+                "fragile": true,
+                "packageType": "BAG",
+                "temperatureControl": {
+                  "required": true,
+                  "maxTemp": 0,
+                  "unit": "C"
+                }
+              }
+            }
+          ],
+          "offer": {
+            "id": "offer-swiftdrop-001",
+            "resourceIds": [
+              "pkg-001"
+            ]
           }
-        }]
-      }]
+        }
+      ]
     }
   }
 }
@@ -564,31 +697,99 @@ The callback from each provider returns an `Offer` carrying a `LogisticsFare` in
 
 The provider returns `/on_select` confirming the commitment and priced consideration (`LogisticsFare` in `considerationAttributes`).
 
-**Delivery details and payment terms received from delivery service.** Following `/on_select`, FreshCart calls `/init` to exchange participant and payment-term details and receive the provider's draft terms. The provider's `/on_init` returns the `Consideration` and `PaymentTerms`.
+**Delivery details and payment terms received from delivery service.** Following `/on_select`, FreshCart calls `/init` to exchange participant and payment-term details and receive the provider's draft terms. The provider's `/on_init` returns the draft `Contract` with the priced `Consideration`. Payment terms belong to the settlement modelling that this revision defers (see [Open Questions](#open-questions)).
 
 ```json
 {
   "context": {
     "version": "2.0.0",
     "action": "on_init",
+    "bapId": "freshcart.example.net",
+    "bapUri": "https://freshcart.example.net/beckn",
     "bppId": "swiftdrop.example.net",
-    "transactionId": "5f9d…-txn-001",
-    "messageId": "5f9d…-msg-005",
+    "bppUri": "https://swiftdrop.example.net/beckn",
+    "transactionId": "5f9d-txn-001",
+    "messageId": "5f9d-txn-001-msg-005",
     "timestamp": "2026-06-03T16:31:30.000Z"
   },
   "message": {
     "contract": {
-      "consideration": [{
-        "considerationAttributes": {
-          "@type": "LogisticsFare", "currency": "USD", "value": "3.40",
-          "breakup": [
-            { "title": "Base freight", "value": "2.80" },
-            { "title": "Cold-handling surcharge", "value": "0.40" },
-            { "title": "Tip", "value": "0.20" }
-          ]
+      "status": {
+        "code": "DRAFT"
+      },
+      "commitments": [
+        {
+          "id": "commitment-001",
+          "status": {
+            "descriptor": {
+              "code": "DRAFT"
+            }
+          },
+          "resources": [
+            {
+              "id": "pkg-001",
+              "quantity": {
+                "count": 1
+              },
+              "resourceAttributes": {
+                "@context": "https://schema.nfh.global/Package/v2.0/context.jsonld",
+                "@type": "Package",
+                "id": "pkg-001",
+                "description": "Groceries, 14 items, some frozen",
+                "weight": {
+                  "value": 7,
+                  "unit": "kg"
+                },
+                "fragile": true,
+                "packageType": "BAG",
+                "temperatureControl": {
+                  "required": true,
+                  "maxTemp": 0,
+                  "unit": "C"
+                }
+              }
+            }
+          ],
+          "offer": {
+            "id": "offer-swiftdrop-001",
+            "resourceIds": [
+              "pkg-001"
+            ]
+          }
         }
-      }],
-      "paymentTerms": { "settlementWindow": "P1D", "method": "PREPAID" }
+      ],
+      "consideration": [
+        {
+          "id": "consideration-001",
+          "considerationAttributes": {
+            "@context": "https://schema.nfh.global/LogisticsFare/v2.0/context.jsonld",
+            "@type": "LogisticsFare",
+            "currency": "USD",
+            "baseFreight": 2.8,
+            "otherCharges": 0.6,
+            "totalAmount": 3.4,
+            "breakup": [
+              {
+                "title": "Base freight",
+                "amount": 2.8,
+                "type": "ITEM"
+              },
+              {
+                "title": "Cold-handling surcharge",
+                "amount": 0.4,
+                "type": "SURCHARGE"
+              },
+              {
+                "title": "Tip",
+                "amount": 0.2,
+                "type": "FEE"
+              }
+            ],
+            "estimatedFare": false,
+            "paymentMode": "PREPAID"
+          }
+        }
+      ]
     }
   }
 }
@@ -604,29 +805,95 @@ The provider returns `/on_select` confirming the commitment and priced considera
     "version": "2.0.0",
     "action": "confirm",
     "bapId": "freshcart.example.net",
+    "bapUri": "https://freshcart.example.net/beckn",
     "bppId": "swiftdrop.example.net",
-    "transactionId": "5f9d…-txn-001",
-    "messageId": "5f9d…-msg-004",
+    "bppUri": "https://swiftdrop.example.net/beckn",
+    "transactionId": "5f9d-txn-001",
+    "messageId": "5f9d-txn-001-msg-004",
     "timestamp": "2026-06-03T16:32:00.000Z"
   },
   "message": {
     "contract": {
-      "participants": [
-        { "participantAttributes": { "@type": "Consumer", "name": "FreshCart (on behalf of Lisa)" } },
-        { "participantAttributes": { "@type": "LogisticsOperator", "name": "SwiftDrop" } }
-      ],
-      "consideration": [{
-        "considerationAttributes": {
-          "@context": "https://schema.beckn.io/LogisticsFare/v2.0/context.jsonld",
-          "@type": "LogisticsFare",
-          "currency": "USD",
-          "value": "3.40"
+      "commitments": [
+        {
+          "id": "commitment-001",
+          "status": {
+            "descriptor": {
+              "code": "DRAFT"
+            }
+          },
+          "resources": [
+            {
+              "id": "pkg-001",
+              "quantity": {
+                "count": 1
+              },
+              "resourceAttributes": {
+                "@context": "https://schema.nfh.global/Package/v2.0/context.jsonld",
+                "@type": "Package",
+                "id": "pkg-001",
+                "description": "Groceries, 14 items, some frozen",
+                "weight": {
+                  "value": 7,
+                  "unit": "kg"
+                },
+                "fragile": true,
+                "packageType": "BAG",
+                "temperatureControl": {
+                  "required": true,
+                  "maxTemp": 0,
+                  "unit": "C"
+                }
+              }
+            }
+          ],
+          "offer": {
+            "id": "offer-swiftdrop-001",
+            "resourceIds": [
+              "pkg-001"
+            ]
+          }
         }
-      }],
-      "settlements": [{
-        "_comment": "Settlement modeling deferred — see Open Questions.",
-        "considerationId": "consideration-001"
-      }]
+      ],
+      "participants": [
+        {
+          "id": "freshcart.example.net",
+          "descriptor": {
+            "name": "FreshCart (on behalf of Lisa)"
+          }
+        },
+        {
+          "id": "swiftdrop.example.net",
+          "participantAttributes": {
+            "@context": "https://schema.nfh.global/LogisticsOperator/v2.0/context.jsonld",
+            "@type": "LogisticsOperator",
+            "id": "swiftdrop.example.net",
+            "name": "SwiftDrop",
+            "type": "3PL"
+          }
+        }
+      ],
+      "consideration": [
+        {
+          "id": "consideration-001",
+          "considerationAttributes": {
+            "@context": "https://schema.nfh.global/LogisticsFare/v2.0/context.jsonld",
+            "@type": "LogisticsFare",
+            "currency": "USD",
+            "baseFreight": 2.8,
+            "otherCharges": 0.6,
+            "totalAmount": 3.4,
+            "paymentMode": "PREPAID"
+          }
+        }
+      ],
+      "settlements": [
+        {
+          "id": "settlement-001",
+          "considerationId": "consideration-001",
+          "status": "DRAFT"
+        }
+      ]
     }
   }
 }
@@ -643,33 +910,167 @@ The Provider Node (FreshCart) re-estimates inventory availability with Adam at e
   "context": {
     "version": "2.0.0",
     "action": "on_confirm",
+    "bapId": "freshcart.example.net",
+    "bapUri": "https://freshcart.example.net/beckn",
     "bppId": "swiftdrop.example.net",
-    "transactionId": "5f9d…-txn-001",
-    "messageId": "5f9d…-msg-006",
+    "bppUri": "https://swiftdrop.example.net/beckn",
+    "transactionId": "5f9d-txn-001",
+    "messageId": "5f9d-txn-001-msg-006",
     "timestamp": "2026-06-03T16:32:30.000Z"
   },
   "message": {
     "contract": {
       "id": "contract-001",
-      "status": { "code": "ACTIVE" },
-      "performance": [{
-        "performanceAttributes": {
-          "@context": "https://schema.beckn.io/Shipment/v2.0/context.jsonld",
-          "@type": "Shipment",
-          "bookingId": "SD-546453",
-          "orderId": "546453",
-          "deliverySlot": { "start": "2026-06-03T16:35:00Z", "end": "2026-06-03T16:45:00Z" },
-          "route": {
-            "@type": "LogisticsRoute",
-            "origin":      { "@type": "LogisticsPlace", "address": "Shop no. 44", "geo": [77.5946, 12.9716] },
-            "destination": { "@type": "LogisticsPlace", "geo": [77.5962, 12.9698] }
+      "status": {
+        "code": "ACTIVE"
+      },
+      "commitments": [
+        {
+          "id": "commitment-001",
+          "status": {
+            "descriptor": {
+              "code": "ACTIVE"
+            }
+          },
+          "resources": [
+            {
+              "id": "pkg-001",
+              "quantity": {
+                "count": 1
+              },
+              "resourceAttributes": {
+                "@context": "https://schema.nfh.global/Package/v2.0/context.jsonld",
+                "@type": "Package",
+                "id": "pkg-001",
+                "description": "Groceries, 14 items, some frozen",
+                "weight": {
+                  "value": 7,
+                  "unit": "kg"
+                },
+                "fragile": true,
+                "packageType": "BAG",
+                "temperatureControl": {
+                  "required": true,
+                  "maxTemp": 0,
+                  "unit": "C"
+                }
+              }
+            }
+          ],
+          "offer": {
+            "id": "offer-swiftdrop-001",
+            "resourceIds": [
+              "pkg-001"
+            ]
           }
         }
-      }],
+      ],
+      "performance": [
+        {
+          "id": "performance-001",
+          "commitmentIds": [
+            "commitment-001"
+          ],
+          "performanceAttributes": {
+            "@context": "https://schema.nfh.global/Shipment/v2.0/context.jsonld",
+            "@type": "Shipment",
+            "id": "SD-546453",
+            "trackingId": "SD-546453",
+            "status": "CREATED",
+            "serviceType": "HYPERLOCAL",
+            "origin": {
+              "id": "place-store-044",
+              "name": "Adam's store",
+              "type": "STORE",
+              "address": {
+                "line1": "Shop no. 44",
+                "city": "Bengaluru",
+                "pincode": "560001"
+              },
+              "gps": {
+                "lat": 12.9716,
+                "lng": 77.5946
+              }
+            },
+            "destination": {
+              "id": "place-home-lisa",
+              "name": "Lisa's home",
+              "type": "DELIVERY",
+              "address": {
+                "line1": "12 Residency Road",
+                "city": "Bengaluru",
+                "pincode": "560025"
+              },
+              "gps": {
+                "lat": 12.9698,
+                "lng": 77.5962
+              },
+              "accessInstructions": "Do not ring the door bell"
+            },
+            "deliverySlot": {
+              "id": "slot-1635",
+              "date": "2026-06-03",
+              "startTime": "16:35",
+              "endTime": "16:45",
+              "label": "EXPRESS_1HR"
+            },
+            "route": {
+              "@type": "LogisticsRoute",
+              "id": "route-001",
+              "routeType": "HYPERLOCAL",
+              "origin": {
+                "@type": "LogisticsPlace",
+                "id": "place-store-044",
+                "name": "Adam's store",
+                "type": "STORE",
+                "address": {
+                  "line1": "Shop no. 44",
+                  "city": "Bengaluru",
+                  "pincode": "560001"
+                },
+                "gps": {
+                  "lat": 12.9716,
+                  "lng": 77.5946
+                }
+              },
+              "destination": {
+                "@type": "LogisticsPlace",
+                "id": "place-home-lisa",
+                "name": "Lisa's home",
+                "type": "DELIVERY",
+                "address": {
+                  "line1": "12 Residency Road",
+                  "city": "Bengaluru",
+                  "pincode": "560025"
+                },
+                "gps": {
+                  "lat": 12.9698,
+                  "lng": 77.5962
+                },
+                "accessInstructions": "Do not ring the door bell"
+              },
+              "totalDistance": {
+                "value": 0.4,
+                "unit": "km"
+              }
+            },
+            "createdAt": "2026-06-03T16:32:30Z"
+          }
+        }
+      ],
       "contractAttributes": {
-        "@context": "https://schema.beckn.io/LogisticsReceipt/v2.0/context.jsonld",
+        "@context": "https://schema.nfh.global/LogisticsReceipt/v2.0/context.jsonld",
         "@type": "LogisticsReceipt",
-        "receiptId": "rcpt-001"
+        "id": "rcpt-001",
+        "shipmentId": "SD-546453",
+        "fare": {
+          "currency": "USD",
+          "baseFreight": 2.8,
+          "otherCharges": 0.6,
+          "totalAmount": 3.4
+        },
+        "paymentMode": "PREPAID",
+        "issuedAt": "2026-06-03T16:32:30Z"
       }
     }
   }
@@ -696,6 +1097,9 @@ This guide shows that a complete hyperlocal logistics workflow — discovery, co
 4. **`Package` placement** — `commitmentAttributes` vs `resourceAttributes` (see [Schema design](#schema-design)).
 5. **Cross-artifact drift** — `filters.type` (draft `beckn.yaml`) vs the NFH-005 `filters.expressionType` normalization. Raise as a separate issue.
 6. **Split-shipment case** — a single order arriving as two shipments (notifying the seller to split the package) is noted but out of scope here.
+7. **`Commitment.resources[].quantity`** — `beckn.yaml` requires `quantity` on each committed resource, but `Resource` defines no such property. The examples use `{ "count": 1 }`. Confirm the shape.
+8. **Offer-level service terms** — a provider's estimated delivery time and reputation have no property in `LogisticsFare`. The examples carry the estimate in the offer's `descriptor.shortDesc`. Decide whether a discovery-stage pack is needed.
+9. **Discovery filter targets** — the `filters` expressions refer to catalog fields (`package.category`, `package.handlingCodes`, `deliveryWindowMinutes`) that no registered pack defines. Decide what a logistics provider's indexed catalog carries.
 7. **RFC ID assignment** — this guide carries `NFH-TBD`. If it is to be tracked in the `protocol-specifications-v2` RFC registry, a formal ID and `CON-NNN-NN` conformance prefix must be assigned by the Core Working Group.
 
 ## Acknowledgements
