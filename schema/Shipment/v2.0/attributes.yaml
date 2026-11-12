@@ -1,23 +1,20 @@
-openapi: 3.1.0
+openapi: 3.1.1
 info:
   title: Shipment
   version: 2.0.0
   description: Schema definition for the Shipment entity in the Beckn Logistics domain.
-  contact:
-    name: Beckn Foundation
-    url: https://beckn.org
   license:
-    name: MIT
-    url: https://opensource.org/licenses/MIT
-paths: {}
+    name: CC-BY-NC-SA 4.0 International
+  contact:
+    name: Beckn Labs
+    url: https://beckn.io
 components:
   schemas:
     Shipment:
+      x-iri: https://schema.nfh.global/Shipment/v2.0
       type: object
       title: Shipment
-      description: 'A Shipment represents the movement of one or more packages from
-        an origin to a destination. It is the top-level fulfillment entity in a logistics
-        transaction and maps to beckn:Fulfillment.
+      description: 'A Shipment represents the movement of one or more packages from an origin to a destination. It is the top-level fulfillment entity in a logistics transaction and maps to beckn:Fulfillment.
 
         '
       required:
@@ -50,22 +47,22 @@ components:
           - CANCELLED
           example: IN_TRANSIT
         origin:
-          $ref: https://schema.beckn.io/LogisticsPlace/v2.0/attributes.yaml#/components/schemas/LogisticsPlace
+          $ref: https://schema.nfh.global/LogisticsPlace/v2.0/attributes.yaml#/components/schemas/LogisticsPlace
         destination:
-          $ref: https://schema.beckn.io/LogisticsPlace/v2.0/attributes.yaml#/components/schemas/LogisticsPlace
+          $ref: https://schema.nfh.global/LogisticsPlace/v2.0/attributes.yaml#/components/schemas/LogisticsPlace
         packages:
           type: array
           description: List of packages in this shipment
           items:
-            $ref: https://schema.beckn.io/Package/v2.0/attributes.yaml#/components/schemas/Package
+            $ref: https://schema.nfh.global/Package/v2.0/attributes.yaml#/components/schemas/Package
         carrier:
-          $ref: https://schema.beckn.io/Carrier/v2.0/attributes.yaml#/components/schemas/Carrier
+          $ref: https://schema.nfh.global/Carrier/v2.0/attributes.yaml#/components/schemas/Carrier
         driver:
-          $ref: https://schema.beckn.io/LogisticsDriver/v2.0/attributes.yaml#/components/schemas/LogisticsDriver
+          $ref: https://schema.nfh.global/LogisticsDriver/v2.0/attributes.yaml#/components/schemas/LogisticsDriver
         vehicle:
-          $ref: https://schema.beckn.io/LogisticsVehicle/v2.0/attributes.yaml#/components/schemas/LogisticsVehicle
+          $ref: https://schema.nfh.global/LogisticsVehicle/v2.0/attributes.yaml#/components/schemas/LogisticsVehicle
         route:
-          $ref: https://schema.beckn.io/LogisticsRoute/v2.0/attributes.yaml#/components/schemas/LogisticsRoute
+          $ref: https://schema.nfh.global/LogisticsRoute/v2.0/attributes.yaml#/components/schemas/LogisticsRoute
         scheduledPickup:
           type: string
           format: date-time
@@ -79,7 +76,7 @@ components:
           format: date-time
           description: Actual delivery date and time
         deliverySlot:
-          $ref: https://schema.beckn.io/DeliverySlot/v2.0/attributes.yaml#/components/schemas/DeliverySlot
+          $ref: https://schema.nfh.global/DeliverySlot/v2.0/attributes.yaml#/components/schemas/DeliverySlot
         serviceType:
           type: string
           description: Type of logistics service
@@ -95,25 +92,25 @@ components:
           description: Special handling instructions for the shipment
           example: Handle with care. Do not tilt.
         proof:
-          $ref: https://schema.beckn.io/Proof/v2.0/attributes.yaml#/components/schemas/Proof
+          $ref: https://schema.nfh.global/Proof/v2.0/attributes.yaml#/components/schemas/Proof
         fare:
-          $ref: https://schema.beckn.io/LogisticsFare/v2.0/attributes.yaml#/components/schemas/LogisticsFare
+          $ref: https://schema.nfh.global/LogisticsFare/v2.0/attributes.yaml#/components/schemas/LogisticsFare
         receipt:
-          $ref: https://schema.beckn.io/LogisticsReceipt/v2.0/attributes.yaml#/components/schemas/LogisticsReceipt
+          $ref: https://schema.nfh.global/LogisticsReceipt/v2.0/attributes.yaml#/components/schemas/LogisticsReceipt
         cancellationPolicy:
-          $ref: https://schema.beckn.io/LogisticsCancellationPolicy/v2.0/attributes.yaml#/components/schemas/LogisticsCancellationPolicy
+          $ref: https://schema.nfh.global/LogisticsCancellationPolicy/v2.0/attributes.yaml#/components/schemas/LogisticsCancellationPolicy
         returnPolicy:
-          $ref: https://schema.beckn.io/ReturnPolicy/v2.0/attributes.yaml#/components/schemas/ReturnPolicy
+          $ref: https://schema.nfh.global/ReturnPolicy/v2.0/attributes.yaml#/components/schemas/ReturnPolicy
         alerts:
           type: array
           description: Alerts raised for this shipment
           items:
-            $ref: https://schema.beckn.io/LogisticsAlert/v2.0/attributes.yaml#/components/schemas/LogisticsAlert
+            $ref: https://schema.nfh.global/LogisticsAlert/v2.0/attributes.yaml#/components/schemas/LogisticsAlert
         trackingUpdates:
           type: array
           description: History of tracking updates
           items:
-            $ref: https://schema.beckn.io/TrackingUpdate/v2.0/attributes.yaml#/components/schemas/TrackingUpdate
+            $ref: https://schema.nfh.global/TrackingUpdate/v2.0/attributes.yaml#/components/schemas/TrackingUpdate
         createdAt:
           type: string
           format: date-time

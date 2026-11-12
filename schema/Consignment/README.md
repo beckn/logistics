@@ -1,13 +1,9 @@
 # Consignment
 
-A schema.beckn.io Type
+A Consignment is a collection of packages or shipments grouped together under a single commercial transaction between a shipper and consignee. Maps to beckn:Order.
 
-Commercial grouping of shipments under a single transaction (AWB).
+## Versions
 
-**Canonical IRI :** `log:Consignment`
-
-**Canonical URL:** https://schema.beckn.io/logistics/Consignment
-
-## Open Issues
-
-[Open issues](https://github.com/beckn/logistics/issues)
+| Version | attributes.yaml | schema.json | context.jsonld | vocab.jsonld | README |
+|---|---|---|---|---|---|
+| **v2.0** | [https://schema.nfh.global/Consignment/v2.0/attributes.yaml](https://schema.nfh.global/Consignment/v2.0/attributes.yaml) | [https://schema.nfh.global/Consignment/v2.0/schema.json](https://schema.nfh.global/Consignment/v2.0/schema.json) | [https://schema.nfh.global/Consignment/v2.0/context.jsonld](https://schema.nfh.global/Consignment/v2.0/context.jsonld) | [https://schema.nfh.global/Consignment/v2.0/vocab.jsonld](https://schema.nfh.global/Consignment/v2.0/vocab.jsonld) | [https://schema.nfh.global/Consignment/v2.0/README.md](https://schema.nfh.global/Consignment/v2.0/README.md) |

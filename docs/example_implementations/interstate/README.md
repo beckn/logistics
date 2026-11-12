@@ -116,7 +116,7 @@ This guide covers interstate freight delivery — a business ships a cargo consi
 ## Schema References
 
 - [Consignment](../../../schema/Consignment/)
-- [Route](../../../schema/Route/)
+- [LogisticsRoute](../../../schema/LogisticsRoute/)
 - [Waypoint](../../../schema/Waypoint/)
 - [Hub](../../../schema/Hub/)
-- [Fare](../../../schema/Fare/)
+- [LogisticsFare](../../../schema/LogisticsFare/)

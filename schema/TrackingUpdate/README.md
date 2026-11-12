@@ -1,13 +1,9 @@
 # TrackingUpdate
 
-A schema.beckn.io Type
+A TrackingUpdate is a real-time or periodic update on the status and location of a shipment during transit. Maps to beckn:Event.
 
-Lifecycle event for shipments. Status progression:
+## Versions
 
-**Canonical IRI :** `log:TrackingUpdate`
-
-**Canonical URL:** https://schema.beckn.io/logistics/TrackingUpdate
-
-## Open Issues
-
-[Open issues](https://github.com/beckn/logistics/issues)
+| Version | attributes.yaml | schema.json | context.jsonld | vocab.jsonld | README |
+|---|---|---|---|---|---|
+| **v2.0** | [https://schema.nfh.global/TrackingUpdate/v2.0/attributes.yaml](https://schema.nfh.global/TrackingUpdate/v2.0/attributes.yaml) | [https://schema.nfh.global/TrackingUpdate/v2.0/schema.json](https://schema.nfh.global/TrackingUpdate/v2.0/schema.json) | [https://schema.nfh.global/TrackingUpdate/v2.0/context.jsonld](https://schema.nfh.global/TrackingUpdate/v2.0/context.jsonld) | [https://schema.nfh.global/TrackingUpdate/v2.0/vocab.jsonld](https://schema.nfh.global/TrackingUpdate/v2.0/vocab.jsonld) | [https://schema.nfh.global/TrackingUpdate/v2.0/README.md](https://schema.nfh.global/TrackingUpdate/v2.0/README.md) |

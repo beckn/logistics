@@ -32,7 +32,7 @@ This document provides an objective overview of prominent **logistics standards*
 
 ## Schema Organization
 
-This folder contains the canonical logistics domain schemas for the Beckn protocol. Each schema is versioned and follows the OpenAPI 3.1.0 specification for attribute definitions.
+This folder contains the canonical logistics domain schemas for the Beckn protocol. Each schema is versioned and follows the OpenAPI 3.1.1 specification for attribute definitions.
 
 ### Use Cases Covered
 - **Hyperlocal Delivery**: Same-day, sub-2-hour delivery within a city
@@ -45,28 +45,29 @@ This folder contains the canonical logistics domain schemas for the Beckn protoc
 
 | Schema | Description | Use Cases |
 |--------|-------------|-----------|
+| [Logistics](./Logistics/) | Bundle of all logistics types in one document | All |
 | [Shipment](./Shipment/) | Core delivery fulfillment entity | All |
 | [Package](./Package/) | Physical goods unit for transport | All |
 | [Consignment](./Consignment/) | Grouped shipment for one commercial transaction | Courier, Interstate, Long Haul |
 | [Courier](./Courier/) | Last-mile delivery person | Hyperlocal, Courier, Express |
 | [Carrier](./Carrier/) | Transport service provider | Interstate, Long Haul, Express |
-| [Driver](./Driver/) | Vehicle operator | All |
-| [Vehicle](./Vehicle/) | Transport vehicle | All |
-| [Route](./Route/) | Planned path for shipment | All |
+| [LogisticsDriver](./LogisticsDriver/) | Vehicle operator | All |
+| [LogisticsVehicle](./LogisticsVehicle/) | Transport vehicle | All |
+| [LogisticsRoute](./LogisticsRoute/) | Planned path for shipment | All |
 | [Waypoint](./Waypoint/) | Intermediate stop on route | Interstate, Long Haul |
 | [Hub](./Hub/) | Logistics fulfillment center | Courier, Interstate, Long Haul |
 | [TrackingUpdate](./TrackingUpdate/) | Real-time shipment status | All |
 | [DeliverySlot](./DeliverySlot/) | Time window for delivery | Hyperlocal, Courier, Express |
 | [Proof](./Proof/) | Delivery proof (photo, signature, OTP) | All |
-| [Place](./Place/) | Geographic location | All |
-| [Alert](./Alert/) | Exception/delay notification | All |
-| [CancellationPolicy](./CancellationPolicy/) | Cancellation terms | All |
+| [LogisticsPlace](./LogisticsPlace/) | Geographic location | All |
+| [LogisticsAlert](./LogisticsAlert/) | Exception/delay notification | All |
+| [LogisticsCancellationPolicy](./LogisticsCancellationPolicy/) | Cancellation terms | All |
 | [ReturnPolicy](./ReturnPolicy/) | Return/reverse logistics terms | Courier, Express |
-| [Fare](./Fare/) | Total delivery cost | All |
-| [FareBreakup](./FareBreakup/) | Itemized fare components | All |
-| [Rating](./Rating/) | Service/driver rating | All |
-| [Feedback](./Feedback/) | Qualitative service feedback | All |
-| [SupportCase](./SupportCase/) | Customer issue ticket | All |
-| [Operator](./Operator/) | Logistics network operator | All |
+| [LogisticsFare](./LogisticsFare/) | Total delivery cost | All |
+| [LogisticsFareBreakup](./LogisticsFareBreakup/) | Itemized fare components | All |
+| [LogisticsRating](./LogisticsRating/) | Service/driver rating | All |
+| [LogisticsFeedback](./LogisticsFeedback/) | Qualitative service feedback | All |
+| [LogisticsSupportCase](./LogisticsSupportCase/) | Customer issue ticket | All |
+| [LogisticsOperator](./LogisticsOperator/) | Logistics network operator | All |
 | [Contact](./Contact/) | Contact information entity | All |
-| [Receipt](./Receipt/) | Payment and delivery acknowledgment | All |
+| [LogisticsReceipt](./LogisticsReceipt/) | Payment and delivery acknowledgment | All |

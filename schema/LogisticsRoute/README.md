@@ -1,13 +1,9 @@
 # LogisticsRoute
 
-A schema.beckn.io Type
+A Route is the planned path for a shipment from origin to destination, potentially passing through multiple hubs and waypoints. Maps to beckn:Journey.
 
-Planned path with total distance, duration, and transport mode.
+## Versions
 
-**Canonical IRI :** `log:LogisticsRoute`
-
-**Canonical URL:** https://schema.beckn.io/logistics/LogisticsRoute
-
-## Open Issues
-
-[Open issues](https://github.com/beckn/logistics/issues)
+| Version | attributes.yaml | schema.json | context.jsonld | vocab.jsonld | README |
+|---|---|---|---|---|---|
+| **v2.0** | [https://schema.nfh.global/LogisticsRoute/v2.0/attributes.yaml](https://schema.nfh.global/LogisticsRoute/v2.0/attributes.yaml) | [https://schema.nfh.global/LogisticsRoute/v2.0/schema.json](https://schema.nfh.global/LogisticsRoute/v2.0/schema.json) | [https://schema.nfh.global/LogisticsRoute/v2.0/context.jsonld](https://schema.nfh.global/LogisticsRoute/v2.0/context.jsonld) | [https://schema.nfh.global/LogisticsRoute/v2.0/vocab.jsonld](https://schema.nfh.global/LogisticsRoute/v2.0/vocab.jsonld) | [https://schema.nfh.global/LogisticsRoute/v2.0/README.md](https://schema.nfh.global/LogisticsRoute/v2.0/README.md) |

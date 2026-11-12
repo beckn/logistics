@@ -121,4 +121,4 @@ This guide covers a standard B2C courier delivery transaction — a shipper book
 - [Consignment](../../../schema/Consignment/)
 - [Carrier](../../../schema/Carrier/)
 - [TrackingUpdate](../../../schema/TrackingUpdate/)
-- [Fare](../../../schema/Fare/)
+- [LogisticsFare](../../../schema/LogisticsFare/)

@@ -1,13 +1,9 @@
 # LogisticsDriver
 
-A schema.beckn.io Type
+A Driver is an individual who operates a vehicle for logistics delivery. Drivers are assigned to shipments and responsible for physical transport. Maps to beckn:Agent.
 
-Vehicle operator assigned to shipments.
+## Versions
 
-**Canonical IRI :** `log:LogisticsDriver`
-
-**Canonical URL:** https://schema.beckn.io/logistics/LogisticsDriver
-
-## Open Issues
-
-[Open issues](https://github.com/beckn/logistics/issues)
+| Version | attributes.yaml | schema.json | context.jsonld | vocab.jsonld | README |
+|---|---|---|---|---|---|
+| **v2.0** | [https://schema.nfh.global/LogisticsDriver/v2.0/attributes.yaml](https://schema.nfh.global/LogisticsDriver/v2.0/attributes.yaml) | [https://schema.nfh.global/LogisticsDriver/v2.0/schema.json](https://schema.nfh.global/LogisticsDriver/v2.0/schema.json) | [https://schema.nfh.global/LogisticsDriver/v2.0/context.jsonld](https://schema.nfh.global/LogisticsDriver/v2.0/context.jsonld) | [https://schema.nfh.global/LogisticsDriver/v2.0/vocab.jsonld](https://schema.nfh.global/LogisticsDriver/v2.0/vocab.jsonld) | [https://schema.nfh.global/LogisticsDriver/v2.0/README.md](https://schema.nfh.global/LogisticsDriver/v2.0/README.md) |

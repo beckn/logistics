@@ -1,13 +1,9 @@
 # LogisticsAlert
 
-A schema.beckn.io Type
+An Alert is a notification or warning related to a shipment, such as delays, exceptions, damage reports, or SLA breaches. Maps to beckn:Event.
 
-Exception events: `DELAY`, `DAMAGE`, `LOSS`, `FAILED_DELIVERY`, `CUSTOMS_HOLD`, `SLA_BREACH`
+## Versions
 
-**Canonical IRI :** `log:LogisticsAlert`
-
-**Canonical URL:** https://schema.beckn.io/logistics/LogisticsAlert
-
-## Open Issues
-
-[Open issues](https://github.com/beckn/logistics/issues)
+| Version | attributes.yaml | schema.json | context.jsonld | vocab.jsonld | README |
+|---|---|---|---|---|---|
+| **v2.0** | [https://schema.nfh.global/LogisticsAlert/v2.0/attributes.yaml](https://schema.nfh.global/LogisticsAlert/v2.0/attributes.yaml) | [https://schema.nfh.global/LogisticsAlert/v2.0/schema.json](https://schema.nfh.global/LogisticsAlert/v2.0/schema.json) | [https://schema.nfh.global/LogisticsAlert/v2.0/context.jsonld](https://schema.nfh.global/LogisticsAlert/v2.0/context.jsonld) | [https://schema.nfh.global/LogisticsAlert/v2.0/vocab.jsonld](https://schema.nfh.global/LogisticsAlert/v2.0/vocab.jsonld) | [https://schema.nfh.global/LogisticsAlert/v2.0/README.md](https://schema.nfh.global/LogisticsAlert/v2.0/README.md) |

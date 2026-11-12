@@ -1,13 +1,9 @@
 # Courier
 
-A schema.beckn.io Type
+A Courier is an individual delivery agent responsible for last-mile pickup and delivery of packages, typically in hyperlocal or urban delivery contexts. Maps to beckn:Agent.
 
-Last-mile delivery agent for urban hyperlocal contexts.
+## Versions
 
-**Canonical IRI :** `log:Courier`
-
-**Canonical URL:** https://schema.beckn.io/logistics/Courier
-
-## Open Issues
-
-[Open issues](https://github.com/beckn/logistics/issues)
+| Version | attributes.yaml | schema.json | context.jsonld | vocab.jsonld | README |
+|---|---|---|---|---|---|
+| **v2.0** | [https://schema.nfh.global/Courier/v2.0/attributes.yaml](https://schema.nfh.global/Courier/v2.0/attributes.yaml) | [https://schema.nfh.global/Courier/v2.0/schema.json](https://schema.nfh.global/Courier/v2.0/schema.json) | [https://schema.nfh.global/Courier/v2.0/context.jsonld](https://schema.nfh.global/Courier/v2.0/context.jsonld) | [https://schema.nfh.global/Courier/v2.0/vocab.jsonld](https://schema.nfh.global/Courier/v2.0/vocab.jsonld) | [https://schema.nfh.global/Courier/v2.0/README.md](https://schema.nfh.global/Courier/v2.0/README.md) |

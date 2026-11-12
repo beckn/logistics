@@ -1,13 +1,9 @@
 # LogisticsFareBreakup
 
-A schema.beckn.io Type
+A single line item in the fare breakup for a logistics service.
 
-Individual line items: `ITEM`, `SURCHARGE`, `TAX`, `DISCOUNT`, `FEE`
+## Versions
 
-**Canonical IRI :** `log:LogisticsFareBreakup`
-
-**Canonical URL:** https://schema.beckn.io/logistics/LogisticsFareBreakup
-
-## Open Issues
-
-[Open issues](https://github.com/beckn/logistics/issues)
+| Version | attributes.yaml | schema.json | context.jsonld | vocab.jsonld | README |
+|---|---|---|---|---|---|
+| **v2.0** | [https://schema.nfh.global/LogisticsFareBreakup/v2.0/attributes.yaml](https://schema.nfh.global/LogisticsFareBreakup/v2.0/attributes.yaml) | [https://schema.nfh.global/LogisticsFareBreakup/v2.0/schema.json](https://schema.nfh.global/LogisticsFareBreakup/v2.0/schema.json) | [https://schema.nfh.global/LogisticsFareBreakup/v2.0/context.jsonld](https://schema.nfh.global/LogisticsFareBreakup/v2.0/context.jsonld) | [https://schema.nfh.global/LogisticsFareBreakup/v2.0/vocab.jsonld](https://schema.nfh.global/LogisticsFareBreakup/v2.0/vocab.jsonld) | [https://schema.nfh.global/LogisticsFareBreakup/v2.0/README.md](https://schema.nfh.global/LogisticsFareBreakup/v2.0/README.md) |

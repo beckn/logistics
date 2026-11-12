@@ -1,23 +1,20 @@
-openapi: 3.1.0
+openapi: 3.1.1
 info:
   title: LogisticsRoute
   version: 2.0.0
-  description: Schema definition for the LogisticsRoute entity in the Beckn Logistics
-    domain.
-  contact:
-    name: Beckn Foundation
-    url: https://beckn.org
+  description: Schema definition for the Route entity in the Beckn Logistics domain.
   license:
-    name: MIT
-    url: https://opensource.org/licenses/MIT
-paths: {}
+    name: CC-BY-NC-SA 4.0 International
+  contact:
+    name: Beckn Labs
+    url: https://beckn.io
 components:
   schemas:
     LogisticsRoute:
+      x-iri: https://schema.nfh.global/LogisticsRoute/v2.0
       type: object
       title: LogisticsRoute
-      description: 'A Route is the planned path for a shipment from origin to destination,
-        potentially passing through multiple hubs and waypoints. Maps to beckn:Journey.
+      description: 'A Route is the planned path for a shipment from origin to destination, potentially passing through multiple hubs and waypoints. Maps to beckn:Journey.
 
         '
       required:
@@ -34,14 +31,14 @@ components:
           description: Human-readable route name
           example: Bangalore to Delhi via Hyderabad
         origin:
-          $ref: https://schema.beckn.io/LogisticsPlace/v2.0/attributes.yaml#/components/schemas/LogisticsPlace
+          $ref: https://schema.nfh.global/LogisticsPlace/v2.0/attributes.yaml#/components/schemas/LogisticsPlace
         destination:
-          $ref: https://schema.beckn.io/LogisticsPlace/v2.0/attributes.yaml#/components/schemas/LogisticsPlace
+          $ref: https://schema.nfh.global/LogisticsPlace/v2.0/attributes.yaml#/components/schemas/LogisticsPlace
         waypoints:
           type: array
           description: Intermediate waypoints/hubs on the route
           items:
-            $ref: https://schema.beckn.io/Waypoint/v2.0/attributes.yaml#/components/schemas/Waypoint
+            $ref: https://schema.nfh.global/Waypoint/v2.0/attributes.yaml#/components/schemas/Waypoint
         totalDistance:
           type: object
           properties:

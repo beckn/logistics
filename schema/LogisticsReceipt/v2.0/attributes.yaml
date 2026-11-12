@@ -1,23 +1,20 @@
-openapi: 3.1.0
+openapi: 3.1.1
 info:
   title: LogisticsReceipt
   version: 2.0.0
-  description: Schema definition for the LogisticsReceipt entity in the Beckn Logistics
-    domain.
-  contact:
-    name: Beckn Foundation
-    url: https://beckn.org
+  description: Schema for Receipt in Beckn Logistics domain.
   license:
-    name: MIT
-    url: https://opensource.org/licenses/MIT
-paths: {}
+    name: CC-BY-NC-SA 4.0 International
+  contact:
+    name: Beckn Labs
+    url: https://beckn.io
 components:
   schemas:
     LogisticsReceipt:
+      x-iri: https://schema.nfh.global/LogisticsReceipt/v2.0
       type: object
       title: LogisticsReceipt
-      description: Digital acknowledgment of payment and delivery for a logistics
-        service.
+      description: Digital acknowledgment of payment and delivery for a logistics service.
       required:
       - id
       - shipmentId
@@ -36,7 +33,7 @@ components:
           type: string
           format: date-time
         fare:
-          $ref: https://schema.beckn.io/LogisticsFare/v2.0/attributes.yaml#/components/schemas/LogisticsFare
+          $ref: https://schema.nfh.global/LogisticsFare/v2.0/attributes.yaml#/components/schemas/LogisticsFare
         paymentMode:
           type: string
           enum:
@@ -52,13 +49,13 @@ components:
           type: string
           format: date-time
         shipper:
-          $ref: https://schema.beckn.io/Contact/v2.0/attributes.yaml#/components/schemas/Contact
+          $ref: https://schema.nfh.global/Contact/v2.0/attributes.yaml#/components/schemas/Contact
         consignee:
-          $ref: https://schema.beckn.io/Contact/v2.0/attributes.yaml#/components/schemas/Contact
+          $ref: https://schema.nfh.global/Contact/v2.0/attributes.yaml#/components/schemas/Contact
         carrier:
-          $ref: https://schema.beckn.io/Carrier/v2.0/attributes.yaml#/components/schemas/Carrier
+          $ref: https://schema.nfh.global/Carrier/v2.0/attributes.yaml#/components/schemas/Carrier
         deliveryProof:
-          $ref: https://schema.beckn.io/Proof/v2.0/attributes.yaml#/components/schemas/Proof
+          $ref: https://schema.nfh.global/Proof/v2.0/attributes.yaml#/components/schemas/Proof
         downloadUrl:
           type: string
           format: uri
