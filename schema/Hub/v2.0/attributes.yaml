@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     Hub:
-      x-iri: https://schema.beckn.io/Hub/v2.0
+      x-iri: https://schema.nfh.global/Hub/v2.0
       type: object
       title: Hub
       description: 'A Hub is a logistics fulfillment center, sorting facility, or distribution point where goods are consolidated, sorted, and dispatched for onward delivery. Maps to beckn:Location.
@@ -33,7 +33,7 @@ components:
           description: Short hub code
           example: BLR-MAIN
         place:
-          $ref: https://schema.beckn.io/LogisticsPlace/v2.0/attributes.yaml#/components/schemas/LogisticsPlace
+          $ref: https://schema.nfh.global/LogisticsPlace/v2.0/attributes.yaml#/components/schemas/LogisticsPlace
         type:
           type: string
           enum:
@@ -45,7 +45,7 @@ components:
           - CUSTOMS_WAREHOUSE
           example: SORTING_HUB
         operator:
-          $ref: https://schema.beckn.io/Operator/v2.0/attributes.yaml#/components/schemas/Operator
+          $ref: https://schema.nfh.global/Operator/v2.0/attributes.yaml#/components/schemas/Operator
         operatingHours:
           type: object
           properties:

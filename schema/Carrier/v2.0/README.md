@@ -6,14 +6,10 @@ A Carrier is a transport service provider responsible for moving goods across di
 
 | File | Purpose |
 |---|---|
-| [https://schema.beckn.io/Carrier/attributes.yaml](https://schema.beckn.io/Carrier/attributes.yaml) | OpenAPI schema envelope (latest path) |
-| [https://schema.beckn.io/Carrier/v2.0/attributes.yaml](https://schema.beckn.io/Carrier/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
-| [https://schema.beckn.io/Carrier/attributes.jsonschema.yaml](https://schema.beckn.io/Carrier/attributes.jsonschema.yaml) | JSON Schema document (latest path) |
-| [https://schema.beckn.io/Carrier/v2.0/attributes.jsonschema.yaml](https://schema.beckn.io/Carrier/v2.0/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
-| [https://schema.beckn.io/Carrier/context.jsonld](https://schema.beckn.io/Carrier/context.jsonld) | JSON-LD context (latest path) |
-| [https://schema.beckn.io/Carrier/v2.0/context.jsonld](https://schema.beckn.io/Carrier/v2.0/context.jsonld) | JSON-LD context (versioned path) |
-| [https://schema.beckn.io/Carrier/vocab.jsonld](https://schema.beckn.io/Carrier/vocab.jsonld) | RDF vocabulary (latest path) |
-| [https://schema.beckn.io/Carrier/v2.0/vocab.jsonld](https://schema.beckn.io/Carrier/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
+| [https://schema.nfh.global/Carrier/v2.0/attributes.yaml](https://schema.nfh.global/Carrier/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
+| [https://schema.nfh.global/Carrier/v2.0/attributes.jsonschema.yaml](https://schema.nfh.global/Carrier/v2.0/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
+| [https://schema.nfh.global/Carrier/v2.0/context.jsonld](https://schema.nfh.global/Carrier/v2.0/context.jsonld) | JSON-LD context (versioned path) |
+| [https://schema.nfh.global/Carrier/v2.0/vocab.jsonld](https://schema.nfh.global/Carrier/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
 
 ## Properties
 
@@ -24,7 +20,7 @@ A Carrier is a transport service provider responsible for moving goods across di
 | `code` | no | string | Short carrier code |
 | `logo` | no | string | URL to carrier logo |
 | `website` | no | string | - |
-| `contact` | no | $ref: https://schema.beckn.io/Contact/v2.0/attributes.yaml#/components/schemas/Contact | - |
+| `contact` | no | $ref: https://schema.nfh.global/Contact/v2.0/attributes.yaml#/components/schemas/Contact | - |
 | `rating` | no | number | - |
 | `serviceTypes` | no | array | Types of logistics services offered |
 | `serviceCoverage` | no | array | Geographic regions served |

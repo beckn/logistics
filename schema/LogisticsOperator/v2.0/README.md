@@ -6,14 +6,10 @@ Entity operating a logistics network or fleet, responsible for end-to-end delive
 
 | File | Purpose |
 |---|---|
-| [https://schema.beckn.io/LogisticsOperator/attributes.yaml](https://schema.beckn.io/LogisticsOperator/attributes.yaml) | OpenAPI schema envelope (latest path) |
-| [https://schema.beckn.io/LogisticsOperator/v2.0/attributes.yaml](https://schema.beckn.io/LogisticsOperator/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
-| [https://schema.beckn.io/LogisticsOperator/attributes.jsonschema.yaml](https://schema.beckn.io/LogisticsOperator/attributes.jsonschema.yaml) | JSON Schema document (latest path) |
-| [https://schema.beckn.io/LogisticsOperator/v2.0/attributes.jsonschema.yaml](https://schema.beckn.io/LogisticsOperator/v2.0/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
-| [https://schema.beckn.io/LogisticsOperator/context.jsonld](https://schema.beckn.io/LogisticsOperator/context.jsonld) | JSON-LD context (latest path) |
-| [https://schema.beckn.io/LogisticsOperator/v2.0/context.jsonld](https://schema.beckn.io/LogisticsOperator/v2.0/context.jsonld) | JSON-LD context (versioned path) |
-| [https://schema.beckn.io/LogisticsOperator/vocab.jsonld](https://schema.beckn.io/LogisticsOperator/vocab.jsonld) | RDF vocabulary (latest path) |
-| [https://schema.beckn.io/LogisticsOperator/v2.0/vocab.jsonld](https://schema.beckn.io/LogisticsOperator/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
+| [https://schema.nfh.global/LogisticsOperator/v2.0/attributes.yaml](https://schema.nfh.global/LogisticsOperator/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
+| [https://schema.nfh.global/LogisticsOperator/v2.0/attributes.jsonschema.yaml](https://schema.nfh.global/LogisticsOperator/v2.0/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
+| [https://schema.nfh.global/LogisticsOperator/v2.0/context.jsonld](https://schema.nfh.global/LogisticsOperator/v2.0/context.jsonld) | JSON-LD context (versioned path) |
+| [https://schema.nfh.global/LogisticsOperator/v2.0/vocab.jsonld](https://schema.nfh.global/LogisticsOperator/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
 
 ## Properties
 
@@ -22,7 +18,7 @@ Entity operating a logistics network or fleet, responsible for end-to-end delive
 | `id` | yes | string | - |
 | `name` | yes | string | - |
 | `type` | no | string | - |
-| `contact` | no | $ref: https://schema.beckn.io/Contact/v2.0/attributes.yaml#/components/schemas/Contact | - |
+| `contact` | no | $ref: https://schema.nfh.global/Contact/v2.0/attributes.yaml#/components/schemas/Contact | - |
 | `website` | no | string | - |
 | `supportEmail` | no | string | - |
 | `supportPhone` | no | string | - |

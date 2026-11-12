@@ -1,7 +1,7 @@
 {
   "@context": {
-    "beckn": "https://schema.beckn.io/LinkedData/v2.1/context.jsonld",
-    "@vocab": "https://schema.beckn.io/core/v2.0/",
+    "beckn": "https://schema.nfh.global/LinkedData/v2.1/context.jsonld",
+    "@vocab": "https://schema.nfh.global/core/v2.0/",
     "LogisticsAlert": "beckn:LogisticsAlert",
     "LogisticsCancellationPolicy": "beckn:LogisticsCancellationPolicy",
     "Carrier": "beckn:Carrier",

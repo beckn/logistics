@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     LogisticsDriver:
-      x-iri: https://schema.beckn.io/LogisticsDriver/v2.0
+      x-iri: https://schema.nfh.global/LogisticsDriver/v2.0
       type: object
       title: Driver
       description: 'A Driver is an individual who operates a vehicle for logistics delivery. Drivers are assigned to shipments and responsible for physical transport. Maps to beckn:Agent.
@@ -74,7 +74,7 @@ components:
           - OFFLINE
           example: ON_ROUTE
         vehicle:
-          $ref: https://schema.beckn.io/Vehicle/v2.0/attributes.yaml#/components/schemas/Vehicle
+          $ref: https://schema.nfh.global/Vehicle/v2.0/attributes.yaml#/components/schemas/Vehicle
         experienceYears:
           type: integer
           description: Years of driving experience

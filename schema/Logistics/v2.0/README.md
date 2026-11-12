@@ -6,14 +6,10 @@ A Carrier is a transport service provider responsible for moving goods across di
 
 | File | Purpose |
 |---|---|
-| [https://schema.beckn.io/Logistics/attributes.yaml](https://schema.beckn.io/Logistics/attributes.yaml) | OpenAPI schema envelope (latest path) |
-| [https://schema.beckn.io/Logistics/v2.0/attributes.yaml](https://schema.beckn.io/Logistics/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
-| [https://schema.beckn.io/Logistics/attributes.jsonschema.yaml](https://schema.beckn.io/Logistics/attributes.jsonschema.yaml) | JSON Schema document (latest path) |
-| [https://schema.beckn.io/Logistics/v2.0/attributes.jsonschema.yaml](https://schema.beckn.io/Logistics/v2.0/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
-| [https://schema.beckn.io/Logistics/context.jsonld](https://schema.beckn.io/Logistics/context.jsonld) | JSON-LD context (latest path) |
-| [https://schema.beckn.io/Logistics/v2.0/context.jsonld](https://schema.beckn.io/Logistics/v2.0/context.jsonld) | JSON-LD context (versioned path) |
-| [https://schema.beckn.io/Logistics/vocab.jsonld](https://schema.beckn.io/Logistics/vocab.jsonld) | RDF vocabulary (latest path) |
-| [https://schema.beckn.io/Logistics/v2.0/vocab.jsonld](https://schema.beckn.io/Logistics/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
+| [https://schema.nfh.global/Logistics/v2.0/attributes.yaml](https://schema.nfh.global/Logistics/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
+| [https://schema.nfh.global/Logistics/v2.0/attributes.jsonschema.yaml](https://schema.nfh.global/Logistics/v2.0/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
+| [https://schema.nfh.global/Logistics/v2.0/context.jsonld](https://schema.nfh.global/Logistics/v2.0/context.jsonld) | JSON-LD context (versioned path) |
+| [https://schema.nfh.global/Logistics/v2.0/vocab.jsonld](https://schema.nfh.global/Logistics/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
 
 ## Properties
 

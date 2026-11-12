@@ -57,7 +57,7 @@
       "example": "KA05AB1234"
     },
     "currentLocation": {
-      "$ref": "https://schema.beckn.io/LogisticsPlace/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/LogisticsPlace/v2.0/schema.json"
     },
     "status": {
       "type": "string",
@@ -88,7 +88,7 @@
       "description": "Date the courier joined the network"
     }
   },
-  "$id": "https://schema.beckn.io/Courier/v2.0",
-  "x-iri": "https://schema.beckn.io/Courier/v2.0",
+  "$id": "https://schema.nfh.global/Courier/v2.0",
+  "x-iri": "https://schema.nfh.global/Courier/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema"
 }

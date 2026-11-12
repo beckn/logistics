@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     LogisticsOperator:
-      x-iri: https://schema.beckn.io/LogisticsOperator/v2.0
+      x-iri: https://schema.nfh.global/LogisticsOperator/v2.0
       type: object
       title: Operator
       description: Entity operating a logistics network or fleet, responsible for end-to-end delivery service.
@@ -34,7 +34,7 @@ components:
           - POSTAL
           example: 3PL
         contact:
-          $ref: https://schema.beckn.io/Contact/v2.0/attributes.yaml#/components/schemas/Contact
+          $ref: https://schema.nfh.global/Contact/v2.0/attributes.yaml#/components/schemas/Contact
         website:
           type: string
           format: uri

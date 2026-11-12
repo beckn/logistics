@@ -98,7 +98,7 @@
       "format": "date-time"
     }
   },
-  "$id": "https://schema.beckn.io/LogisticsSupportCase/v2.0",
-  "x-iri": "https://schema.beckn.io/LogisticsSupportCase/v2.0",
+  "$id": "https://schema.nfh.global/LogisticsSupportCase/v2.0",
+  "x-iri": "https://schema.nfh.global/LogisticsSupportCase/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema"
 }

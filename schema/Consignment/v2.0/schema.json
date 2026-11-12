@@ -14,20 +14,20 @@
       "example": "AWB-2024-9900123"
     },
     "shipper": {
-      "$ref": "https://schema.beckn.io/Contact/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Contact/v2.0/schema.json"
     },
     "consignee": {
-      "$ref": "https://schema.beckn.io/Contact/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Contact/v2.0/schema.json"
     },
     "shipments": {
       "type": "array",
       "description": "List of shipments in this consignment",
       "items": {
-        "$ref": "https://schema.beckn.io/Shipment/v2.0/schema.json"
+        "$ref": "https://schema.nfh.global/Shipment/v2.0/schema.json"
       }
     },
     "carrier": {
-      "$ref": "https://schema.beckn.io/Carrier/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Carrier/v2.0/schema.json"
     },
     "totalWeight": {
       "type": "object",
@@ -93,7 +93,7 @@
       "format": "date-time"
     }
   },
-  "$id": "https://schema.beckn.io/Consignment/v2.0",
-  "x-iri": "https://schema.beckn.io/Consignment/v2.0",
+  "$id": "https://schema.nfh.global/Consignment/v2.0",
+  "x-iri": "https://schema.nfh.global/Consignment/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema"
 }

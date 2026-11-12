@@ -19,16 +19,16 @@
       "example": "Bangalore to Delhi via Hyderabad"
     },
     "origin": {
-      "$ref": "https://schema.beckn.io/LogisticsPlace/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/LogisticsPlace/v2.0/schema.json"
     },
     "destination": {
-      "$ref": "https://schema.beckn.io/LogisticsPlace/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/LogisticsPlace/v2.0/schema.json"
     },
     "waypoints": {
       "type": "array",
       "description": "Intermediate waypoints/hubs on the route",
       "items": {
-        "$ref": "https://schema.beckn.io/Waypoint/v2.0/schema.json"
+        "$ref": "https://schema.nfh.global/Waypoint/v2.0/schema.json"
       }
     },
     "totalDistance": {
@@ -123,7 +123,7 @@
       ]
     }
   },
-  "$id": "https://schema.beckn.io/LogisticsRoute/v2.0",
-  "x-iri": "https://schema.beckn.io/LogisticsRoute/v2.0",
+  "$id": "https://schema.nfh.global/LogisticsRoute/v2.0",
+  "x-iri": "https://schema.nfh.global/LogisticsRoute/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema"
 }

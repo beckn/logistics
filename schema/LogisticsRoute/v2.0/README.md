@@ -6,14 +6,10 @@ A Route is the planned path for a shipment from origin to destination, potential
 
 | File | Purpose |
 |---|---|
-| [https://schema.beckn.io/LogisticsRoute/attributes.yaml](https://schema.beckn.io/LogisticsRoute/attributes.yaml) | OpenAPI schema envelope (latest path) |
-| [https://schema.beckn.io/LogisticsRoute/v2.0/attributes.yaml](https://schema.beckn.io/LogisticsRoute/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
-| [https://schema.beckn.io/LogisticsRoute/attributes.jsonschema.yaml](https://schema.beckn.io/LogisticsRoute/attributes.jsonschema.yaml) | JSON Schema document (latest path) |
-| [https://schema.beckn.io/LogisticsRoute/v2.0/attributes.jsonschema.yaml](https://schema.beckn.io/LogisticsRoute/v2.0/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
-| [https://schema.beckn.io/LogisticsRoute/context.jsonld](https://schema.beckn.io/LogisticsRoute/context.jsonld) | JSON-LD context (latest path) |
-| [https://schema.beckn.io/LogisticsRoute/v2.0/context.jsonld](https://schema.beckn.io/LogisticsRoute/v2.0/context.jsonld) | JSON-LD context (versioned path) |
-| [https://schema.beckn.io/LogisticsRoute/vocab.jsonld](https://schema.beckn.io/LogisticsRoute/vocab.jsonld) | RDF vocabulary (latest path) |
-| [https://schema.beckn.io/LogisticsRoute/v2.0/vocab.jsonld](https://schema.beckn.io/LogisticsRoute/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
+| [https://schema.nfh.global/LogisticsRoute/v2.0/attributes.yaml](https://schema.nfh.global/LogisticsRoute/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
+| [https://schema.nfh.global/LogisticsRoute/v2.0/attributes.jsonschema.yaml](https://schema.nfh.global/LogisticsRoute/v2.0/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
+| [https://schema.nfh.global/LogisticsRoute/v2.0/context.jsonld](https://schema.nfh.global/LogisticsRoute/v2.0/context.jsonld) | JSON-LD context (versioned path) |
+| [https://schema.nfh.global/LogisticsRoute/v2.0/vocab.jsonld](https://schema.nfh.global/LogisticsRoute/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
 
 ## Properties
 
@@ -21,8 +17,8 @@ A Route is the planned path for a shipment from origin to destination, potential
 |---|---|---|---|
 | `id` | yes | string | Unique route identifier |
 | `name` | no | string | Human-readable route name |
-| `origin` | yes | $ref: https://schema.beckn.io/Place/v2.0/attributes.yaml#/components/schemas/Place | - |
-| `destination` | yes | $ref: https://schema.beckn.io/Place/v2.0/attributes.yaml#/components/schemas/Place | - |
+| `origin` | yes | $ref: https://schema.nfh.global/Place/v2.0/attributes.yaml#/components/schemas/Place | - |
+| `destination` | yes | $ref: https://schema.nfh.global/Place/v2.0/attributes.yaml#/components/schemas/Place | - |
 | `waypoints` | no | array | Intermediate waypoints/hubs on the route |
 | `totalDistance` | no | object | - |
 | `estimatedDuration` | no | object | - |

@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/LogisticsFare/v2.0",
-  "x-iri": "https://schema.beckn.io/LogisticsFare/v2.0",
+  "$id": "https://schema.nfh.global/LogisticsFare/v2.0",
+  "x-iri": "https://schema.nfh.global/LogisticsFare/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "LogisticsFare JSON Schema",
   "type": "object",
@@ -87,7 +87,7 @@
           "type": "array",
           "description": "Detailed fare breakup line items",
           "items": {
-            "$ref": "https://schema.beckn.io/LogisticsFareBreakup/v2.0/schema.json"
+            "$ref": "https://schema.nfh.global/LogisticsFareBreakup/v2.0/schema.json"
           }
         },
         "estimatedFare": {

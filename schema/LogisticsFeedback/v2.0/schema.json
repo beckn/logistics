@@ -11,7 +11,7 @@
       "type": "string"
     },
     "rating": {
-      "$ref": "https://schema.beckn.io/Rating/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/Rating/v2.1/schema.json"
     },
     "review": {
       "type": "string",
@@ -48,7 +48,7 @@
       "example": true
     }
   },
-  "$id": "https://schema.beckn.io/LogisticsFeedback/v2.0",
-  "x-iri": "https://schema.beckn.io/LogisticsFeedback/v2.0",
+  "$id": "https://schema.nfh.global/LogisticsFeedback/v2.0",
+  "x-iri": "https://schema.nfh.global/LogisticsFeedback/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema"
 }

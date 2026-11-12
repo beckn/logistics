@@ -74,7 +74,7 @@
       }
     },
     "contact": {
-      "$ref": "https://schema.beckn.io/Contact/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Contact/v2.0/schema.json"
     },
     "accessInstructions": {
       "type": "string",
@@ -87,7 +87,7 @@
       "example": true
     }
   },
-  "$id": "https://schema.beckn.io/LogisticsPlace/v2.0",
-  "x-iri": "https://schema.beckn.io/LogisticsPlace/v2.0",
+  "$id": "https://schema.nfh.global/LogisticsPlace/v2.0",
+  "x-iri": "https://schema.nfh.global/LogisticsPlace/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema"
 }

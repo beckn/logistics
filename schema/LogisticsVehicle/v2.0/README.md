@@ -6,14 +6,10 @@ A Vehicle is a transport asset used for logistics operations. Vehicle types rang
 
 | File | Purpose |
 |---|---|
-| [https://schema.beckn.io/LogisticsVehicle/attributes.yaml](https://schema.beckn.io/LogisticsVehicle/attributes.yaml) | OpenAPI schema envelope (latest path) |
-| [https://schema.beckn.io/LogisticsVehicle/v2.0/attributes.yaml](https://schema.beckn.io/LogisticsVehicle/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
-| [https://schema.beckn.io/LogisticsVehicle/attributes.jsonschema.yaml](https://schema.beckn.io/LogisticsVehicle/attributes.jsonschema.yaml) | JSON Schema document (latest path) |
-| [https://schema.beckn.io/LogisticsVehicle/v2.0/attributes.jsonschema.yaml](https://schema.beckn.io/LogisticsVehicle/v2.0/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
-| [https://schema.beckn.io/LogisticsVehicle/context.jsonld](https://schema.beckn.io/LogisticsVehicle/context.jsonld) | JSON-LD context (latest path) |
-| [https://schema.beckn.io/LogisticsVehicle/v2.0/context.jsonld](https://schema.beckn.io/LogisticsVehicle/v2.0/context.jsonld) | JSON-LD context (versioned path) |
-| [https://schema.beckn.io/LogisticsVehicle/vocab.jsonld](https://schema.beckn.io/LogisticsVehicle/vocab.jsonld) | RDF vocabulary (latest path) |
-| [https://schema.beckn.io/LogisticsVehicle/v2.0/vocab.jsonld](https://schema.beckn.io/LogisticsVehicle/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
+| [https://schema.nfh.global/LogisticsVehicle/v2.0/attributes.yaml](https://schema.nfh.global/LogisticsVehicle/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
+| [https://schema.nfh.global/LogisticsVehicle/v2.0/attributes.jsonschema.yaml](https://schema.nfh.global/LogisticsVehicle/v2.0/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
+| [https://schema.nfh.global/LogisticsVehicle/v2.0/context.jsonld](https://schema.nfh.global/LogisticsVehicle/v2.0/context.jsonld) | JSON-LD context (versioned path) |
+| [https://schema.nfh.global/LogisticsVehicle/v2.0/vocab.jsonld](https://schema.nfh.global/LogisticsVehicle/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
 
 ## Properties
 

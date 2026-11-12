@@ -22,7 +22,7 @@
       "example": "BLR-MAIN"
     },
     "place": {
-      "$ref": "https://schema.beckn.io/LogisticsPlace/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/LogisticsPlace/v2.0/schema.json"
     },
     "type": {
       "type": "string",
@@ -37,7 +37,7 @@
       "example": "SORTING_HUB"
     },
     "operator": {
-      "$ref": "https://schema.beckn.io/Operator/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Operator/v2.0/schema.json"
     },
     "operatingHours": {
       "type": "object",
@@ -103,7 +103,7 @@
       "example": true
     }
   },
-  "$id": "https://schema.beckn.io/Hub/v2.0",
-  "x-iri": "https://schema.beckn.io/Hub/v2.0",
+  "$id": "https://schema.nfh.global/Hub/v2.0",
+  "x-iri": "https://schema.nfh.global/Hub/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema"
 }

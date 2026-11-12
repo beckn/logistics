@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     ReturnPolicy:
-      x-iri: https://schema.beckn.io/ReturnPolicy/v2.0
+      x-iri: https://schema.nfh.global/ReturnPolicy/v2.0
       type: object
       title: ReturnPolicy
       description: Defines conditions for returning goods and reverse logistics workflows.
@@ -63,4 +63,4 @@ components:
           type: boolean
           example: true
         returnHubAddress:
-          $ref: https://schema.beckn.io/LogisticsPlace/v2.0/attributes.yaml#/components/schemas/LogisticsPlace
+          $ref: https://schema.nfh.global/LogisticsPlace/v2.0/attributes.yaml#/components/schemas/LogisticsPlace

@@ -1,6 +1,6 @@
 {
   "@context": {
-    "beckn": "https://schema.beckn.io/LinkedData/v2.0/context.jsonld",
+    "beckn": "https://schema.nfh.global/LinkedData/v2.0/context.jsonld",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "schema": "https://schema.org/version/latest/schemaorg-current-https.jsonld",

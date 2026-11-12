@@ -6,14 +6,10 @@ A Waypoint is an intermediate stop or checkpoint on a logistics route, such as a
 
 | File | Purpose |
 |---|---|
-| [https://schema.beckn.io/Waypoint/attributes.yaml](https://schema.beckn.io/Waypoint/attributes.yaml) | OpenAPI schema envelope (latest path) |
-| [https://schema.beckn.io/Waypoint/v2.0/attributes.yaml](https://schema.beckn.io/Waypoint/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
-| [https://schema.beckn.io/Waypoint/attributes.jsonschema.yaml](https://schema.beckn.io/Waypoint/attributes.jsonschema.yaml) | JSON Schema document (latest path) |
-| [https://schema.beckn.io/Waypoint/v2.0/attributes.jsonschema.yaml](https://schema.beckn.io/Waypoint/v2.0/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
-| [https://schema.beckn.io/Waypoint/context.jsonld](https://schema.beckn.io/Waypoint/context.jsonld) | JSON-LD context (latest path) |
-| [https://schema.beckn.io/Waypoint/v2.0/context.jsonld](https://schema.beckn.io/Waypoint/v2.0/context.jsonld) | JSON-LD context (versioned path) |
-| [https://schema.beckn.io/Waypoint/vocab.jsonld](https://schema.beckn.io/Waypoint/vocab.jsonld) | RDF vocabulary (latest path) |
-| [https://schema.beckn.io/Waypoint/v2.0/vocab.jsonld](https://schema.beckn.io/Waypoint/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
+| [https://schema.nfh.global/Waypoint/v2.0/attributes.yaml](https://schema.nfh.global/Waypoint/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
+| [https://schema.nfh.global/Waypoint/v2.0/attributes.jsonschema.yaml](https://schema.nfh.global/Waypoint/v2.0/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
+| [https://schema.nfh.global/Waypoint/v2.0/context.jsonld](https://schema.nfh.global/Waypoint/v2.0/context.jsonld) | JSON-LD context (versioned path) |
+| [https://schema.nfh.global/Waypoint/v2.0/vocab.jsonld](https://schema.nfh.global/Waypoint/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
 
 ## Properties
 
@@ -21,7 +17,7 @@ A Waypoint is an intermediate stop or checkpoint on a logistics route, such as a
 |---|---|---|---|
 | `id` | yes | string | - |
 | `name` | no | string | - |
-| `place` | yes | $ref: https://schema.beckn.io/Place/v2.0/attributes.yaml#/components/schemas/Place | - |
+| `place` | yes | $ref: https://schema.nfh.global/Place/v2.0/attributes.yaml#/components/schemas/Place | - |
 | `type` | no | string | - |
 | `sequenceNumber` | no | integer | Order of this waypoint in the route |
 | `scheduledArrival` | no | string | - |

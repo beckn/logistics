@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     Waypoint:
-      x-iri: https://schema.beckn.io/Waypoint/v2.0
+      x-iri: https://schema.nfh.global/Waypoint/v2.0
       type: object
       title: Waypoint
       description: 'A Waypoint is an intermediate stop or checkpoint on a logistics route, such as a sorting hub, relay station, or customs checkpoint. Maps to beckn:Stop.
@@ -28,7 +28,7 @@ components:
           type: string
           example: Hyderabad Sorting Hub
         place:
-          $ref: https://schema.beckn.io/LogisticsPlace/v2.0/attributes.yaml#/components/schemas/LogisticsPlace
+          $ref: https://schema.nfh.global/LogisticsPlace/v2.0/attributes.yaml#/components/schemas/LogisticsPlace
         type:
           type: string
           enum:

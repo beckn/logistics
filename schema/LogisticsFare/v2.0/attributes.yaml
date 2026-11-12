@@ -12,7 +12,7 @@ info:
 components:
   schemas:
     LogisticsFare:
-      x-iri: https://schema.beckn.io/LogisticsFare/v2.0
+      x-iri: https://schema.nfh.global/LogisticsFare/v2.0
       type: object
       title: LogisticsFare
       description: Total cost charged for a logistics service including base freight, surcharges, taxes.
@@ -59,7 +59,7 @@ components:
           type: array
           description: Detailed fare breakup line items
           items:
-            $ref: https://schema.beckn.io/LogisticsFareBreakup/v2.0/attributes.yaml#/components/schemas/LogisticsFareBreakup
+            $ref: https://schema.nfh.global/LogisticsFareBreakup/v2.0/attributes.yaml#/components/schemas/LogisticsFareBreakup
         estimatedFare:
           type: boolean
           description: Whether this is an estimate or confirmed fare

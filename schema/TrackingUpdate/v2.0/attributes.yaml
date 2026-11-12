@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     TrackingUpdate:
-      x-iri: https://schema.beckn.io/TrackingUpdate/v2.0
+      x-iri: https://schema.nfh.global/TrackingUpdate/v2.0
       type: object
       title: TrackingUpdate
       description: 'A TrackingUpdate is a real-time or periodic update on the status and location of a shipment during transit. Maps to beckn:Event.
@@ -63,11 +63,11 @@ components:
           description: Human-readable status message
           example: Your shipment has arrived at Hyderabad hub and is being sorted.
         hub:
-          $ref: https://schema.beckn.io/Hub/v2.0/attributes.yaml#/components/schemas/Hub
+          $ref: https://schema.nfh.global/Hub/v2.0/attributes.yaml#/components/schemas/Hub
         driver:
-          $ref: https://schema.beckn.io/Driver/v2.0/attributes.yaml#/components/schemas/Driver
+          $ref: https://schema.nfh.global/Driver/v2.0/attributes.yaml#/components/schemas/Driver
         vehicle:
-          $ref: https://schema.beckn.io/Vehicle/v2.0/attributes.yaml#/components/schemas/Vehicle
+          $ref: https://schema.nfh.global/Vehicle/v2.0/attributes.yaml#/components/schemas/Vehicle
         exceptionDetails:
           type: object
           description: Details if this update is an exception

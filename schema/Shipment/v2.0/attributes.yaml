@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     Shipment:
-      x-iri: https://schema.beckn.io/Shipment/v2.0
+      x-iri: https://schema.nfh.global/Shipment/v2.0
       type: object
       title: Shipment
       description: 'A Shipment represents the movement of one or more packages from an origin to a destination. It is the top-level fulfillment entity in a logistics transaction and maps to beckn:Fulfillment.
@@ -47,22 +47,22 @@ components:
           - CANCELLED
           example: IN_TRANSIT
         origin:
-          $ref: https://schema.beckn.io/LogisticsPlace/v2.0/attributes.yaml#/components/schemas/LogisticsPlace
+          $ref: https://schema.nfh.global/LogisticsPlace/v2.0/attributes.yaml#/components/schemas/LogisticsPlace
         destination:
-          $ref: https://schema.beckn.io/LogisticsPlace/v2.0/attributes.yaml#/components/schemas/LogisticsPlace
+          $ref: https://schema.nfh.global/LogisticsPlace/v2.0/attributes.yaml#/components/schemas/LogisticsPlace
         packages:
           type: array
           description: List of packages in this shipment
           items:
-            $ref: https://schema.beckn.io/Package/v2.0/attributes.yaml#/components/schemas/Package
+            $ref: https://schema.nfh.global/Package/v2.0/attributes.yaml#/components/schemas/Package
         carrier:
-          $ref: https://schema.beckn.io/Carrier/v2.0/attributes.yaml#/components/schemas/Carrier
+          $ref: https://schema.nfh.global/Carrier/v2.0/attributes.yaml#/components/schemas/Carrier
         driver:
-          $ref: https://schema.beckn.io/Driver/v2.0/attributes.yaml#/components/schemas/Driver
+          $ref: https://schema.nfh.global/Driver/v2.0/attributes.yaml#/components/schemas/Driver
         vehicle:
-          $ref: https://schema.beckn.io/Vehicle/v2.0/attributes.yaml#/components/schemas/Vehicle
+          $ref: https://schema.nfh.global/Vehicle/v2.0/attributes.yaml#/components/schemas/Vehicle
         route:
-          $ref: https://schema.beckn.io/Route/v2.0/attributes.yaml#/components/schemas/Route
+          $ref: https://schema.nfh.global/Route/v2.0/attributes.yaml#/components/schemas/Route
         scheduledPickup:
           type: string
           format: date-time
@@ -76,7 +76,7 @@ components:
           format: date-time
           description: Actual delivery date and time
         deliverySlot:
-          $ref: https://schema.beckn.io/DeliverySlot/v2.0/attributes.yaml#/components/schemas/DeliverySlot
+          $ref: https://schema.nfh.global/DeliverySlot/v2.0/attributes.yaml#/components/schemas/DeliverySlot
         serviceType:
           type: string
           description: Type of logistics service
@@ -92,25 +92,25 @@ components:
           description: Special handling instructions for the shipment
           example: Handle with care. Do not tilt.
         proof:
-          $ref: https://schema.beckn.io/Proof/v2.0/attributes.yaml#/components/schemas/Proof
+          $ref: https://schema.nfh.global/Proof/v2.0/attributes.yaml#/components/schemas/Proof
         fare:
-          $ref: https://schema.beckn.io/Fare/v2.0/attributes.yaml#/components/schemas/Fare
+          $ref: https://schema.nfh.global/Fare/v2.0/attributes.yaml#/components/schemas/Fare
         receipt:
-          $ref: https://schema.beckn.io/LogisticsReceipt/v2.0/attributes.yaml#/components/schemas/LogisticsReceipt
+          $ref: https://schema.nfh.global/LogisticsReceipt/v2.0/attributes.yaml#/components/schemas/LogisticsReceipt
         cancellationPolicy:
-          $ref: https://schema.beckn.io/CancellationPolicy/v2.0/attributes.yaml#/components/schemas/CancellationPolicy
+          $ref: https://schema.nfh.global/CancellationPolicy/v2.0/attributes.yaml#/components/schemas/CancellationPolicy
         returnPolicy:
-          $ref: https://schema.beckn.io/ReturnPolicy/v2.0/attributes.yaml#/components/schemas/ReturnPolicy
+          $ref: https://schema.nfh.global/ReturnPolicy/v2.0/attributes.yaml#/components/schemas/ReturnPolicy
         alerts:
           type: array
           description: Alerts raised for this shipment
           items:
-            $ref: https://schema.beckn.io/Alert/v2.0/attributes.yaml#/components/schemas/Alert
+            $ref: https://schema.nfh.global/Alert/v2.0/attributes.yaml#/components/schemas/Alert
         trackingUpdates:
           type: array
           description: History of tracking updates
           items:
-            $ref: https://schema.beckn.io/TrackingUpdate/v2.0/attributes.yaml#/components/schemas/TrackingUpdate
+            $ref: https://schema.nfh.global/TrackingUpdate/v2.0/attributes.yaml#/components/schemas/TrackingUpdate
         createdAt:
           type: string
           format: date-time
