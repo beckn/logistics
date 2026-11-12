@@ -22,7 +22,7 @@ components:
         shipmentId:
           type: string
         rating:
-          $ref: https://schema.nfh.global/Rating/v2.1/attributes.yaml#/components/schemas/Rating
+          $ref: https://schema.nfh.global/LogisticsRating/v2.0/attributes.yaml#/components/schemas/LogisticsRating
         review:
           type: string
           description: Free text review

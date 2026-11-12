@@ -63,10 +63,10 @@
       "$ref": "https://schema.nfh.global/Hub/v2.0/schema.json"
     },
     "driver": {
-      "$ref": "https://schema.nfh.global/Driver/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/LogisticsDriver/v2.0/schema.json"
     },
     "vehicle": {
-      "$ref": "https://schema.nfh.global/Vehicle/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/LogisticsVehicle/v2.0/schema.json"
     },
     "exceptionDetails": {
       "type": "object",

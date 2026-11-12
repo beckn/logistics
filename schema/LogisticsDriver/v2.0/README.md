@@ -25,7 +25,7 @@ A Driver is an individual who operates a vehicle for logistics delivery. Drivers
 | `rating` | no | number | - |
 | `currentLocation` | no | object | Real-time GPS location |
 | `status` | no | string | - |
-| `vehicle` | no | $ref: https://schema.nfh.global/Vehicle/v2.0/attributes.yaml#/components/schemas/Vehicle | - |
+| `vehicle` | no | $ref: https://schema.nfh.global/LogisticsVehicle/v2.0/attributes.yaml#/components/schemas/LogisticsVehicle | - |
 | `experienceYears` | no | integer | Years of driving experience |
 | `backgroundVerified` | no | boolean | Whether background verification is complete |
 | `languagesSpoken` | no | array | - |

@@ -33,7 +33,7 @@ components:
           type: string
           format: date-time
         fare:
-          $ref: https://schema.nfh.global/Fare/v2.0/attributes.yaml#/components/schemas/Fare
+          $ref: https://schema.nfh.global/LogisticsFare/v2.0/attributes.yaml#/components/schemas/LogisticsFare
         paymentMode:
           type: string
           enum:

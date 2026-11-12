@@ -53,13 +53,13 @@
       "$ref": "https://schema.nfh.global/Carrier/v2.0/schema.json"
     },
     "driver": {
-      "$ref": "https://schema.nfh.global/Driver/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/LogisticsDriver/v2.0/schema.json"
     },
     "vehicle": {
-      "$ref": "https://schema.nfh.global/Vehicle/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/LogisticsVehicle/v2.0/schema.json"
     },
     "route": {
-      "$ref": "https://schema.nfh.global/Route/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/LogisticsRoute/v2.0/schema.json"
     },
     "scheduledPickup": {
       "type": "string",
@@ -100,13 +100,13 @@
       "$ref": "https://schema.nfh.global/Proof/v2.0/schema.json"
     },
     "fare": {
-      "$ref": "https://schema.nfh.global/Fare/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/LogisticsFare/v2.0/schema.json"
     },
     "receipt": {
       "$ref": "https://schema.nfh.global/LogisticsReceipt/v2.0/schema.json"
     },
     "cancellationPolicy": {
-      "$ref": "https://schema.nfh.global/CancellationPolicy/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/LogisticsCancellationPolicy/v2.0/schema.json"
     },
     "returnPolicy": {
       "$ref": "https://schema.nfh.global/ReturnPolicy/v2.0/schema.json"
@@ -115,7 +115,7 @@
       "type": "array",
       "description": "Alerts raised for this shipment",
       "items": {
-        "$ref": "https://schema.nfh.global/Alert/v2.0/schema.json"
+        "$ref": "https://schema.nfh.global/LogisticsAlert/v2.0/schema.json"
       }
     },
     "trackingUpdates": {

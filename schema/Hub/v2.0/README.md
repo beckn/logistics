@@ -20,7 +20,7 @@ A Hub is a logistics fulfillment center, sorting facility, or distribution point
 | `code` | no | string | Short hub code |
 | `place` | yes | $ref: https://schema.nfh.global/Place/v2.0/attributes.yaml#/components/schemas/Place | - |
 | `type` | no | string | - |
-| `operator` | no | $ref: https://schema.nfh.global/Operator/v2.0/attributes.yaml#/components/schemas/Operator | - |
+| `operator` | no | $ref: https://schema.nfh.global/LogisticsOperator/v2.0/attributes.yaml#/components/schemas/LogisticsOperator | - |
 | `operatingHours` | no | object | - |
 | `processingCapacity` | no | object | Maximum packages processed per day |
 | `serviceablePincodes` | no | array | PIN codes serviced from this hub |

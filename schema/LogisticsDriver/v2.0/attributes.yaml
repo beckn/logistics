@@ -74,7 +74,7 @@ components:
           - OFFLINE
           example: ON_ROUTE
         vehicle:
-          $ref: https://schema.nfh.global/Vehicle/v2.0/attributes.yaml#/components/schemas/Vehicle
+          $ref: https://schema.nfh.global/LogisticsVehicle/v2.0/attributes.yaml#/components/schemas/LogisticsVehicle
         experienceYears:
           type: integer
           description: Years of driving experience

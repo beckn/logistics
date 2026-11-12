@@ -75,7 +75,7 @@
       "example": "ON_ROUTE"
     },
     "vehicle": {
-      "$ref": "https://schema.nfh.global/Vehicle/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/LogisticsVehicle/v2.0/schema.json"
     },
     "experienceYears": {
       "type": "integer",

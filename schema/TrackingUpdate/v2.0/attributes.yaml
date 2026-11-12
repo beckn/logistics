@@ -65,9 +65,9 @@ components:
         hub:
           $ref: https://schema.nfh.global/Hub/v2.0/attributes.yaml#/components/schemas/Hub
         driver:
-          $ref: https://schema.nfh.global/Driver/v2.0/attributes.yaml#/components/schemas/Driver
+          $ref: https://schema.nfh.global/LogisticsDriver/v2.0/attributes.yaml#/components/schemas/LogisticsDriver
         vehicle:
-          $ref: https://schema.nfh.global/Vehicle/v2.0/attributes.yaml#/components/schemas/Vehicle
+          $ref: https://schema.nfh.global/LogisticsVehicle/v2.0/attributes.yaml#/components/schemas/LogisticsVehicle
         exceptionDetails:
           type: object
           description: Details if this update is an exception

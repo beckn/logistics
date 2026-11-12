@@ -22,8 +22,8 @@ A TrackingUpdate is a real-time or periodic update on the status and location of
 | `timestamp` | yes | string | - |
 | `message` | no | string | Human-readable status message |
 | `hub` | no | $ref: https://schema.nfh.global/Hub/v2.0/attributes.yaml#/components/schemas/Hub | - |
-| `driver` | no | $ref: https://schema.nfh.global/Driver/v2.0/attributes.yaml#/components/schemas/Driver | - |
-| `vehicle` | no | $ref: https://schema.nfh.global/Vehicle/v2.0/attributes.yaml#/components/schemas/Vehicle | - |
+| `driver` | no | $ref: https://schema.nfh.global/LogisticsDriver/v2.0/attributes.yaml#/components/schemas/LogisticsDriver | - |
+| `vehicle` | no | $ref: https://schema.nfh.global/LogisticsVehicle/v2.0/attributes.yaml#/components/schemas/LogisticsVehicle | - |
 | `exceptionDetails` | no | object | Details if this update is an exception |
 | `nextAction` | no | string | Next planned action |
 | `notificationSent` | no | boolean | Whether customer was notified of this update |

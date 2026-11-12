@@ -19,7 +19,7 @@ Digital acknowledgment of payment and delivery for a logistics service.
 | `shipmentId` | yes | string | - |
 | `invoiceNumber` | no | string | - |
 | `issuedAt` | no | string | - |
-| `fare` | yes | $ref: https://schema.nfh.global/Fare/v2.0/attributes.yaml#/components/schemas/Fare | - |
+| `fare` | yes | $ref: https://schema.nfh.global/LogisticsFare/v2.0/attributes.yaml#/components/schemas/LogisticsFare | - |
 | `paymentMode` | no | string | - |
 | `paymentTransactionId` | no | string | - |
 | `paidAt` | no | string | - |

@@ -37,7 +37,7 @@
       "example": "SORTING_HUB"
     },
     "operator": {
-      "$ref": "https://schema.nfh.global/Operator/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/LogisticsOperator/v2.0/schema.json"
     },
     "operatingHours": {
       "type": "object",

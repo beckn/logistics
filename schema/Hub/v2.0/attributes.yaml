@@ -45,7 +45,7 @@ components:
           - CUSTOMS_WAREHOUSE
           example: SORTING_HUB
         operator:
-          $ref: https://schema.nfh.global/Operator/v2.0/attributes.yaml#/components/schemas/Operator
+          $ref: https://schema.nfh.global/LogisticsOperator/v2.0/attributes.yaml#/components/schemas/LogisticsOperator
         operatingHours:
           type: object
           properties:
