@@ -7,7 +7,7 @@ A Courier is an individual delivery agent responsible for last-mile pickup and d
 | File | Purpose |
 |---|---|
 | [https://schema.nfh.global/Courier/v2.0/attributes.yaml](https://schema.nfh.global/Courier/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
-| [https://schema.nfh.global/Courier/v2.0/attributes.jsonschema.yaml](https://schema.nfh.global/Courier/v2.0/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
+| [https://schema.nfh.global/Courier/v2.0/schema.json](https://schema.nfh.global/Courier/v2.0/schema.json) | JSON Schema document (versioned path) |
 | [https://schema.nfh.global/Courier/v2.0/context.jsonld](https://schema.nfh.global/Courier/v2.0/context.jsonld) | JSON-LD context (versioned path) |
 | [https://schema.nfh.global/Courier/v2.0/vocab.jsonld](https://schema.nfh.global/Courier/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
 

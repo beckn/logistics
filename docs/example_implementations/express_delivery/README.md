@@ -176,6 +176,6 @@ If delivery is delayed beyond SLA:
 - [DeliverySlot](../../../schema/DeliverySlot/)
 - [Courier](../../../schema/Courier/)
 - [TrackingUpdate](../../../schema/TrackingUpdate/)
-- [Alert](../../../schema/Alert/)
+- [LogisticsAlert](../../../schema/LogisticsAlert/)
 - [Proof](../../../schema/Proof/)
-- [Fare](../../../schema/Fare/)
+- [LogisticsFare](../../../schema/LogisticsFare/)

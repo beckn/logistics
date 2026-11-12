@@ -100,7 +100,7 @@ This guide covers long haul full truck load (FTL) delivery — shipping bulk car
 ## Schema References
 
 - [Consignment](../../../schema/Consignment/)
-- [Route](../../../schema/Route/)
+- [LogisticsRoute](../../../schema/LogisticsRoute/)
 - [Waypoint](../../../schema/Waypoint/)
-- [Vehicle](../../../schema/Vehicle/)
-- [Fare](../../../schema/Fare/)
+- [LogisticsVehicle](../../../schema/LogisticsVehicle/)
+- [LogisticsFare](../../../schema/LogisticsFare/)

@@ -7,7 +7,7 @@ A Route is the planned path for a shipment from origin to destination, potential
 | File | Purpose |
 |---|---|
 | [https://schema.nfh.global/LogisticsRoute/v2.0/attributes.yaml](https://schema.nfh.global/LogisticsRoute/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
-| [https://schema.nfh.global/LogisticsRoute/v2.0/attributes.jsonschema.yaml](https://schema.nfh.global/LogisticsRoute/v2.0/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
+| [https://schema.nfh.global/LogisticsRoute/v2.0/schema.json](https://schema.nfh.global/LogisticsRoute/v2.0/schema.json) | JSON Schema document (versioned path) |
 | [https://schema.nfh.global/LogisticsRoute/v2.0/context.jsonld](https://schema.nfh.global/LogisticsRoute/v2.0/context.jsonld) | JSON-LD context (versioned path) |
 | [https://schema.nfh.global/LogisticsRoute/v2.0/vocab.jsonld](https://schema.nfh.global/LogisticsRoute/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
 
