@@ -1,0 +1,4 @@
+jsonschema>=4.21
+referencing>=0.33
+PyYAML>=6.0
+PyLD>=2.0

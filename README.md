@@ -17,6 +17,7 @@ express delivery.
 |------|----------|
 | [docs/](./docs/) | Domain documentation — overview, concepts, ontology, API flows, and example implementations |
 | [schema/](./schema/) | Entity schema definitions (attributes, JSON Schema, and JSON-LD context/vocab) |
+| [tools/](./tools/) | `validate.py`: checks the schema packs and the example payloads; run in CI on every pull request |
 
 ## Documentation
 
